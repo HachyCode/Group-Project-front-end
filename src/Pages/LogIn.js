@@ -5,6 +5,7 @@ function LogIn() {
         <div>
             //Daniel
             //testing merge conflicts
+            <p>This is a test</p>
         </div>
     )
 }
