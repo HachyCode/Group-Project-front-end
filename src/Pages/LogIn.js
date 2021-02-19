@@ -3,9 +3,9 @@ import React from 'react'
 function LogIn() {
     return (
         <div>
-            //Daniel
-            //testing merge conflicts
-            <p>This is a test</p>
+            {/*Daniel*/}
+            Login
+            //test
         </div>
     )
 }

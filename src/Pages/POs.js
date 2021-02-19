@@ -3,7 +3,8 @@ import React from 'react'
 function POs() {
     return (
         <div>
-            //Daniel
+            {/*Daniel*/}
+            POs
         </div>
     )
 }
