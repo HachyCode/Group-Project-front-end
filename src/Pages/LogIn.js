@@ -21,9 +21,6 @@ function LogIn() {
         <div>
             {/*Daniel*/}
             <div>
-                <NavBar/>
-            </div>
-            <div>
                 <div>
                     <img alt="logo"></img>
                 </div>
@@ -32,7 +29,7 @@ function LogIn() {
                     <div>
                         <LoginBox ref={id} id="staffID" default="Staff ID"/>
                         <LoginBox ref={password} id="password" default="Password"/>
-                        <LoginButton onClick={login}/>
+                        <LoginButton onClick={login}>Log In</LoginButton>
                     </div>
                     <div></div>
                 </div>
