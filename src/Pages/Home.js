@@ -5,7 +5,6 @@ function Home() {
         <div>
             {/*Daniel*/}
             home
-            vg
         </div>
     )
 }

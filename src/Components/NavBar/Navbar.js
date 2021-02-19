@@ -12,6 +12,8 @@ const Navbar = () => {
     return (
         <>
         <Nav>
+test
+
             {/*<NavLink to='/'>
             <img src={require('../../images/logo.svg')} alt='logo' />
             </NavLink>
