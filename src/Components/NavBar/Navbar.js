@@ -20,6 +20,11 @@ const Navbar = () => {
             //edit
 
             <NavMenu>
+
+                <NavLink to='/home' activeStyle>
+                    Home
+                </NavLink>
+
                 <NavLink to='/cateogries' activeStyle>
                     Cateogries
                 </NavLink>
