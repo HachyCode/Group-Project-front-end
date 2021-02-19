@@ -17,6 +17,7 @@ const Navbar = () => {
             </NavLink>
 
             <Bars />*/}
+            //edit
 
             <NavMenu>
                 <NavLink to='/cateogries' activeStyle>
