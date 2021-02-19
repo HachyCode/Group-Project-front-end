@@ -9,16 +9,18 @@ import POForm from './Pages/POForm';
 
 function App() {
   return (
-    <Router>
-    <Navbar />
-    <Switch>
-      <Route path='/home' exact component={Home} />
-      <Route path='/cateogries' component={Cateogries} />
-      <Route path='/logIn' component={LogIn} />
-      <Route path='/pos' component={POs} />
-      <Route path='/poForm' component={POForm} />
-    </Switch>
-    </Router>
+
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route path='/home' exact component={Home} />
+          <Route path='/cateogries' component={Cateogries} />
+          <Route path='/logIn' component={LogIn} />
+          <Route path='/pos' component={POs} />
+          <Route path='/poForm' component={POForm} />
+        </Switch>
+      </Router>
+
   );
 }
 
