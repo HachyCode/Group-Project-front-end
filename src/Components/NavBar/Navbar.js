@@ -2,27 +2,14 @@ import React from 'react';
 import {
     Nav,
     NavLink,
-    Bars,
-    NavMenu,
-    NavBtn,
-    NavBtnLink
+    NavMenu
 } from './NavbarCSS';
 
 const Navbar = () => {
     return (
         <>
         <Nav>
-test
-
-            {/*<NavLink to='/'>
-            <img src={require('../../images/logo.svg')} alt='logo' />
-            </NavLink>
-
-            <Bars />*/}
-            //edit
-
             <NavMenu>
-
                 <NavLink to='/home' activeStyle>
                     Home
                 </NavLink>
@@ -43,11 +30,6 @@ test
                     POForm
                 </NavLink>
             </NavMenu>
-
-            {/*<NavBtn>
-            <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-            </NavBtn>*/}
-
         </Nav>
         </>
     );
