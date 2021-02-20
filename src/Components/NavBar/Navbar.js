@@ -18,16 +18,16 @@ const Navbar = () => {
                     Cateogries
                 </NavLink>
 
-                <NavLink to='/logIn' activeStyle>
-                    LogIn
-                </NavLink>
-
                 <NavLink to='/pos' activeStyle>
                     POs
                 </NavLink>
 
                 <NavLink to='/poForm' activeStyle>
                     POForm
+                </NavLink>
+
+                <NavLink to='/logOff' activeStyle>
+                    LogOff
                 </NavLink>
             </NavMenu>
         </Nav>
