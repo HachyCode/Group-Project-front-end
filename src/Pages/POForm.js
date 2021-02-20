@@ -1,10 +1,10 @@
 import React from 'react'
+import Address from '../Components/AddressBar/AddressBar'
 
 function POForm() {
     return (
-        <div>
-            {/*Viktorija*/}
-            POForm
+        <div> {/*Viktorija*/}
+            <Address/>
         </div>
     )
 }
