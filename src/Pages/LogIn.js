@@ -26,7 +26,6 @@ const MainPageBody = styled.div`
 const LoginBody = styled.div`
     display: flex;
     flex-flow: row nowrap;
-    margin-bottom: 70vh;
 `;
 
 const LoginSidePadding = styled.div`
@@ -42,14 +41,16 @@ const LoginMainArea = styled.div`
 //actual components
 const LoginButton = styled.button`
     margin-top: 1em;
-    margin-left: 33%;
-    margin-right: 33%;
+    margin-left: 15%;
+    height: 4em;
+    width: 20em;
 `
 
 const LoginBox = styled(InputBox)`
-    margin-left: 4em;
-    margin-right: 4em;
-    margin-bottom: 6em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    height: 3em;
 `;
 
 const WarningBox = styled.div`
@@ -57,21 +58,25 @@ const WarningBox = styled.div`
     border-width: 1px;
     border-color: black;
     border-radius: 5px;
-    padding-right: 1.5em;
-    padding-left: 1.5em;
+    padding-left: 20%;
     margin-left: 2em;
     margin-right: 2em;
-    width: 60vw;
+    margin-top: 25vh;
+    height: 15vh;
     display: flex;
     align-items: center;
 `
 
+const Logo = styled.img`
+    height: 100px;
+    width: 300px;
+`;
+
 const ProfilePic = styled.img`
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 20%;
     margin-bottom: 10%;
-    width: calc(10% - 2*margin-left);
-    height: 27%;
+    width: 13vw;
+    height: 13vw;
     border-style: solid;
     border-width: 1px;
     border-color: black;
@@ -82,7 +87,10 @@ function LogIn() {
     const id = React.useRef(null);
     const password = React.useRef(null);
     function login() {
-        if (id.current.text !== id.default && password.current.text !== password.default) {
+        console.log("try login");
+        console.log("user: " + id.current.value);
+        console.log("password: " + password.value);
+        if (id.current.value !== id.default && password.current.value !== password.default) {
             console.log("login");
             //do the login stuff here later
         }
@@ -95,9 +103,7 @@ function LogIn() {
                     <ProfilePic alt="profile"/>
                 </ProfileSidebar>
                 <MainPageBody>
-                    <div>
-                        <img alt="logo"></img>
-                    </div>
+                    <Logo alt="logo"/>
                     <LoginBody>
                         <LoginSidePadding>&nbsp;</LoginSidePadding>
                         <LoginMainArea>

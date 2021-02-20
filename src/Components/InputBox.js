@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Input = styled.input`
-    color: ${props => props.colour}
+    color: ${props => props.colour};
 `;
 class InputBox extends React.Component {
     
@@ -66,7 +66,7 @@ class InputBox extends React.Component {
             //could I use placeholder and forget this whole custom component nonsense? yes.
             //but this is more compatible with older browsers and everyone knows companies are all
             //stuck on windows XP
-            <Input type="text" value={this.state.text} onClick={this.clearOnClick} onSelect={this.clearOnClick} onKeyPress={this.onKeyPress} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour}/>
+            <Input type="text" value={this.state.text} onClick={this.clearOnClick} onSelect={this.clearOnClick} onKeyPress={this.onKeyPress} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour} className={this.props.className}/>
         );
     }
 };
