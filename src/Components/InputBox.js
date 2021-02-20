@@ -4,14 +4,14 @@ import styled from 'styled-components';
 const Input = styled.input`
     color: ${props => props.colour}
 `;
-class InputBox extends React.Component {//= (props) => {
+class InputBox extends React.Component {
     
     constructor(props) {
         super(props);
         this.props = props;
-        //this.inputBox = React.createRef();
         this.hasBeenClicked = false;
         this.colour = "lightgrey";
+        this.disabled = false;
 
         this.state = {
             text: props.default,
@@ -19,13 +19,14 @@ class InputBox extends React.Component {//= (props) => {
 
         this.setText = this.setText.bind(this);
     }
+
     clearOnClick = () => {
         //don't do anything if no default is defined
+        this.disabled = true;
         if (this.props) {
             if (this.props.default && this.props.default !== "") {
                 if (!this.hasBeenClicked) {
                     if (this.state.text === this.props.default) {
-                        console.log("click");
                         this.setText("");
                         this.hasBeenClicked = true;
                         this.colour = "black";
@@ -33,10 +34,16 @@ class InputBox extends React.Component {//= (props) => {
                 }
             }
         }
+        this.disabled = false;
     }
 
     handleChange = (event) => {
-        this.setState({text: event.target.value });
+        if (this.disabled) event.preventDefault();
+        else this.setState({text: event.target.value });
+    }
+
+    onKeyPress = (event) => {
+        if (this.disabled) event.preventDefault();
     }
 
     onUnfocus = () => {
@@ -59,7 +66,7 @@ class InputBox extends React.Component {//= (props) => {
             //could I use placeholder and forget this whole custom component nonsense? yes.
             //but this is more compatible with older browsers and everyone knows companies are all
             //stuck on windows XP
-            <Input type="text" value={this.state.text} defaultValue={this.props.default} onSelect={this.clearOnClick} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour}/>
+            <Input type="text" value={this.state.text} onClick={this.clearOnClick} onSelect={this.clearOnClick} onKeyPress={this.onKeyPress} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour}/>
         );
     }
 };
