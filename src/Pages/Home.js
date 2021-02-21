@@ -28,7 +28,11 @@ const StyledNewsBox = styled(NewsBox)`
     margin-bottom: 1.5em;
 `;
 
-const NewsScrollIcon = styled.img``;
+const NewsScrollIcon = styled.img`
+    position: fixed;
+    bottom: 1em;
+    left: 45%;
+`;
 
 function Home() {
     const news = { 
@@ -40,25 +44,32 @@ function Home() {
             alt: "test",
         }, 
         2: {
-            heading: "",
-            paragraph: "",
-            date: "",
+            heading: "Sample Text",
+            paragraph: "Lorem ipusm",
+            date: "1/2/3456",
             image: "",
-            alt: "",
+            alt: "test2",
         }, 
         3: {
-            heading: "",
-            paragraph: "",
-            date: "",
+            heading: "Sample Text",
+            paragraph: "Lorem ipusm",
+            date: "1/2/3456",
             image: "",
-            alt: "",
+            alt: "test2",
         }, 
         4: {
-            heading: "",
-            paragraph: "",
-            date: "",
+            heading: "Sample Text",
+            paragraph: "Lorem ipusm",
+            date: "1/2/3456",
             image: "",
-            alt: "",
+            alt: "test2",
+        },
+        5: {
+            heading: "Sample Text",
+            paragraph: "Lorem ipusm",
+            date: "1/2/3456",
+            image: "",
+            alt: "test2",
         }
     };
     function generateNews() {

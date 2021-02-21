@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 
+const BorderBox = styled.div`
+    
+`;
+
 const MainBox = styled.div`
     display: flex;
     flex-direction: row;
@@ -8,8 +12,7 @@ const MainBox = styled.div`
     border-width: 1px;
     border-color: ${props => props.colour};
     border-radius: 5px;
-    min-height: 5em;
-    max-height: 7em;
+    height: 7em;
 `;
 
 const NewsImage = styled.img`
@@ -44,6 +47,15 @@ const Date = styled.p`
     color: lightgray;
 `;
 
+const XButton = styled.button`
+    pointer: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    height: 1em;
+    width: 1em;
+`;
+
 class NewsBox extends React.Component {
     constructor(props) {
         super(props);
@@ -57,12 +69,32 @@ class NewsBox extends React.Component {
             image: props.image,
             alt: props.alt,
             isRed: props.isRed,
+            isSelected: false,
         }
+    }
+
+    getColour = () => {
+        return this.state.isSelected ? "orange" : (this.state.isRed === "true" ? "crimson" : "black");
+    }
+
+    toggleSelected = () => {
+        this.setState({isSelected: !this.state.isSelected});
+    }
+
+    genDeleteButton = () => {
+        if (this.state.isSelected) {
+            return (<XButton><img alt="xButton"/></XButton>)
+            //return (<a href="" onClick={this.delete}><img alt="xButton"/></a>);
+        }
+    }
+
+    delete = () => {
+        this.props.onDelete();
     }
 
     render = () => {
         return (
-            <MainBox className={this.props.className} colour={this.state.isRed === "true" ? "crimson" : "black"}>
+            <MainBox className={this.props.className} colour={this.getColour} onClick={this.toggleSelected}>
                 <NewsImage src={this.props.image} alt={this.props.alt}/>
                 <NewsBoxMain>
                     <NewsHeader>{this.props.heading}</NewsHeader>
@@ -71,6 +103,7 @@ class NewsBox extends React.Component {
                 <DateArea>
                     <Date>{this.props.date}</Date>
                 </DateArea>
+                { this.state.isSelected ? this.genDeleteButton() : ""}
             </MainBox>
         );
     }
