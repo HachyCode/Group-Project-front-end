@@ -41,9 +41,9 @@ const LoginMainArea = styled.div`
 //actual components
 const LoginButton = styled.button`
     margin-top: 1em;
-    margin-left: 15%;
+    margin-left: 20%;
+    margin-right: 20%;
     height: 4em;
-    width: 20em;
 `
 
 const LoginBox = styled(InputBox)`

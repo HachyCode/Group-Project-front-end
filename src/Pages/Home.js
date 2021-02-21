@@ -73,6 +73,10 @@ function Home() {
             }
         }
 
+        if (newsToGenerate.length > 4) {
+            newsToGenerate.push(<NewsScrollIcon alt="scroll down"/>)
+        }
+
         return newsToGenerate;
     }
 
