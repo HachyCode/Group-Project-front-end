@@ -1,11 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
+import {eventBus, NewsBoxClick} from '../EventBus';
 
 const BorderBox = styled.div`
-    
-`;
-
-const MainBox = styled.div`
     display: flex;
     flex-direction: row;
     border-style: solid;
@@ -13,6 +10,11 @@ const MainBox = styled.div`
     border-color: ${props => props.colour};
     border-radius: 5px;
     height: 7em;
+`;
+
+const MainBox = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 const NewsImage = styled.img`
@@ -59,6 +61,7 @@ const XButton = styled.button`
 class NewsBox extends React.Component {
     constructor(props) {
         super(props);
+        eventBus.on(NewsBoxClick, (data) => { if (data.sender !== this && this.state.isSelected) this.toggleSelected(false)});
         this.props = props;
         let paragraph = props.paragraph.slice(0, 220);
 
@@ -77,13 +80,14 @@ class NewsBox extends React.Component {
         return this.state.isSelected ? "orange" : (this.state.isRed === "true" ? "crimson" : "black");
     }
 
-    toggleSelected = () => {
+    toggleSelected = (emit = true) => {
+        if (emit) eventBus.emit(NewsBoxClick, { sender: this });
         this.setState({isSelected: !this.state.isSelected});
     }
 
     genDeleteButton = () => {
         if (this.state.isSelected) {
-            return (<XButton><img alt="xButton"/></XButton>)
+            return (<XButton onClick={this.delete}><img alt="xButton"/></XButton>)
             //return (<a href="" onClick={this.delete}><img alt="xButton"/></a>);
         }
     }
@@ -94,17 +98,20 @@ class NewsBox extends React.Component {
 
     render = () => {
         return (
-            <MainBox className={this.props.className} colour={this.getColour} onClick={this.toggleSelected}>
-                <NewsImage src={this.props.image} alt={this.props.alt}/>
-                <NewsBoxMain>
-                    <NewsHeader>{this.props.heading}</NewsHeader>
-                    <NewsParagraph>{this.props.paragraph}</NewsParagraph>
-                </NewsBoxMain>
-                <DateArea>
-                    <Date>{this.props.date}</Date>
-                </DateArea>
+            <BorderBox  colour={this.getColour} className={this.props.className}>
+                <MainBox onClick={this.toggleSelected}>
+                    <NewsImage src={this.props.image} alt={this.props.alt}/>
+                    <NewsBoxMain>
+                        <NewsHeader>{this.props.heading}</NewsHeader>
+                        <NewsParagraph>{this.props.paragraph}</NewsParagraph>
+                    </NewsBoxMain>
+                    <DateArea>
+                        <Date>{this.props.date}</Date>
+                    </DateArea>
+                </MainBox>
+
                 { this.state.isSelected ? this.genDeleteButton() : ""}
-            </MainBox>
+            </BorderBox>
         );
     }
 }

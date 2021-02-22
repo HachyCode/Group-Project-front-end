@@ -35,13 +35,21 @@ const NewsScrollIcon = styled.img`
 `;
 
 function Home() {
+    let deletedNewsIndexes = [];
     const news = { 
-        1: {
+        0: {
             heading: "This is News",
             paragraph: "According to recent research, this is news! Very nicely written news that is very epic and written by someone. According to all the known laws of aviation, there is no way a bee should be able to fly. Its tiny wings are simply too small for its fat little body to get off the ground.",
             date: "04/20/1337",
             image: "",
             alt: "test",
+        }, 
+        1: {
+            heading: "Sample Text",
+            paragraph: "Lorem ipusm",
+            date: "1/2/3456",
+            image: "",
+            alt: "test2",
         }, 
         2: {
             heading: "Sample Text",
@@ -56,15 +64,8 @@ function Home() {
             date: "1/2/3456",
             image: "",
             alt: "test2",
-        }, 
-        4: {
-            heading: "Sample Text",
-            paragraph: "Lorem ipusm",
-            date: "1/2/3456",
-            image: "",
-            alt: "test2",
         },
-        5: {
+        4: {
             heading: "Sample Text",
             paragraph: "Lorem ipusm",
             date: "1/2/3456",
@@ -74,13 +75,15 @@ function Home() {
     };
     function generateNews() {
         let newsToGenerate = [];
-        for (let i = 1; i <= Object.keys(news).length; i++) {
-            let currNews = news[i];
+        for (let i = 0; i < Object.keys(news).length; i++) {
+            if (!deletedNewsIndexes.includes(i)) {
+                let currNews = news[i];
 
-            if (currNews.heading !== "") {
-                let isNewsRed = i < 3 ? "true" : "";
-                console.log(isNewsRed);
-                newsToGenerate.push((<StyledNewsBox heading={currNews.heading} paragraph={currNews.paragraph} date={currNews.date} image={currNews.image} alt={currNews.alt} isRed={isNewsRed}/>));
+                if (currNews.heading !== "") {
+                    let isNewsRed = i < 2 ? "true" : "";
+                    console.log(isNewsRed);
+                    newsToGenerate.push((<StyledNewsBox heading={currNews.heading} paragraph={currNews.paragraph} date={currNews.date} image={currNews.image} alt={currNews.alt} isRed={isNewsRed} onDelete={() => deleteNews(i)}/>));
+                }
             }
         }
 
@@ -89,6 +92,10 @@ function Home() {
         }
 
         return newsToGenerate;
+    }
+
+    function deleteNews(index) {
+        this.deletedNewsIndexes.push(index);
     }
 
     return (

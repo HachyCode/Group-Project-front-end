@@ -87,10 +87,12 @@ function LogIn() {
     const id = React.useRef(null);
     const password = React.useRef(null);
     function login() {
+        const usr = id.getContents();
+        const pwd = password.getContents();
         console.log("try login");
-        console.log("user: " + id.current.value);
-        console.log("password: " + password.value);
-        if (id.current.value !== id.default && password.current.value !== password.default) {
+        console.log("user: " + usr);
+        console.log("password: " + pwd);
+        if (usr !== id.default && pwd !== password.default) {
             console.log("login");
             //do the login stuff here later
         }

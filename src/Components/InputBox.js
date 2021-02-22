@@ -59,6 +59,10 @@ class InputBox extends React.Component {
         return this.state.text === this.props.default ? "lightgrey" : "black";
     }
 
+    getContents = () => {
+        return this.state.text;
+    }
+
     setText = (text) => this.setState({text: text});
 
     render = () => {
