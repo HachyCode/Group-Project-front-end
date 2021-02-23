@@ -1,41 +1,58 @@
-import React from 'react'
-import {Address, AddressBox, AddressDiv} from './AddressBarCSS'
+import React from 'react';
+import {Address, AddressBox, AddressDiv, Supplier} from './AddressBarCSS';
+import AddressStatements from './AddressStatements';
 
-function AddressBar() {
-    return (
-        <div>{/*Viktorija*/}
-            <AddressDiv>
+const options = [
+    { value: '0', label: 'Select Supplier'},
 
-                <AddressBox>
-                    <Address>Gadgets For You</Address>
-                    <Address>Address</Address>
-                    <Address>144 Number Street</Address>
-                    <Address>Post Code</Address>
-                </AddressBox>
-            
+    { value: '1', label: 'Bitmore Inc'},
+    { value: '2', label: 'Cottage Toys'},
+    { value: '3', label: 'BrainStorm Ltd'},
+    { value: '4', label: 'Shenzhen Hosing Technology Development Co., Ltd'},
+]
+class AddressBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            supplier: "0",
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-                <AddressBox>
-                    <Address>
-                        Gadgets For You
-                        {/* Need to have a selection of suppiers */}
-                    </Address>
-                    <Address>
-                        Address
-                        {/* Will depend on selection of suppiers */}
-                    </Address>
-                    <Address>
-                        144 Number Street
-                        {/* Will depend on selection of suppiers */}
-                    </Address>
-                    <Address>
-                        Post Code
-                        {/* Will depend on selection of suppiers */}
-                    </Address>
-                </AddressBox>
+    handleChange(e) {
+        console.log("Supplier Selected!!");
+        this.setState({ supplier: e.target.value });
+    }
 
-            </AddressDiv>
-        </div>
-    )
+    render() {
+        return (
+            <div>{/*Viktorija*/}
+                <AddressDiv>
+    
+                    <AddressBox>
+                        <Address>Gadgets for you</Address>
+                        <Address>144 Number Street</Address>
+                        <Address>town</Address>
+                        <Address>location</Address>
+                        <Address>Post Code</Address>
+                    </AddressBox>
+                
+    
+                    <AddressBox>
+                        <Supplier>
+                            <select value={this.state.supplier} onChange={this.handleChange}>
+                                {options.map((option) => (
+                                <option value={option.value}>{option.label}</option>
+                                ))}
+                            </select>
+                        </Supplier>
+                        <AddressStatements supplier = {this.state.supplier}/>
+                    </AddressBox>
+    
+                </AddressDiv>
+            </div>
+        )
+    }
 }
 
 export default AddressBar
