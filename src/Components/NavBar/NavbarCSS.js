@@ -10,6 +10,8 @@ export const Nav = styled.nav`
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1000px) / 2);
     z-index: 10;
+    position: sticky;
+    top: 0;
 `;
 
 export const NavLink = styled(Link)`
@@ -20,6 +22,11 @@ export const NavLink = styled(Link)`
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
+
+    &:hover {
+        color: #f08575;
+        transition: 0.2s ease-in-out;
+    }
 
     &.active {
         color: #15cdfc;

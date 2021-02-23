@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const AddressDiv = styled.div`
+    background: #ddd;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    height: 1000px
 `;
 
 export const AddressBox = styled.div`
