@@ -7,7 +7,7 @@ export const AddressDiv = styled.div`
     justify-content: center;
     align-items: center;
 
-    height: 1000px
+    height: auto;
 `;
 
 export const AddressBox = styled.div`
@@ -15,10 +15,6 @@ export const AddressBox = styled.div`
 
     margin: 10px;
     padding: 10px;
-
-    max-height: 100px
-    max-width: 500px
-    min-width: 100px
 
     display: flex;
     flex-direction: column;
@@ -28,7 +24,7 @@ export const AddressBox = styled.div`
 
 export const Address = styled.form`
     width: 25vw;
-    height: auto;
+    height: 5vh;
 
     margin: 10px;
     padding: 4px 9vw;
