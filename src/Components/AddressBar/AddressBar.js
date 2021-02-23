@@ -1,5 +1,5 @@
 import React from 'react';
-import {Address, AddressBox, AddressDiv} from './AddressBarCSS';
+import {Address, AddressBox, AddressDiv, Supplier} from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
 
 const options = [
@@ -10,14 +10,11 @@ const options = [
     { value: '3', label: 'BrainStorm Ltd'},
     { value: '4', label: 'Shenzhen Hosing Technology Development Co., Ltd'},
 ]
-
-//function AddressBar() {
 class AddressBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             supplier: "0",
-            ourAddress: "0",
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -25,7 +22,6 @@ class AddressBar extends React.Component {
     handleChange(e) {
         console.log("Supplier Selected!!");
         this.setState({ supplier: e.target.value });
-        this.setState({ ourAddress: e.target.value });
     }
 
     render() {
@@ -34,21 +30,22 @@ class AddressBar extends React.Component {
                 <AddressDiv>
     
                     <AddressBox>
-                        <Address>Gadgets For You</Address>
-                        <Address>Address</Address>
+                        <Address>Gadgets for you</Address>
                         <Address>144 Number Street</Address>
+                        <Address>town</Address>
+                        <Address>location</Address>
                         <Address>Post Code</Address>
                     </AddressBox>
                 
     
                     <AddressBox>
-                        <Address>
+                        <Supplier>
                             <select value={this.state.supplier} onChange={this.handleChange}>
                                 {options.map((option) => (
                                 <option value={option.value}>{option.label}</option>
                                 ))}
                             </select>
-                        </Address>
+                        </Supplier>
                         <AddressStatements supplier = {this.state.supplier}/>
                     </AddressBox>
     

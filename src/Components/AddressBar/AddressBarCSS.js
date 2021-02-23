@@ -11,7 +11,7 @@ export const AddressDiv = styled.div`
 `;
 
 export const AddressBox = styled.div`
-    background: #eee;
+
 
     margin: 10px;
     padding: 10px;
@@ -37,4 +37,20 @@ export const Address = styled.form`
         font-size: 1rem;
     }
 
+`;
+
+export const Supplier = styled.form`
+    width: 25vw;
+    height: auto;
+
+    margin: 0;
+    padding: 4px 9vw;
+
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 1000px) {
+        padding: 4px 6vw;
+        font-size: 1rem;
+    }
 `;
