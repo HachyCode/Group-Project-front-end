@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {eventBus, NewsBoxClick} from '../EventBus';
+import {eventBus, NewsBoxClick, ForceUpdate, NewsBoxDelete} from '../../EventBus';
 
 const BorderBox = styled.div`
     display: flex;
@@ -56,6 +56,7 @@ const XButton = styled.button`
     outline: none;
     height: 1em;
     width: 1em;
+    float: right;
 `;
 
 class NewsBox extends React.Component {
@@ -74,6 +75,9 @@ class NewsBox extends React.Component {
             isRed: props.isRed,
             isSelected: false,
         }
+
+        //hacky but lol
+        eventBus.on(ForceUpdate, () => this.forceUpdate());
     }
 
     getColour = () => {
@@ -87,7 +91,7 @@ class NewsBox extends React.Component {
 
     genDeleteButton = () => {
         if (this.state.isSelected) {
-            return (<XButton onClick={this.delete}><img alt="xButton"/></XButton>)
+            return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this}); console.log("delete");}}><img alt="xButton"/></XButton>)
             //return (<a href="" onClick={this.delete}><img alt="xButton"/></a>);
         }
     }
@@ -98,7 +102,7 @@ class NewsBox extends React.Component {
 
     render = () => {
         return (
-            <BorderBox  colour={this.getColour} className={this.props.className}>
+            <BorderBox colour={this.getColour} className={this.props.className}>
                 <MainBox onClick={this.toggleSelected}>
                     <NewsImage src={this.props.image} alt={this.props.alt}/>
                     <NewsBoxMain>

@@ -20,4 +20,7 @@ class EventBus {
   
   export const eventBus = new EventBus();
 
-  export const NewsBoxClick = "NewsBoxDelete";
+  export const NewsBoxClick = "NewsBoxClick";
+  //hacky but lol
+  export const ForceUpdate = "ForceUpdate";
+  export const NewsBoxDelete = "NewsBoxDelete";

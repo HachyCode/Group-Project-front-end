@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import InputBox from '../Components/InputBox'
+import InputBox from '../Components/InputBox/InputBox'
 
 //formatting elements
 const MainDiv = styled.div`
