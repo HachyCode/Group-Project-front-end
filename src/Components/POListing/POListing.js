@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 //import SearchBar from '../SearchBar/SearchBar';
 import StatusBar from '../StatusBar/StatusBar';
+import { withRouter } from 'react-router-dom';
 
 const Box = styled.div`
     border: 1px solid orange;
@@ -9,6 +10,7 @@ const Box = styled.div`
     display: flex;
     flex-direction: row;
     height: 2em;
+    cursor: pointer;
 `;
 
 const FirstTwoSections = styled.div`
@@ -24,7 +26,7 @@ class POListing extends React.Component {
 
     render = () => {
         return (
-            <Box className = {this.props.className}>
+            <Box className = {this.props.className} onClick={() => this.props.history.push("/poForm")}>
                 <FirstTwoSections>
                     {this.props.poID}
                 </FirstTwoSections>
@@ -37,4 +39,4 @@ class POListing extends React.Component {
     }
 }
 
-export default POListing;
+export default withRouter(POListing);
