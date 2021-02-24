@@ -8,11 +8,12 @@ const Box = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: row;
+    height: 2em;
 `;
 
 const FirstTwoSections = styled.div`
     padding-left: 2em;
-    width: 10%;
+    width: 15%;
 `;
 
 class POListing extends React.Component {

@@ -11,6 +11,7 @@ const MainBox = styled.div`
 const SearchBox = styled.input`
     border: none;
     outline: none;
+    width: 95%;
 `;
 
 class SearchBar extends React.Component {

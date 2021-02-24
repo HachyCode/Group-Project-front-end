@@ -27,7 +27,7 @@ const StyledDateSearch = styled(DateSearch)`
 `;
 
 const SpacedLabel = styled(Label)`
-    margin-right: 0.5em;
+    margin-right: 0.85em;
 `;
 
 const POSelectArea = styled.div`
@@ -42,18 +42,24 @@ const FirstDropDown = styled(DropDownSelect)`
 
 const SecondLeftDropDown = styled(DropDownSelect)`
     margin-left: 3em;
-    margin-right: 1em;
+    margin-right: 15%;
+`;
+
+const StyledPOListing = styled(POListing)`
+    margin-top: 1em;
+    margin-bottom: 1em;
 `;
 
 function POs() {
 
     function genPOs() {
-        return [<POListing progress={1}/>, 
-            <POListing poID="--------" supplier="64 Zoo Lane" progress={2}/>, 
-            <POListing progress={3}/>, 
-            <POListing progress={4}/>, 
-            <POListing progress={5}/>, 
-            <POListing progress={6}/>];
+        return [
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={1}/>, 
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={2}/>, 
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={3}/>, 
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={4}/>, 
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={5}/>, 
+            <StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={6}/>];
     }
 
     return (

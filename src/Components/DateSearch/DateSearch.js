@@ -10,6 +10,7 @@ const OutlineBox = styled.div`
 const StyledInputBox = styled(InputBox)`
     border: none;
     outline: none;
+    width: 70%;
 `;
 
 class DateSearch extends React.Component {
