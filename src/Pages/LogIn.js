@@ -58,7 +58,7 @@ const WarningBox = styled.div`
     border-width: 1px;
     border-color: black;
     border-radius: 5px;
-    padding-left: 20%;
+    padding-left: 27%;
     margin-left: 2em;
     margin-right: 2em;
     margin-top: 25vh;
@@ -87,12 +87,10 @@ function LogIn() {
     const id = React.useRef(null);
     const password = React.useRef(null);
     function login() {
-        const usr = id.getContents();
-        const pwd = password.getContents();
+        const usr = id.current.value;
+        const pwd = password.current.value;
         console.log("try login");
-        console.log("user: " + usr);
-        console.log("password: " + pwd);
-        if (usr !== id.default && pwd !== password.default) {
+        if (usr !== id.current.default && pwd !== password.current.default) {
             console.log("login");
             //do the login stuff here later
         }

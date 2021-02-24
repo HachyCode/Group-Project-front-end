@@ -70,9 +70,12 @@ class InputBox extends React.Component {
             //could I use placeholder and forget this whole custom component nonsense? yes.
             //but this is more compatible with older browsers and everyone knows companies are all
             //stuck on windows XP
-            <Input type="text" value={this.state.text} onClick={this.clearOnClick} onSelect={this.clearOnClick} onKeyPress={this.onKeyPress} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour} className={this.props.className}/>
+            //also I'm too far deep into the sunk cost fallacy to turn back now
+            <Input ref={this.props.innerRef} type="text" value={this.state.text} onClick={this.clearOnClick} onSelect={this.clearOnClick} onKeyPress={this.onKeyPress} onChange={this.handleChange} onBlur={this.onUnfocus} colour={this.colour} className={this.props.className}/>
         );
     }
 };
 
-export default InputBox;
+export default React.forwardRef((props, ref) => <InputBox 
+innerRef={ref} {...props}
+/>);
