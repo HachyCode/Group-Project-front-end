@@ -20,7 +20,7 @@ const ProfileSidebar = styled.div`
 const MainPageBody = styled.div`
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 100%;
 `;
 
 const LoginBody = styled.div`
@@ -101,9 +101,9 @@ function LogIn() {
         <div>
             <MainDiv>
                 {/*Daniel*/}
-                <ProfileSidebar>
+                {/*<ProfileSidebar>
                     <ProfilePic alt="profile"/>
-                </ProfileSidebar>
+                </ProfileSidebar>*/}
                 <MainPageBody>
                     <Logo alt="logo"/>
                     <LoginBody>
