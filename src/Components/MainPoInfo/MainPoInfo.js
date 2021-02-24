@@ -1,22 +1,22 @@
 import React from 'react'
-import {InfoBox, SaNameBox, SaIdBox, FormIdBox, Text, Input} from './MainPoInfoCSS'
+import {InfoBox, Box, Text, Input} from './MainPoInfoCSS'
 
 function MainPoInfo() {
     return (
         <div>
             <InfoBox>
-                <SaNameBox>
+                <Box>
                     <Text>SA Name: </Text>
                     <Input/>
-                </SaNameBox>
-                <SaIdBox>
+                </Box>
+                <Box>
                     <Text>SA ID: </Text>
                     <Input/>
-                </SaIdBox>
-                <FormIdBox>
+                </Box>
+                <Box>
                     <Text>PO Form ID: </Text>
                     <Input/>
-                </FormIdBox>
+                </Box>
             </InfoBox>
         </div>
     )

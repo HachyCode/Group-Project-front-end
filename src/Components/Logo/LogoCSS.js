@@ -13,7 +13,9 @@ export const LogoPlace = styled.div`
 
     font-size: 1.5rem;
 
-    @media screen and (max-width: 1100px) {
-        font-size: 1.2rem;
+    @media screen and (max-width: 1000px) {
+        height: 30vh;
+        width: 50vw;
+        margin: 15px 0 0 0;
     }
 `;
