@@ -7,26 +7,30 @@ const FilledDot = styled.div`
     height: 20px;
     width: 20px;
     border: 1px solid purple;
-    border-radius: calc(height / 2);
+    border-radius: 10px;
 `;
 
 const EmptyDot = styled.div`
     height: 20px;
     width: 20px;
     border: 1px solid black;
-    border-radius: calc(height / 2);
+    border-radius: 10px;
 `;
 
 const EmptyLine = styled.div`
     height: 1px;
     width: 3em;
     border: 1px solid black;
+    border-right: none;
+    border-left: none;
 `;
 
 const FilledLine = styled.div`
     height: 1px;
     width: 3em;
     border: 1px solid purple;
+    border-right: none;
+    border-left: none;
     color: purple;
     background-color: purple;
 `;
@@ -35,6 +39,7 @@ const MainDiv = styled.div`
     display: flex;
     flex-direction: row;
     height: 24px;
+    align-items: center;
 `;
 
 class StatusBar extends React.Component {
@@ -51,7 +56,7 @@ class StatusBar extends React.Component {
     generateBar = () => {
         let barComponents = [];
         for (let i = 0; i < 5; i++) {
-            if (this.state.progress <= i + 1) {
+            if (this.state.progress >= i + 1) {
                 barComponents.push(<FilledDot/>);
                 barComponents.push(<FilledLine/>);
             } else {
@@ -78,3 +83,5 @@ class StatusBar extends React.Component {
         );
     }
 }
+
+export default StatusBar;
