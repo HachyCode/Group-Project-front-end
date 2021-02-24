@@ -5,7 +5,7 @@ export const LogoPlace = styled.div`
     width: 20vw;
     min-width: 9em;
     height: 15vh;
-    margin: 20px 15px;
+    margin: 20px 0;
 
     display: flex;
     justify-content: center;
