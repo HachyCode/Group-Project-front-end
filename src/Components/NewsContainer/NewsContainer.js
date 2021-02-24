@@ -44,10 +44,11 @@ class NewsContainer extends React.Component {
                     let newsBox = (<StyledNewsBox 
                         heading={currNews.heading} 
                         paragraph={currNews.paragraph}
-                        date={currNews.date} image={currNews.image} 
+                        date={currNews.date} 
+                        image={currNews.image} 
                         alt={currNews.alt} 
                         isRed={isNewsRed} 
-                        onDelete={() => {this.deletedNewsIndexes.push(i); this.setState({}); console.log("delete");}}
+                        onDelete={() => {this.deletedNewsIndexes.push(i); this.setState({});}}
                         key={i}/>);
                     newsToGenerate.push(newsBox);
                     this.newsByIndex[newsBox] = i;

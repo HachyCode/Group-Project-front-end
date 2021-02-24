@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {eventBus, NewsBoxClick, ForceUpdate, NewsBoxDelete} from '../../EventBus';
+import {eventBus, NewsBoxClick, NewsBoxDelete} from '../../EventBus';
 
 const BorderBox = styled.div`
     display: flex;
@@ -75,9 +75,6 @@ class NewsBox extends React.Component {
             isRed: props.isRed,
             isSelected: false,
         }
-
-        //hacky but lol
-        eventBus.on(ForceUpdate, () => this.forceUpdate());
     }
 
     getColour = () => {
@@ -91,8 +88,7 @@ class NewsBox extends React.Component {
 
     genDeleteButton = () => {
         if (this.state.isSelected) {
-            return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this}); console.log("delete");}}><img alt="xButton"/></XButton>)
-            //return (<a href="" onClick={this.delete}><img alt="xButton"/></a>);
+            return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}><img alt="xButton"/></XButton>)
         }
     }
 

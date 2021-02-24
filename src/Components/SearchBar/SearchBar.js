@@ -10,6 +10,7 @@ const MainBox = styled.div`
 
 const SearchBox = styled.input`
     border: none;
+    border-radius: 5px;
     outline: none;
     width: 95%;
 `;

@@ -9,6 +9,7 @@ const OutlineBox = styled.div`
 
 const StyledInputBox = styled(InputBox)`
     border: none;
+    border-radius: 5px;
     outline: none;
     width: 70%;
 `;

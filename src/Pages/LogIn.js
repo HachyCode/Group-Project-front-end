@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import InputBox from '../Components/InputBox/InputBox'
+import InputBox from '../Components/InputBox/InputBox';
+import axios from 'axios';
+import Config from '../Config';
+import { withRouter } from 'react-router-dom';
 
 //formatting elements
 const MainDiv = styled.div`
@@ -82,6 +85,12 @@ const ProfilePic = styled.img`
     border-color: black;
     border-radius: 50%;
 `;
+const BannerHider = styled.div`
+    background-color: white;
+    zIndex: 99;
+    width: 100%;
+    height: 7vh;
+`;
 
 function LogIn() {
     const id = React.useRef(null);
@@ -90,13 +99,37 @@ function LogIn() {
         const usr = id.current.value;
         const pwd = password.current.value;
         console.log("try login");
+        //TODO: default is coming back as undefined
+        console.log(!!id.current.default + ", " + !!password.current.default);
+        console.log(usr + ", " + pwd);
         if (usr !== id.current.default && pwd !== password.current.default) {
             console.log("login");
-            //do the login stuff here later
+            const requestObj = {
+                "username": usr,
+                "password": pwd,
+            };
+
+            axios.post(Config.serverLocation + "/user/login", requestObj, {
+                'Content-Type': 'application/json'
+            }).then(
+                (response) => {
+                    if (response["token"]) {
+                        //successful login
+                        //set SESSION variable to token response
+                        //send them to the home page
+                        this.props.history.push("/home")
+                    } else {
+                        //unsuccessful login
+                    }
+                }
+            );
+
+
         }
     }
     return (
         <div>
+            <BannerHider/>
             <MainDiv>
                 {/*Daniel*/}
                 {/*<ProfileSidebar>
@@ -126,4 +159,4 @@ function LogIn() {
     );
 }
 
-export default LogIn
+export default withRouter(LogIn);

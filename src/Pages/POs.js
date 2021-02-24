@@ -11,9 +11,15 @@ const MainBody = styled.div`
     flex-direction: column;
 `;
 
+const HalfEmSpacing = styled.div`
+    margin-left: 0.5em;
+`;
+
 const SearchRow = styled.div`
     display: flex;
     flex-direction: row;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 `;
 
 const StyledSearchBar = styled(SearchBar)`
@@ -76,14 +82,15 @@ function POs() {
                         <SecondLeftDropDown default="Supplier"/>
                         <SpacedLabel contents="All data"/>
                         <SpacedLabel contents="Jason"/>
+                        <HalfEmSpacing/>
                         <SpacedLabel contents="Ann"/>
+                        <HalfEmSpacing/><HalfEmSpacing/>
                         <SpacedLabel contents="Send"/>
                         <SpacedLabel contents="Accepted"/>
                         <SpacedLabel contents="Delivered"/>
                     </SearchRow>
                     {genPOs()}
                 </POSelectArea>
-
             </MainBody>
         </div>
     )
