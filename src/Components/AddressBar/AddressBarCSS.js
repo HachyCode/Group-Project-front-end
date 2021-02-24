@@ -11,8 +11,6 @@ export const AddressDiv = styled.div`
 `;
 
 export const AddressBox = styled.div`
-
-
     margin: 10px;
     padding: 10px;
 
@@ -53,4 +51,15 @@ export const Supplier = styled.form`
         padding: 4px 6vw;
         font-size: 1rem;
     }
+`;
+
+export const Select = styled.select`
+    width: auto;
+    height: 5vh;
+    font-size: 1rem;
+
+    border: 6px solid transparent;
+    border-color: transparent transparent;
+
+    background: #fff;
 `;

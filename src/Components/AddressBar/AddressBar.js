@@ -1,5 +1,5 @@
 import React from 'react';
-import {Address, AddressBox, AddressDiv, Supplier} from './AddressBarCSS';
+import {Address, AddressBox, AddressDiv, Supplier, Select} from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
 
 const options = [
@@ -28,7 +28,7 @@ class AddressBar extends React.Component {
         return (
             <div>{/*Viktorija*/}
                 <AddressDiv>
-    
+
                     <AddressBox>
                         <Address>Gadgets for you</Address>
                         <Address>144 Number Street</Address>
@@ -37,18 +37,18 @@ class AddressBar extends React.Component {
                         <Address>Post Code</Address>
                     </AddressBox>
                 
-    
+
                     <AddressBox>
                         <Supplier>
-                            <select value={this.state.supplier} onChange={this.handleChange}>
+                            <Select value={this.state.supplier} onChange={this.handleChange}>
                                 {options.map((option) => (
                                 <option value={option.value}>{option.label}</option>
                                 ))}
-                            </select>
+                            </Select>
                         </Supplier>
                         <AddressStatements supplier = {this.state.supplier}/>
                     </AddressBox>
-    
+
                 </AddressDiv>
             </div>
         )
