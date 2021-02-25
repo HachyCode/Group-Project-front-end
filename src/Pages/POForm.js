@@ -5,6 +5,8 @@ import Logo from '../Components/Logo/Logo';
 import MainPoInfo from '../Components/MainPoInfo/MainPoInfo';
 import {MainInfoBox} from '../Components/PoForm/PoFormCSS';
 import Orders from '../Components/PoOrders/PoOrders';
+import Totals from '../Components/PoFormTotals/PoFormTotals';
+import Authorisation from '../Components/PoAuthorisation/Authorisation';
 
 function POForm() {
     return (
@@ -16,10 +18,8 @@ function POForm() {
             </MainInfoBox>
             <Address/>
             <Orders/>
-            <BottomBox>
-                <Authorisation/>
-                <Totals/>
-            </BottomBox>
+            <Totals/>
+            <Authorisation/>
         </div>
     )
 }

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const OrderBox = styled.div`
     font-size: 1.5rem;
     border: 2px solid orange;
-    border-radius: 30px;
+    border-radius: 30px 30px 0 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1em 2em 2em 2em;
-    margin: 1em;
+    margin: 1em 1em 0 1em;
 `;
 
 export const ItemBox = styled.div`

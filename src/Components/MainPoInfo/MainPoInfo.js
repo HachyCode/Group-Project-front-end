@@ -4,6 +4,7 @@ import {InfoBox, Box, Text, Input} from './MainPoInfoCSS'
 function MainPoInfo() {
     return (
         <div>
+            <div/>
             <InfoBox>
                 <Box>
                     <Text>SA Name: </Text>
