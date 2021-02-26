@@ -8,20 +8,20 @@ import POForm from './Pages/POForm';
 import LogOff from './Pages/LogIn';
 
 function App() {
-  return (
+	return (
 
-      <Router>
-        <Navbar/>
-        <Switch>
-          <Route path='/home' exact component={Home} />
-          <Route path='/cateogries' component={Cateogries} />
-          <Route path='/pos' component={POs} />
-          <Route path='/poForm' component={POForm} />
-          <Route path='/' component={LogOff} />
-        </Switch>
-      </Router>
+		<Router>
+			<Navbar/>
+			<Switch>
+				<Route path='/home' exact component={Home} />
+				<Route path='/cateogries' component={Cateogries} />
+				<Route path='/pos' component={POs} />
+				<Route path='/poForm' component={POForm} />
+				<Route path='/' component={LogOff} />
+			</Switch>
+		</Router>
 
-  );
+	);
 }
 
 export default App;

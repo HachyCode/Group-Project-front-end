@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 function Cateogries() {
-    return (
-        <div>
-            {/*Viktorija*/}
+	return (
+		<div>
+			{/*Viktorija*/}
             Cateogries
-        </div>
-    )
+		</div>
+	);
 }
 
-export default Cateogries
+export default Cateogries;

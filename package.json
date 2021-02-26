@@ -25,6 +25,15 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+	"rules": {
+		"eqeqeq": "warn",
+		"indent": ["error", "tab"],
+		"max-len": ["error", { "code": 130}],
+		"camelcase": ["error", {"ignoreGlobals": true, "ignoreImports": true}],
+		"brace-style": ["error", "1tbs", {"allowSingleLine": true}],
+		"semi": ["error", "always"],
+		"semi-style": "error"
+	},
     "extends": [
       "react-app",
       "react-app/jest"

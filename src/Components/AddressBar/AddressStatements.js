@@ -2,125 +2,119 @@ import React from 'react';
 import {Address} from './AddressBarCSS';
 
 class AddressStatements extends React.Component {
-    render(){
-        switch(parseInt(this.props.supplier)){
-            case 0:
-                return(
-                    <div>
-                        <Address>
+	render(){
+		switch(parseInt(this.props.supplier)){
+		case 0:
+			return(
+				<div>
+					<Address>
                             -
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             -
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             -
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             -
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             -
-                        </Address>
-                    </div>
-                );
-                break;
+					</Address>
+				</div>
+			);
 
-            case 1:
-                return(
-                    <div>
-                        <Address>
+		case 1:
+			return(
+				<div>
+					<Address>
                             Park House
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             15-19 Greenhill Crescent
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Watford Business Park
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Hertfordshire
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             WD18 8PH
-                        </Address>
-                    </div>
-                );
-                break;
+					</Address>
+				</div>
+			);
 
-            case 2:
-                return(
-                    <div>
-                        <Address>
+		case 2:
+			return(
+				<div>
+					<Address>
                             Unit 11, Spitfire Business
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Park, Hawker Road,
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Croydon,
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             ENGLAND
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             CR0 4WD
-                        </Address>
-                    </div>
-                );
-                break;
+					</Address>
+				</div>
+			);
 
-            case 3:
-                return(
-                    <div>
-                        <Address>
+		case 3:
+			return(
+				<div>
+					<Address>
                             BrainStorm Limited
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Unit 1A, Mill Lane
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             GISBURN
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Lancashire UK
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             BB7 4LN
-                        </Address>
-                    </div>
-                );
-                break;
+					</Address>
+				</div>
+			);
 
-            case 4:
-                return(
-                    <div>
-                        <Address>
+		case 4:
+			return(
+				<div>
+					<Address>
                             Weixinda Industrial Par
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Caowei Xixiang Baoan
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             District, Shenzhen,
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             Guangdong
-                        </Address>
-                        <Address>
+					</Address>
+					<Address>
                             518128
-                        </Address>
-                    </div>
-                );
-                break;
+					</Address>
+				</div>
+			);
 
-            default:
-                return(
-                    <div>{this.props.supplier}</div> 
-                )
-                break;
-        }
-    }
+		default:
+			return(
+				<div>{this.props.supplier}</div> 
+			);
+		}
+	}
 }
 
-export default AddressStatements
+export default AddressStatements;

@@ -9,19 +9,19 @@ import Totals from '../Components/PoFormTotals/PoFormTotals';
 import Authorisation from '../Components/PoAuthorisation/Authorisation';
 
 function POForm() {
-    return (
-        <div> {/*Viktorija*/}
-            <ThreeButtons/>
-            <MainInfoBox>
-                <Logo/>
-                <MainPoInfo/>
-            </MainInfoBox>
-            <Address/>
-            <Orders/>
-            <Totals/>
-            <Authorisation/>
-        </div>
-    )
+	return (
+		<div> {/*Viktorija*/}
+			<ThreeButtons/>
+			<MainInfoBox>
+				<Logo/>
+				<MainPoInfo/>
+			</MainInfoBox>
+			<Address/>
+			<Orders/>
+			<Totals/>
+			<Authorisation/>
+		</div>
+	);
 }
 
-export default POForm
+export default POForm;
