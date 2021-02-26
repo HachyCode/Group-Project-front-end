@@ -3,7 +3,7 @@ import {Address} from './AddressBarCSS';
 
 class AddressStatements extends React.Component {
     render(){
-        if (this.props.supplier == 0)
+        if (this.props.supplier === 0)
         {
             return(
                 <div>
@@ -26,7 +26,7 @@ class AddressStatements extends React.Component {
             )
         }
 
-        if (this.props.supplier == 1)
+        if (this.props.supplier === 1)
         {
             return(
                 <div>
@@ -49,7 +49,7 @@ class AddressStatements extends React.Component {
             )
         }
 
-        if (this.props.supplier == 2)
+        if (this.props.supplier === 2)
         {
             return(
                 <div>
@@ -72,7 +72,7 @@ class AddressStatements extends React.Component {
             )
         }
 
-        if (this.props.supplier == 3)
+        if (this.props.supplier === 3)
         {
             return(
                 <div>
@@ -95,7 +95,7 @@ class AddressStatements extends React.Component {
             )
         }
 
-        if (this.props.supplier == 4)
+        if (this.props.supplier === 4)
         {
             return(
                 <div>

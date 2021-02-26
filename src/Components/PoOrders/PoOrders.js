@@ -3,19 +3,12 @@ import {
     OrderBox,
     ItemBox,
     Line,
-    OrderID,
-    ItemID,
-    ItemName,
+    SmallText,
+    LargeText,
     Qty,
-    UnitPrice,
-    SubTotal,
     OrderAddBtn,
-    FilterOrderID,
-    FilterItemID,
-    FilterItemName,
-    FilterQty,
-    FilterUnitPrice,
-    FilterSubTotal
+    SmallFilter,
+    LargeFilter
 } from './PoOrdersCSS';
 
 function PoOrders() {
@@ -23,21 +16,21 @@ function PoOrders() {
         <div>
             <OrderBox>
                 <ItemBox>
-                    <FilterOrderID>Order ID</FilterOrderID>
-                    <FilterItemID>Item ID</FilterItemID>
-                    <FilterItemName>Item Name</FilterItemName>
-                    <FilterQty>QTY</FilterQty>
-                    <FilterUnitPrice>Unit Price</FilterUnitPrice>
-                    <FilterSubTotal>Sub-Total</FilterSubTotal>
+                    <SmallFilter>Order ID</SmallFilter>
+                    <SmallFilter>Item ID</SmallFilter>
+                    <LargeFilter>Item Name</LargeFilter>
+                    <SmallFilter>QTY</SmallFilter>
+                    <SmallFilter>Unit Price</SmallFilter>
+                    <SmallFilter>Sub-Total</SmallFilter>
                 </ItemBox>
                 <Line/>
                 <ItemBox>
-                    <OrderID>999999999</OrderID>{/* Order ID */}
-                    <ItemID>NRF10</ItemID>{/* Item ID */}
-                    <ItemName>LEGO Classic Bricks and Ideas - 11001</ItemName>{/* Item Name */}
+                    <SmallText>999999999</SmallText>{/* Order ID */}
+                    <SmallText>NRF10</SmallText>{/* Item ID */}
+                    <LargeText>LEGO Classic Bricks and Ideas - 11001</LargeText>{/* Item Name */}
                     <Qty/>{/* QTY */}
-                    <UnitPrice>£____.___</UnitPrice>{/* Unit Price */}
-                    <SubTotal>£________.__</SubTotal>{/* Sub-Total */}
+                    <SmallText>£____.___</SmallText>{/* Unit Price */}
+                    <SmallText>£________.__</SmallText>{/* Sub-Total */}
                 </ItemBox>
                 <OrderAddBtn>Add Item</OrderAddBtn>
                 <OrderAddBtn>Add Item</OrderAddBtn>

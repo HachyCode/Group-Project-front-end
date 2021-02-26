@@ -10,124 +10,115 @@ export const OrderBox = styled.div`
     align-items: center;
     padding: 1em 2em 2em 2em;
     margin: 1em 1em 0 1em;
+
+    @media screen and (max-width: 1500px){
+        font-size: 1.2rem;
+    }
+
+    @media screen and (max-width: 1200px){
+        font-size: 1rem;
+    }
 `;
 
 export const ItemBox = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-width: 90vw;
-margin: 1em 0;
+    width: 90vw;
+    margin: 1em 0;
 `;
 
-export const FilterOrderID = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
+export const SmallFilter = styled.div`
+    border-radius: 30px;
+    border: 2px solid grey;
+    padding: 0.25em 0;
+    text-align: center;
+    width: 10vw;
 
-margin: 0 1em;
-text-align: center;
-width: 6em;
+    @media screen and (max-width: 850px){
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
 `;
-export const FilterItemID = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
+export const LargeFilter = styled.div`
+    background: transparent;
+    border-radius: 30px;
+    border: 2px solid grey;
+    padding: 0.25em 0;
+    text-align: center;
+    width: 40vw;
 
-margin: 0 1em;
-text-align: center;
-width: 5.5em;
-`;
-export const FilterItemName = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
-
-margin: 0 1em;
-text-align: center;
-width: 21em;
-`;
-export const FilterQty = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
-
-margin: 0;
-text-align: center;
-width: 5.5em;
-`;
-export const FilterUnitPrice = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
-
-margin: 0 1em;
-text-align: center;
-width: 6em;
-`;
-export const FilterSubTotal = styled.div`
-background: transparent;
-border-radius: 30px;
-border: 2px solid grey;
-padding: 0.25em 0;
-
-margin: 0 1em;
-text-align: center;
-width: 6em;
+    @media screen and (max-width: 850px){
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
 `;
 
 export const Line = styled.div`
-width: 90vw;
-height: 1px;
-background: orange;
+    width: 90vw;
+    height: 1px;
+    background: orange;
 `;
 
-export const OrderID = styled.div`
-margin: 0 0.5em;
-text-align: center;
-width: 7em;
+export const SmallText = styled.div`
+    text-align: center;
+    width: 10vw;
+    height: auto;
+    text-align: center;
+
+    min-width: 70px;
+
+    @media screen and (max-width: 600px){
+        
+    }
+
 `;
-export const ItemID = styled.div`
-margin: 0 0.5em;
-text-align: center;
-width: 6em;
-`;
-export const ItemName = styled.div`
-margin: 0 0.5em;
-text-align: center;
-width: 23em;
+export const LargeText = styled.div`
+    text-align: center;
+    width: 40vw;
+    min-width: 100px;
+    height: auto;
+    text-align: center;
+
+    @media screen and (max-width: 900px){
+        margin: 0 5px;
+    }
+
+    @media screen and (max-width: 700px){
+        width: 35vw;
+    }
 `;
 export const Qty = styled.input`
-font-size: 1.5rem;
-width: 150px;
-border-radius: 20px;
-border: 2px solid purple;
-text-align: center;
-`;
-export const UnitPrice = styled.div`
-margin: 0 0.5em;
-text-align: center;
-width: 6em;
-`;
-export const SubTotal = styled.div`
-margin: 0 0.5em;
-text-align: center;
-width: 8em;
+    font-size: 1.5rem;
+    width: 10vw;
+    border-radius: 20px;
+    border: 2px solid purple;
+    text-align: center;
+    height: auto;
+
+    @media screen and (max-width: 900px){
+        border: 1px solid purple;
+        border-radius: 5px;
+    }
+
+    @media screen and (max-width: 1500px){
+        font-size: 1.2rem;
+    }
+
+    @media screen and (max-width: 1200px){
+        font-size: 1rem;
+    }
 `;
 
 export const OrderAddBtn = styled.button`
-margin: 1em 0 0 0;
-border-radius: 20px;
-border: 2px solid purple;
-color: purple;
-padding: 0.5em 41vw;
-font-size: 1.2rem;
-background: transparent;
+    margin: 1em 0 0 0;
+    border-radius: 20px;
+    border: 2px solid purple;
+    color: purple;
+    padding: 0.5em;
+    width: 88vw;
+    font-size: 1.2rem;
+    background: transparent;
 `;
