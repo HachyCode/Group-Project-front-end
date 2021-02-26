@@ -9,7 +9,7 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1000px) / 2);
-    z-index: 10;
+    z-index: 99;
     position: sticky;
     top: 0;
 `;
@@ -36,10 +36,4 @@ export const NavLink = styled(Link)`
 export const NavMenu = styled.div`
     display: flex;
     align-items: center;
-    margin-right: -24px;
-*
-
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
 `;

@@ -17,7 +17,7 @@ function App() {
           <Route path='/cateogries' component={Cateogries} />
           <Route path='/pos' component={POs} />
           <Route path='/poForm' component={POForm} />
-          <Route path='/logOff' component={LogOff} />
+          <Route path='/' component={LogOff} />
         </Switch>
       </Router>
 
