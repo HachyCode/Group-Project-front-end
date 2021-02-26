@@ -3,18 +3,18 @@ import {Address, AddressBox, AddressDiv, Supplier, Select} from './AddressBarCSS
 import AddressStatements from './AddressStatements';
 
 const options = [
-    { value: '0', label: 'Select Supplier'},
+    { value: 0, label: 'Select Supplier'},
 
-    { value: '1', label: 'Bitmore Inc'},
-    { value: '2', label: 'Cottage Toys'},
-    { value: '3', label: 'BrainStorm Ltd'},
-    { value: '4', label: 'Shenzhen Hosing Technology Development Co., Ltd'},
+    { value: 1, label: 'Bitmore Inc'},
+    { value: 2, label: 'Cottage Toys'},
+    { value: 3, label: 'BrainStorm Ltd'},
+    { value: 4, label: 'Shenzhen Hosing Technology Development Co., Ltd'},
 ]
 class AddressBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            supplier: "0",
+            supplier: 0
         };
         this.handleChange = this.handleChange.bind(this);
     }
