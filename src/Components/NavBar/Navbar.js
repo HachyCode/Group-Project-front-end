@@ -35,8 +35,8 @@ const Navbar = ({ toggle }) => {
                     Home
 					</NavLink>
 
-					<NavLink to='/cateogries' activeStyle onClick={toggleHome}>
-                    Cateogries
+					<NavLink to='/categories' activeStyle onClick={toggleHome}>
+                    Categories
 					</NavLink>
 
 					<NavLink to='/pos' activeStyle onClick={toggleHome}>
