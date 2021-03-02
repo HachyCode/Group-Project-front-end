@@ -1,60 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import SearchBar from '../Components/SearchBar/SearchBar';
-import DateSearch from '../Components/DateSearch/DateSearch';
-import Label from '../Components/Label/Label';
-import POListing from '../Components/POListing/POListing';
-import DropDownSelect from '../Components/DropDownSelect/DropDownSelect';
-
-const MainBody = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const HalfEmSpacing = styled.div`
-    margin-left: 0.5em;
-`;
-
-const SearchRow = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-`;
-
-const StyledSearchBar = styled(SearchBar)`
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 60%;
-`;
-
-const StyledDateSearch = styled(DateSearch)`
-    width: 25%;
-`;
-
-const SpacedLabel = styled(Label)`
-    margin-right: 0.85em;
-`;
-
-const POSelectArea = styled.div`
-    margin-left: 20vw;
-    margin-right: 20vw;
-    width: 60vw;
-`;
-
-const FirstDropDown = styled(DropDownSelect)`
-    margin-left: 1em;
-`;
-
-const SecondLeftDropDown = styled(DropDownSelect)`
-    margin-left: 3em;
-    margin-right: 15%;
-`;
-
-const StyledPOListing = styled(POListing)`
-    margin-top: 1em;
-    margin-bottom: 1em;
-`;
+import {
+	MainBody,
+	HalfEmSpacing,
+	SearchRow,
+	StyledSearchBar,
+	StyledDateSearch,
+	SpacedLabel,
+	POSelectArea,
+	FirstDropDown,
+	SecondLeftDropDown,
+	StyledPOListing,
+} from '../Components/PageCSS/POsCSS';
 
 function POs() {
 

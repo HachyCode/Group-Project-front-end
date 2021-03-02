@@ -1,26 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import NewsContainer from '../Components/NewsContainer/NewsContainer';
-
-const MainBox = styled.div`
-    padding: 1em;
-`;
-const TopBox = styled.div`
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 2em;
-    display: flex;
-    flex-direction: row;
-    padding: 0.5em;
-`;
-const TopBoxImage = styled.img`
-    height: 4em;
-    width: 8em;
-`;
-const TopBoxTextContainer = styled.div`
-    display: flex;
-    align-items: center;
-`;
+import {
+	MainBox, 
+	TopBox, 
+	TopBoxImage, 
+	TopBoxTextContainer
+} from '../Components/PageCSS/HomeCSS';
 
 function Home() {
 	const news = { 
