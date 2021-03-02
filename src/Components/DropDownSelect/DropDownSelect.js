@@ -1,5 +1,7 @@
 import React from 'react';
-import {BorderBox, Select} from './DropDownSelectCSS';
+import { BorderBox, Select } from './DropDownSelectCSS';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 class DropDownSelect extends React.Component {
 	constructor(props) {
@@ -23,7 +25,7 @@ class DropDownSelect extends React.Component {
     			<Select>
     				{this.genOptions()}
     			</Select>
-    			<i class="fas fa-angle-down"></i>
+    			<FontAwesomeIcon icon={faAngleDown}/>
     		</BorderBox>
     	);
     }
