@@ -1,0 +1,27 @@
+Purple
+9D4EDD
+RGB ( 157, 78, 221)
+
+Light Purple
+9D76DB
+RGB ( 157, 118, 219)
+
+Orange
+FF9E00
+RGB ( 225, 158, 0)
+
+Light Orange
+FFBA00
+RGB ( 225, 186, 0)
+
+Grey
+ADB5BD
+RGB ( 173, 181, 189)
+
+White
+E6E6E6
+RGB ( 230, 230, 230)
+
+Black
+1A1A1A
+RGB ( 26, 26, 26)

@@ -1,10 +1,13 @@
 import React from 'react';
+import {StyledSearchBar, SearchBox} from '../Components/PageCSS/CategoriesCSS';
 
 function Categories() {
 	return (
 		<div>
 			{/*Viktorija*/}
-            Categories
+			<SearchBox>
+				<StyledSearchBar/>
+			</SearchBox>
 		</div>
 	);
 }

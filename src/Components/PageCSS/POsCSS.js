@@ -17,18 +17,19 @@ export const HalfEmSpacing = styled.div`
 export const SearchRow = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
 `;
 
 export const StyledSearchBar = styled(SearchBar)`
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 60%;
+    margin: 0 1.5em;
+    width: 70%;
 `;
 
 export const StyledDateSearch = styled(DateSearch)`
     width: 25%;
+    margin: 0 1.5em 0 0;
 `;
 
 export const SpacedLabel = styled(Label)`
