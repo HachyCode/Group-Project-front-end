@@ -18,14 +18,18 @@ import {
 function LogIn() {
 	const id = React.useRef(null);
 	const password = React.useRef(null);
+	//I should have to use this but apparently I do
+	//is it too late to make this a Vue site?
+	const userDefault = "Staff ID";
+	const pwdDefault = "Password";
+
 	function login() {
 		const usr = id.current.value;
 		const pwd = password.current.value;
 		console.log("try login");
 		//TODO: default is coming back as undefined
-		console.log(!!id.current.default + ", " + !!password.current.default);
 		console.log(usr + ", " + pwd);
-		if (usr !== id.current.default && pwd !== password.current.default) {
+		if (usr !== userDefault && pwd !== pwdDefault) {
 			console.log("login");
 			const requestObj = {
 				"username": usr,
@@ -63,8 +67,8 @@ function LogIn() {
 					<LoginBody>
 						<LoginSidePadding>&nbsp;</LoginSidePadding>
 						<LoginMainArea>
-							<LoginBox ref={id} id="staffID" default="Staff ID"/>
-							<LoginBox ref={password} id="password" default="Password"/>
+							<LoginBox ref={id} id="staffID" default={userDefault}/>
+							<LoginBox ref={password} id="password" default={pwdDefault}/>
 							<LoginButton onClick={login}>Log In</LoginButton>
 						</LoginMainArea>
 						<LoginSidePadding>&nbsp;</LoginSidePadding>
