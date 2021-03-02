@@ -1,5 +1,7 @@
 import React from 'react';
 import {MainBox, SearchBox} from './SearchBarCSS';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 class SearchBar extends React.Component {
 	constructor(props) {
@@ -10,7 +12,7 @@ class SearchBar extends React.Component {
     render = () => {
     	return (
     		<MainBox className={this.props.className}>
-    			<i class="fas fa-search"></i>
+    			<FontAwesomeIcon icon={faSearch}/>
     			<SearchBox type="text"/>
     		</MainBox>
     	);
