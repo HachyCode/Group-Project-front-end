@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@react-pdf/renderer": "^1.6.13",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -25,15 +28,38 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-	"rules": {
-		"eqeqeq": "warn",
-		"indent": ["error", "tab"],
-		"max-len": ["error", { "code": 130}],
-		"camelcase": ["error", {"ignoreGlobals": true, "ignoreImports": true}],
-		"brace-style": ["error", "1tbs", {"allowSingleLine": true}],
-		"semi": ["error", "always"],
-		"semi-style": "error"
-	},
+    "rules": {
+      "eqeqeq": "warn",
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 130
+        }
+      ],
+      "camelcase": [
+        "error",
+        {
+          "ignoreGlobals": true,
+          "ignoreImports": true
+        }
+      ],
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "semi-style": "error"
+    },
     "extends": [
       "react-app",
       "react-app/jest"
