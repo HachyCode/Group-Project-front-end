@@ -10,10 +10,6 @@ export const MainBody = styled.div`
     flex-direction: column;
 `;
 
-export const HalfEmSpacing = styled.div`
-    margin-left: 0.5em;
-`;
-
 export const SearchRow = styled.div`
     display: flex;
     flex-direction: row;
@@ -33,7 +29,7 @@ export const StyledDateSearch = styled(DateSearch)`
 `;
 
 export const SpacedLabel = styled(Label)`
-    margin-right: 0.85em;
+    
 `;
 
 export const POSelectArea = styled.div`
