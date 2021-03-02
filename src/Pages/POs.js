@@ -7,8 +7,8 @@ import {
 	StyledDateSearch,
 	SpacedLabel,
 	POSelectArea,
-	FirstDropDown,
-	SecondLeftDropDown,
+	FirstLabel,
+	SecondLeftLabel,
 	StyledPOListing,
 } from '../Components/PageCSS/POsCSS';
 
@@ -34,8 +34,8 @@ function POs() {
 				</SearchRow>
 				<POSelectArea>
 					<SearchRow>
-						<FirstDropDown default="PO ID"/>
-						<SecondLeftDropDown default="Supplier"/>
+						<FirstLabel contents="PO ID" arrow/>
+						<SecondLeftLabel contents="Supplier" arrow/>
 						<SpacedLabel contents="All data"/>
 						<SpacedLabel contents="Jason"/>
 						<HalfEmSpacing/>

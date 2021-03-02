@@ -7,10 +7,17 @@ class Label extends React.Component {
 		this.props = props;
 	}
 
+	getArrow = () => {
+		if (this.props.arrow) {
+			return (<i class="fas fa-angle-down"></i>);
+		}
+	}
+
     render = () => {
     	return (
     		<Box className={this.props.className}>
     			<p>{this.props.contents}</p>
+    			{this.getArrow()}
     		</Box>
     	);
     }

@@ -41,11 +41,11 @@ export const POSelectArea = styled.div`
     width: 60vw;
 `;
 
-export const FirstDropDown = styled(DropDownSelect)`
+export const FirstLabel = styled(Label)`
     margin-left: 1em;
 `;
 
-export const SecondLeftDropDown = styled(DropDownSelect)`
+export const SecondLeftLabel = styled(Label)`
     margin-left: 3em;
     margin-right: 15%;
 `;
