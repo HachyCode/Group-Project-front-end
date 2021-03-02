@@ -4,7 +4,6 @@ import Config from '../Config';
 import { withRouter } from 'react-router-dom';
 import {
 	MainDiv, 
-	ProfileSidebar,
 	MainPageBody, 
 	LoginBody, 
 	LoginSidePadding, 
@@ -13,7 +12,6 @@ import {
 	LoginBox, 
 	WarningBox, 
 	Logo, 
-	ProfilePic, 
 	BannerHider
 } from '../Components/PageCSS/LogInCSS';
 
