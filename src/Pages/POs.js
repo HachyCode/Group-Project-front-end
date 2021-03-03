@@ -34,8 +34,8 @@ function POs() {
 				</SearchRow>
 				<POSelectArea>
 					<SearchRow>
-						<FirstLabel contents="PO ID" arrow/>
-						<SecondLeftLabel contents="Supplier" arrow/>
+						<FirstLabel name="PO ID" sortID="poID"/>
+						<SecondLeftLabel name="Supplier" sortID="supplier" arrow/>
 						<SpacedLabel contents="All data"/>
 						<SpacedLabel contents="Jason"/>
 						<SpacedLabel contents="Ann"/>

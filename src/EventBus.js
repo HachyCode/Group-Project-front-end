@@ -1,11 +1,11 @@
-//copied from: https://github.com/Coldani3/InteractiveWebNewUCP/blob/master/src/EventBus.js
+//copied and modified from: https://github.com/Coldani3/InteractiveWebNewUCP/blob/master/src/EventBus.js
 //it's my own code from a previous project
 
 class EventBus {
     events = {};
   
     emit(eventName, data = {}) {
-    	if (this.events[eventName].length > 0) {
+    	if (this.events[eventName]) {
     		for (let i = 0; i < this.events[eventName].length; i++) {
     			this.events[eventName][i](data);
     		}
@@ -25,3 +25,4 @@ export const NewsBoxClick = "NewsBoxClick";
 //hacky but lol
 export const ForceUpdate = "ForceUpdate";
 export const NewsBoxDelete = "NewsBoxDelete";
+export const SortingUpdate = "SortingUpdate";

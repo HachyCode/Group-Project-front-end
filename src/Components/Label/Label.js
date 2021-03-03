@@ -1,5 +1,7 @@
 import React from 'react';
 import {Box} from './LabelCSS';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 class Label extends React.Component {
 	constructor(props) {
@@ -9,7 +11,7 @@ class Label extends React.Component {
 
 	getArrow = () => {
 		if (this.props.arrow) {
-			return (<i class="fas fa-angle-down"></i>);
+			return (<FontAwesomeIcon icon={faAngleDown}/>);
 		}
 	}
 
