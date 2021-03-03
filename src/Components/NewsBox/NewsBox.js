@@ -11,6 +11,7 @@ import {
 	Date, 
 	XButton
 } from './NewsBoxCSS';
+import {withRouter} from 'react-router-dom';
 
 class NewsBox extends React.Component {
 	constructor(props) {
@@ -34,25 +35,29 @@ class NewsBox extends React.Component {
     	return this.state.isSelected ? "orange" : (this.state.isRed === "true" ? "crimson" : "black");
     }
 
+	gotoURL = () => {
+		this.props.history.push("/news/" + this.props.newsID);
+	}
+
     toggleSelected = (emit = true) => {
     	if (emit) eventBus.emit(NewsBoxClick, { sender: this });
     	this.setState({isSelected: !this.state.isSelected});
     }
 
-    genDeleteButton = () => {
-    	if (this.state.isSelected) {
-    		return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}><img alt="xButton"/></XButton>);
-    	}
-    }
+    // genDeleteButton = () => {
+    // 	if (this.state.isSelected) {
+    // 		return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}><img alt="xButton"/></XButton>);
+    // 	}
+    // }
 
-    delete = () => {
-    	this.props.onDelete();
-    }
+    // delete = () => {
+    // 	this.props.onDelete();
+    // }
 
     render = () => {
     	return (
     		<BorderBox colour={this.getColour} className={this.props.className}>
-    			<MainBox onClick={this.toggleSelected}>
+    			<MainBox onClick={this.gotoURL}>
     				<NewsImage src={this.props.image} alt={this.props.alt}/>
     				<NewsBoxMain>
     					<NewsHeader>{this.props.heading}</NewsHeader>
@@ -63,10 +68,10 @@ class NewsBox extends React.Component {
     				</DateArea>
     			</MainBox>
 
-    			{ this.state.isSelected ? this.genDeleteButton() : ""}
+    			{ /*this.state.isSelected ? this.genDeleteButton() : ""*/}
     		</BorderBox>
     	);
     }
 }
 
-export default NewsBox;
+export default withRouter(NewsBox);
