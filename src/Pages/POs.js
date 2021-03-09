@@ -11,19 +11,65 @@ import {
 	SecondLeftLabel,
 	StyledPOListing,
 } from '../Components/PageCSS/POsCSS';
-
-function genPOs() {
-	return [
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={1}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={2}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={3}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={4}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={5}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={6}/>
-	];
-}
+import POListing from '../Components/POListing/POListing';
+import {eventBus, SortingUpdate} from '../EventBus';
 
 function POs() {
+	const POListingData = [
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 1,
+		},
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 2,
+		},
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 3,
+		},
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 4,
+		},
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 5,
+		},
+		{
+			poID: "--------",
+			supplier: "64 Zoo Lane",
+			progress: 6,
+		},
+	];
+
+	eventBus.on(SortingUpdate, (data) => {if (data.sortingID === "poID") sortByPIDs(data.sortingDirection);});
+	eventBus.on(SortingUpdate, (data) => {if (data.sortingID === "supplier") sortByAddresses(data.sortingDirection);});
+
+	function sortByPIDs(sortingDirection) {
+
+	}
+
+	function sortByAddresses(sortingDirection) {
+
+	}
+
+	function genPOs() {
+		let poListings = [];
+		for (const poListingData of POListingData) {
+			poListings.push(<StyledPOListing 
+				poID={poListingData.poID} 
+				supplier={poListingData.supplier} 
+				progress={poListingData.progress}
+			/>);
+		}
+		return poListings;
+	}
 	return (
 		<div>
 			{/*Daniel*/}
