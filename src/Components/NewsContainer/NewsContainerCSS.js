@@ -10,7 +10,7 @@ export const StyledNewsBox = styled(NewsBox)`
 	padding: 1em;
 
 	display: flex;
-	justify-content: ;
+	justify-content: center;
 	align-items: center;
 `;
 

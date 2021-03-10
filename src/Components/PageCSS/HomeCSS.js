@@ -1,21 +1,37 @@
 import styled from 'styled-components';
 
 export const MainBox = styled.div`
-    padding: 1em;
-`;
-export const TopBox = styled.div`
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 2em;
     display: flex;
-    flex-direction: row;
-    padding: 0.5em;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+`;
+
+export const TopBox = styled.div`
+    border: 2px solid #9D4EDD;
+    border-radius: 10px;
+
+    margin: 1em;
+    padding: 0.5em 1.5em;
+
+    width: 80%;
+    height: auto;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
 `;
 export const TopBoxImage = styled.img`
     height: 4em;
-    width: 8em;
+    width: auto;
+
+    border: 2px solid #9D4EDD;
+    border-radius: 10px;
 `;
 export const TopBoxTextContainer = styled.div`
     display: flex;
+    justify-content: left;
     align-items: center;
+
+    padding: 2em;
 `;
