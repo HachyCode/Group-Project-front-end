@@ -37,8 +37,8 @@ class SortingMagicButton extends React.Component {
 	}
 
 	click = () => {
-		eventBus.emit(SortingUpdate, {sortingID: this.props.sortingID, sortDirection: this.state.sortingDirection});
 		this.setState({sortingDirection: (this.state.sortingDirection === descending ? ascending : descending)});
+		eventBus.emit(SortingUpdate, {sortingID: this.props.sortingID, sortDirection: this.state.sortingDirection});
 	}
 
 	render = () => {

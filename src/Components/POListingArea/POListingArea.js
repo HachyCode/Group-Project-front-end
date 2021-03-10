@@ -18,13 +18,13 @@ class POListingArea extends React.Component {
 	componentDidMount() {
 		eventBus.on(SortingUpdate, (data) => {
 			if (data.sortingID === "poID") {
-				this.sortPIDs(data.sortingDirection);
+				this.sortPIDs(data.sortDirection);
 				this.updateBars();
 			}
 		});
 		eventBus.on(SortingUpdate, (data) => {
 			if (data.sortingID === "supplier") {
-				this.sortSuppliers(data.sortingDirection);
+				this.sortSuppliers(data.sortDirection);
 				this.updateBars();
 			}
 		});
