@@ -11,6 +11,7 @@ import {
 	Date, 
 	XButton
 } from './NewsBoxCSS';
+import image from '../../Images/HomeNotificationImages/authorisation.jpg';
 
 class NewsBox extends React.Component {
 	constructor(props) {
