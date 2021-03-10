@@ -31,6 +31,7 @@ class POListingArea extends React.Component {
 	}
 
 	generatePOs = () => {
+		console.log("generate POs");
 		let poListings = [];
 		for (const poListingData of this.state.poListingData) {
 			poListings.push(<StyledPOListing 
@@ -44,7 +45,6 @@ class POListingArea extends React.Component {
 	}
 
 	sortPIDs = (sortingDirection) => {
-		console.log("PIDS");
 		let newListingData = this.state.poListingData.sort((a, b) => {
 			//adapted from https://stackoverflow.com/a/45544166
 			return a.poID.localeCompare(b.poID);
@@ -61,14 +61,12 @@ class POListingArea extends React.Component {
 	}
 
 	sortSuppliers = (sortingDirection) => {
-		console.log("suppliers - " + sortingDirection);
 		let newListingData = this.state.poListingData.sort((a, b) => {
 			//adapted from https://stackoverflow.com/a/45544166
 			return a.supplier.localeCompare(b.supplier);
 		});
 
 		if (sortingDirection === descending) {
-			console.log("inverse");
 			newListingData.reverse();
 		}
 
