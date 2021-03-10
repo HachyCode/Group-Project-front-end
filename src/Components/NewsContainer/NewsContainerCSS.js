@@ -1,14 +1,25 @@
 import styled from 'styled-components';
 import NewsBox from '../NewsBox/NewsBox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledNewsBox = styled(NewsBox)`
-	margin-left: 15vw;
-	margin-right: 15vw;
-	margin-bottom: 1.5em;
+	height: auto;
+	width: 50%;
+
+	margin: 1em;
+	padding: 1em;
+
+	display: flex;
+	justify-content: ;
+	align-items: center;
 `;
 
-export const NewsScrollIcon = styled.img`
+export const NewsScrollIcon = styled(FontAwesomeIcon)`
+	display: flex;
+	justify-content: center;
+
 	position: fixed;
-	bottom: 1em;
-	left: 45%;
+	bottom: 0;
+	color: black;
+	font-size: 3em;
 `;
