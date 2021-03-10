@@ -10,66 +10,49 @@ import {
 	FirstLabel,
 	SecondLeftLabel,
 	StyledPOListing,
+	StyledPOListingArea,
 } from '../Components/PageCSS/POsCSS';
-import POListing from '../Components/POListing/POListing';
 import {eventBus, SortingUpdate} from '../EventBus';
 
 function POs() {
-	const POListingData = [
+	let POListingData = [
 		{
-			poID: "--------",
+			poID: "5234abcd",
 			supplier: "64 Zoo Lane",
 			progress: 1,
 		},
 		{
-			poID: "--------",
-			supplier: "64 Zoo Lane",
+			poID: "2234abcd",
+			supplier: "65 Zoo Lane",
 			progress: 2,
 		},
 		{
-			poID: "--------",
-			supplier: "64 Zoo Lane",
+			poID: "3234abcd",
+			supplier: "66 Zoo Lane",
 			progress: 3,
 		},
 		{
-			poID: "--------",
-			supplier: "64 Zoo Lane",
+			poID: "1234abcd",
+			supplier: "67 Zoo Lane",
 			progress: 4,
 		},
 		{
-			poID: "--------",
-			supplier: "64 Zoo Lane",
+			poID: "9234abcd",
+			supplier: "68 Zoo Lane",
 			progress: 5,
 		},
 		{
-			poID: "--------",
-			supplier: "64 Zoo Lane",
+			poID: "6234abcd",
+			supplier: "69 Zoo Lane",
 			progress: 6,
+		},
+		{
+			poID: "7234abcd",
+			supplier: "64 Aoo Lane",
+			progress: 1,
 		},
 	];
 
-	eventBus.on(SortingUpdate, (data) => {if (data.sortingID === "poID") sortByPIDs(data.sortingDirection);});
-	eventBus.on(SortingUpdate, (data) => {if (data.sortingID === "supplier") sortByAddresses(data.sortingDirection);});
-
-	function sortByPIDs(sortingDirection) {
-
-	}
-
-	function sortByAddresses(sortingDirection) {
-
-	}
-
-	function genPOs() {
-		let poListings = [];
-		for (const poListingData of POListingData) {
-			poListings.push(<StyledPOListing 
-				poID={poListingData.poID} 
-				supplier={poListingData.supplier} 
-				progress={poListingData.progress}
-			/>);
-		}
-		return poListings;
-	}
 	return (
 		<div>
 			{/*Daniel*/}
@@ -80,8 +63,8 @@ function POs() {
 				</SearchRow>
 				<POSelectArea>
 					<SearchRow>
-						<FirstLabel name="PO ID" sortID="poID"/>
-						<SecondLeftLabel name="Supplier" sortID="supplier" arrow/>
+						<FirstLabel name="PO ID" sortingID="poID"/>
+						<SecondLeftLabel name="Supplier" sortingID="supplier"/>
 						<SpacedLabel contents="All data"/>
 						<SpacedLabel contents="Jason"/>
 						<SpacedLabel contents="Ann"/>
@@ -89,7 +72,8 @@ function POs() {
 						<SpacedLabel contents="Accepted"/>
 						<SpacedLabel contents="Delivered"/>
 					</SearchRow>
-					{genPOs()}
+					<StyledPOListingArea poListingData={POListingData}/>
+					{/*genPOs()*/}
 				</POSelectArea>
 			</MainBody>
 		</div>

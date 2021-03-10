@@ -6,6 +6,7 @@ import {
 	FilledLine, 
 	MainDiv
 } from './StatusBarCSS';
+import {eventBus, StatusBarShouldUpdate} from '../../EventBus';
 
 class StatusBar extends React.Component {
 	constructor(props) {
@@ -15,7 +16,12 @@ class StatusBar extends React.Component {
 
 		this.state = {
 			progress: props.progress,
+			filler: 0,
 		};
+	}
+
+	componentDidMount() {
+		eventBus.on(StatusBarShouldUpdate, () => {this.setState({filler: this.state.filler + 1});});
 	}
 
     generateBar = () => {

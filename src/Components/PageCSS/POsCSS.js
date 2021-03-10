@@ -4,6 +4,7 @@ import Label from '../Label/Label';
 import POListing from '../POListing/POListing';
 import DropDownSelect from '../DropDownSelect/DropDownSelect';
 import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
+import POListingArea from '../POListingArea/POListingArea';
 import styled from 'styled-components';
 
 export const MainBody = styled.div`
@@ -51,4 +52,8 @@ export const SecondLeftLabel = styled(SortingMagicButton)`
 export const StyledPOListing = styled(POListing)`
     margin-top: 1em;
     margin-bottom: 1em;
+`;
+
+export const StyledPOListingArea = styled(POListingArea)`
+
 `;
