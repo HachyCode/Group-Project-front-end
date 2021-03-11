@@ -13,6 +13,7 @@ import {
 	XIcon
 } from './NewsBoxCSS';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import Image from '../../Images/HomeNotificationImages/404error.jpg';
 
 class NewsBox extends React.Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ class NewsBox extends React.Component {
 		return (
 			<BorderBox colour={this.getColour} className={this.props.className}>
 				<MainBox onClick={this.toggleSelected}>
-					<NewsImage src={this.props.image} alt={this.props.alt}/>
+					<NewsImage src={Image} alt={this.props.alt}/>
 					<NewsBoxMain>
 						<NewsHeader>{this.props.heading}</NewsHeader>
 						<NewsParagraph>{this.props.paragraph}</NewsParagraph>
@@ -61,11 +62,11 @@ class NewsBox extends React.Component {
 					<DateArea>
 						<Date>{this.props.date}</Date>
 					</DateArea>
-					<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}>
-						<XIcon icon={faTimesCircle}/>
-					</XButton>
 					{/*{ this.state.isSelected ? this.genDeleteButton() : ""}*/}
 				</MainBox>
+				<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}>
+					<XIcon icon={faTimesCircle}/>
+				</XButton>
 			</BorderBox>
 		);
 	}

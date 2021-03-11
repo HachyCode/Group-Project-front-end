@@ -53,7 +53,7 @@ function Home() {
 			<TopBox>
 				<TopBoxImage alt="logo"/>
 				<TopBoxTextContainer>
-					<p>News Text Goes Here</p>
+					News Text Goes Here
 				</TopBoxTextContainer>
 			</TopBox>
 			<NewsContainer news={news}/>

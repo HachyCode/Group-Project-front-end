@@ -4,21 +4,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const BorderBox = styled.div`
     border: 2px solid #9D4EDD;
     border-radius: 10px;
-    height: 7em;
 
-    
-    
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: auto;
+    width: auto; 
 `;
 
 export const MainBox = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const NewsImage = styled.img`
     height: 4em;
-    width: 7em;
+    width: auto;
 
     background: palevioletred;
 `;
@@ -46,9 +51,9 @@ export const XButton = styled.button`
     border: none;
     background-color: transparent;
     outline: none;
-    float: right;
 `;
 
 export const XIcon = styled(FontAwesomeIcon)`
-
+    font-size: 3em;
+    color: #9D4EDD;
 `;
