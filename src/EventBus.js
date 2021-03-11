@@ -7,7 +7,9 @@ class EventBus {
     emit(eventName, data = {}) {
     	if (this.events[eventName]) {
     		for (let i = 0; i < this.events[eventName].length; i++) {
-    			this.events[eventName][i](data);
+    			if (this.events[eventName][i]) {
+    				this.events[eventName][i](data);
+    			}
     		}
     	}
     }
@@ -18,7 +20,7 @@ class EventBus {
     	this.events[eventName].push(onEventFunc);
     }
     off(eventName, eventFunc) {
-    	this.events[eventName][this.events[eventName].indexOf(eventFunc)] = null;
+    	this.events[eventName][this.events[eventName].indexOf(eventFunc)] = undefined;
     }
 }
   
