@@ -11,16 +11,19 @@ import {eventBus, StatusBarShouldUpdate} from '../../EventBus';
 class StatusBar extends React.Component {
 	constructor(props) {
 		super(props);
+		this.props = props;
 
 		this.state = {
 			progress: props.progress,
-			filler: 0,
 		};
 	}
 
 	componentDidMount() {
-		eventBus.on(StatusBarShouldUpdate, () => {
-			this.setState({filler: this.state.filler + 1});
+		eventBus.on(StatusBarShouldUpdate, (data) => {
+			console.log("barID: " + this.props.barID);
+			this.setState({
+				progress: data.poListingData[this.props.barID].progress
+			});
 			//this.forceUpdate();
 		});
 	}

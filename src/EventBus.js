@@ -17,6 +17,9 @@ class EventBus {
     	}
     	this.events[eventName].push(onEventFunc);
     }
+    off(eventName, eventFunc) {
+    	this.events[eventName][this.events[eventName].indexOf(eventFunc)] = null;
+    }
 }
   
 export const eventBus = new EventBus();

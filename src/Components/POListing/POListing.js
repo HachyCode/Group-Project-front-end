@@ -23,7 +23,7 @@ class POListing extends React.Component {
     			<FirstTwoSections>
     				{this.props.supplier}
     			</FirstTwoSections>
-    			<StatusBar progress={this.props.progress}/>
+    			<StatusBar barID={this.props.barID} progress={this.props.progress}/>
     		</Box>
     	);
     }
