@@ -53,7 +53,7 @@ function Home() {
 			<TopBox>
 				<TopBoxImage alt="logo" src={Logo}/>
 				<TopBoxTextContainer>
-					"Wear a mask, so you ccould save the world"
+					"Wear a mask, so you could save the world"
 					-Batman
 				</TopBoxTextContainer>
 			</TopBox>

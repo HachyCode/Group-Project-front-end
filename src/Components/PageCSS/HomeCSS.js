@@ -12,7 +12,7 @@ export const TopBox = styled.div`
     border-radius: 10px;
 
     margin: 1em;
-    padding: 0.5em 1.5em;
+    padding: 0.5em 1em;
 
     width: 80%;
     height: auto;
@@ -22,11 +22,8 @@ export const TopBox = styled.div`
     align-items: center;
 `;
 export const TopBoxImage = styled.img`
-    height: 4em;
+    height: 6em;
     width: auto;
-
-    border: 2px solid #9D4EDD;
-    border-radius: 10px;
 `;
 export const TopBoxTextContainer = styled.div`
     display: flex;
@@ -34,4 +31,5 @@ export const TopBoxTextContainer = styled.div`
     align-items: center;
 
     padding: 2em;
+    font-size: 1.5em;
 `;
