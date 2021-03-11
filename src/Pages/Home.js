@@ -6,7 +6,7 @@ import {
 	TopBoxImage, 
 	TopBoxTextContainer
 } from '../Components/PageCSS/HomeCSS';
-
+import Logo from '../Images/Logo/black_logo.png';
 
 function Home() {
 	const news = { 
@@ -51,9 +51,10 @@ function Home() {
 		<MainBox>
 			{/*Daniel*/}
 			<TopBox>
-				<TopBoxImage alt="logo"/>
+				<TopBoxImage alt="logo" src={Logo}/>
 				<TopBoxTextContainer>
-					News Text Goes Here
+					"Wear a mask, so you ccould save the world"
+					-Batman
 				</TopBoxTextContainer>
 			</TopBox>
 			<NewsContainer news={news}/>
