@@ -3,6 +3,8 @@ import DateSearch from '../DateSearch/DateSearch';
 import Label from '../Label/Label';
 import POListing from '../POListing/POListing';
 import DropDownSelect from '../DropDownSelect/DropDownSelect';
+import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
+import POListingArea from '../POListingArea/POListingArea';
 import styled from 'styled-components';
 
 export const MainBody = styled.div`
@@ -38,11 +40,11 @@ export const POSelectArea = styled.div`
     width: 60vw;
 `;
 
-export const FirstDropDown = styled(DropDownSelect)`
+export const FirstLabel = styled(SortingMagicButton)`
     margin-left: 1em;
 `;
 
-export const SecondLeftDropDown = styled(DropDownSelect)`
+export const SecondLeftLabel = styled(SortingMagicButton)`
     margin-left: 3em;
     margin-right: 15%;
 `;
@@ -50,4 +52,8 @@ export const SecondLeftDropDown = styled(DropDownSelect)`
 export const StyledPOListing = styled(POListing)`
     margin-top: 1em;
     margin-bottom: 1em;
+`;
+
+export const StyledPOListingArea = styled(POListingArea)`
+
 `;

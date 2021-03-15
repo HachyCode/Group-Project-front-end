@@ -7,23 +7,52 @@ import {
 	StyledDateSearch,
 	SpacedLabel,
 	POSelectArea,
-	FirstDropDown,
-	SecondLeftDropDown,
+	FirstLabel,
+	SecondLeftLabel,
 	StyledPOListing,
+	StyledPOListingArea,
 } from '../Components/PageCSS/POsCSS';
-
-function genPOs() {
-	return [
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={1}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={2}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={3}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={4}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={5}/>, 
-		<StyledPOListing poID="--------" supplier="64 Zoo Lane" progress={6}/>
-	];
-}
+import {eventBus, SortingUpdate} from '../EventBus';
 
 function POs() {
+	let POListingData = [
+		{
+			poID: "5234abcd",
+			supplier: "64 Zoo Lane",
+			progress: 1,
+		},
+		{
+			poID: "2234abcd",
+			supplier: "65 Zoo Lane",
+			progress: 2,
+		},
+		{
+			poID: "3234abcd",
+			supplier: "66 Zoo Lane",
+			progress: 3,
+		},
+		{
+			poID: "1234abcd",
+			supplier: "67 Zoo Lane",
+			progress: 4,
+		},
+		{
+			poID: "9234abce",
+			supplier: "68 Zoo Lane",
+			progress: 5,
+		},
+		{
+			poID: "6234abcd",
+			supplier: "69 Zoo Lane",
+			progress: 6,
+		},
+		{
+			poID: "7234abcd",
+			supplier: "64 Aoo Lane",
+			progress: 1,
+		},
+	];
+
 	return (
 		<div>
 			{/*Daniel*/}
@@ -34,8 +63,8 @@ function POs() {
 				</SearchRow>
 				<POSelectArea>
 					<SearchRow>
-						<FirstDropDown default="PO ID"/>
-						<SecondLeftDropDown default="Supplier"/>
+						<FirstLabel name="PO ID" sortingID="poID"/>
+						<SecondLeftLabel name="Supplier" sortingID="supplier"/>
 						<SpacedLabel contents="All data"/>
 						<SpacedLabel contents="Jason"/>
 						<SpacedLabel contents="Ann"/>
@@ -43,7 +72,8 @@ function POs() {
 						<SpacedLabel contents="Accepted"/>
 						<SpacedLabel contents="Delivered"/>
 					</SearchRow>
-					{genPOs()}
+					<StyledPOListingArea poListingData={POListingData}/>
+					{/*genPOs()*/}
 				</POSelectArea>
 			</MainBody>
 		</div>

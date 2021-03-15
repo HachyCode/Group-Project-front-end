@@ -1,5 +1,6 @@
 import React from 'react';
 import {Input} from './InputBoxCSS';
+
 class InputBox extends React.Component {
     
 	constructor(props) {
@@ -59,7 +60,9 @@ class InputBox extends React.Component {
     	return this.state.text;
     }
 
-    setText = (text) => this.setState({text: text});
+    setText = (text) => {
+    	this.setState({text: text});
+    }
 
     render = () => {
     	return (
@@ -78,6 +81,7 @@ class InputBox extends React.Component {
     			onBlur={this.onUnfocus} 
     			colour={this.colour} 
     			className={this.props.className}
+    			default={this.props.default}
     		/>
     	);
     }

@@ -6,16 +6,30 @@ import {
 	FilledLine, 
 	MainDiv
 } from './StatusBarCSS';
+import {eventBus, StatusBarShouldUpdate} from '../../EventBus';
 
 class StatusBar extends React.Component {
 	constructor(props) {
 		super(props);
-
-		//this.colours = [ "purple", "pink", "red", "orange", "green" ];
+		this.props = props;
 
 		this.state = {
 			progress: props.progress,
 		};
+	}
+
+	componentDidMount() {
+		eventBus.on(StatusBarShouldUpdate, this.updateProgress);
+	}
+
+	componentWillUnmount() {
+		eventBus.off(StatusBarShouldUpdate, this.updateProgress);
+	}
+
+	updateProgress = (data) => {
+		this.setState({
+			progress: data.poListingData[this.props.barID].progress
+		});
 	}
 
     generateBar = () => {
@@ -23,11 +37,11 @@ class StatusBar extends React.Component {
     	for (let i = 0; i < 5; i++) {
     		if (this.state.progress >= i + 1) {
     			barComponents.push(<FilledDot/>);
-    			barComponents.push(<FilledLine/>);
     		} else {
     			barComponents.push(<EmptyDot/>);
-    			barComponents.push(<EmptyLine/>);
     		}
+
+    		barComponents.push(<EmptyLine/>);
     	}
 
     	//add final dot

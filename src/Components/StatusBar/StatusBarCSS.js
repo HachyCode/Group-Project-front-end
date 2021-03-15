@@ -20,6 +20,7 @@ export const EmptyLine = styled.div`
     height: 1px;
     width: 3em;
     border: 1px solid black;
+	background-color: black;
     border-right: none;
     border-left: none;
 `;
