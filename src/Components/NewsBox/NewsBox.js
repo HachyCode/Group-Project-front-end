@@ -1,7 +1,6 @@
 import React from 'react';
 import {eventBus, NewsBoxClick, NewsBoxDelete} from '../../EventBus';
 import {
-	BorderBox, 
 	MainBox, 
 	NewsImage,
 	NewsBoxMain, 
@@ -9,8 +8,13 @@ import {
 	NewsParagraph, 
 	DateArea, 
 	Date, 
-	XButton
+	XButton,
+	XIcon,
+	InfoIcon,
+	InfoIconBox
 } from './NewsBoxCSS';
+import {faExclamationTriangle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import Image from '../../Images/HomeNotificationImages/404error.jpg';
 
 class NewsBox extends React.Component {
 	constructor(props) {
@@ -30,43 +34,52 @@ class NewsBox extends React.Component {
 		};
 	}
 
-    getColour = () => {
-    	return this.state.isSelected ? "orange" : (this.state.isRed === "true" ? "crimson" : "black");
-    }
+	getColour = () => {
+		return this.state.isSelected ? "#9D4EDD" : (this.state.isRed === "true" ? "#FF9E00" : "#ADB5BD");
+	}	
+	toggleSelected = (emit = true) => {
+		if (emit) eventBus.emit(NewsBoxClick, { sender: this });
+		this.setState({isSelected: !this.state.isSelected});
+	}	
+	genDeleteButton = () => {
+		if (this.state.isSelected) {
+			return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}>
+				<XIcon icon={faTimesCircle}/></XButton>);
+		}
+	}	
+	delete = () => {
+		this.props.onDelete();
+	}
 
-    toggleSelected = (emit = true) => {
-    	if (emit) eventBus.emit(NewsBoxClick, { sender: this });
-    	this.setState({isSelected: !this.state.isSelected});
-    }
+	newIcon = () => {
+		if (this.state.isRed === "true"){
+			return "#FF9E00";
+		}else {
+			return "transparent";
+		}
+	}
 
-    genDeleteButton = () => {
-    	if (this.state.isSelected) {
-    		return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}><img alt="xButton"/></XButton>);
-    	}
-    }
-
-    delete = () => {
-    	this.props.onDelete();
-    }
-
-    render = () => {
-    	return (
-    		<BorderBox colour={this.getColour} className={this.props.className}>
-    			<MainBox onClick={this.toggleSelected}>
-    				<NewsImage src={this.props.image} alt={this.props.alt}/>
-    				<NewsBoxMain>
-    					<NewsHeader>{this.props.heading}</NewsHeader>
-    					<NewsParagraph>{this.props.paragraph}</NewsParagraph>
-    				</NewsBoxMain>
-    				<DateArea>
-    					<Date>{this.props.date}</Date>
-    				</DateArea>
-    			</MainBox>
-
-    			{ this.state.isSelected ? this.genDeleteButton() : ""}
-    		</BorderBox>
-    	);
-    }
+	render = () => {
+		return (
+			<MainBox onClick={this.toggleSelected} className={this.props.className} colour={this.getColour}>
+				<InfoIconBox>
+					<InfoIcon icon={faExclamationTriangle} newIcon={this.newIcon}/>
+				</InfoIconBox>
+				<NewsImage src={Image} alt={this.props.alt}/>
+				<NewsBoxMain>
+					<NewsHeader>{this.props.heading}</NewsHeader>
+					<NewsParagraph>{this.props.paragraph}</NewsParagraph>
+				</NewsBoxMain>
+				<DateArea>
+					<Date>{this.props.date}</Date>
+				</DateArea>
+				{/*{ this.state.isSelected ? this.genDeleteButton() : ""}*/}
+				<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}} colour={this.getColour}>
+					<XIcon icon={faTimesCircle}/>
+				</XButton>
+			</MainBox>
+		);
+	}
 }
 
 export default NewsBox;
