@@ -49,7 +49,6 @@ function Home() {
 
 	return (
 		<MainBox>
-			{/*Daniel*/}
 			<TopBox>
 				<TopBoxImage alt="logo" src={Logo}/>
 				<TopBoxTextContainer>

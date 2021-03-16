@@ -8,7 +8,7 @@ export const MainBox = styled.div`
 `;
 
 export const TopBox = styled.div`
-    border: 2px solid #9D4EDD;
+    border: 4px double #9D4EDD;
     border-radius: 10px;
 
     margin: 1em;
@@ -20,10 +20,18 @@ export const TopBox = styled.div`
     display: flex;
     justify-content: left;
     align-items: center;
+
+	@media screen and (max-width: 700px){
+		flex-direction: column;
+	}
 `;
 export const TopBoxImage = styled.img`
     height: 6em;
     width: auto;
+
+	@media screen and (max-width: 700px){
+		margin: 1em;
+	}
 `;
 export const TopBoxTextContainer = styled.div`
     display: flex;
