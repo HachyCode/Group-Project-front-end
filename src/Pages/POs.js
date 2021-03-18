@@ -59,7 +59,6 @@ function POs() {
 			<MainBody>
 				<SearchRow>
 					<StyledSearchBar/>
-					<StyledDateSearch/>
 				</SearchRow>
 				<POSelectArea>
 					<SearchRow>

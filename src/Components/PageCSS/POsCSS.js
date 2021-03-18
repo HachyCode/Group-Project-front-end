@@ -21,8 +21,8 @@ export const SearchRow = styled.div`
 `;
 
 export const StyledSearchBar = styled(SearchBar)`
-    margin: 0 1.5em;
-    width: 70%;
+	margin: 1em 1.5em;
+	width: 90%;
 `;
 
 export const StyledDateSearch = styled(DateSearch)`
