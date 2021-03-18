@@ -5,6 +5,5 @@ import styled from 'styled-components';
 import POListing from '../POListing/POListing';
 
 export const StyledPOListing = styled(POListing)`
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin: 1.5em 0;
 `;

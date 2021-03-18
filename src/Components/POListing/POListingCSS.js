@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 
 export const Box = styled.div`
-    border: 1px solid orange;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    height: 2em;
+    border: 2px solid #FF9E00;
+    border-radius: 10px;
+
+	display: flex;
+	align-items: center;
+
     cursor: pointer;
+
+	&:hover {
+		border-color: #9D4EDD;
+	}
 `;
 
 export const FirstTwoSections = styled.div`
-    padding-left: 2em;
-    width: 15%;
+    margin: 0 0 0 2em;
+	padding: 0 2vw;
 `;

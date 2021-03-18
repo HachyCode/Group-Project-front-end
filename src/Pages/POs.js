@@ -1,18 +1,13 @@
 import React from 'react';
 import {
 	MainBody,
-	HalfEmSpacing,
 	SearchRow,
 	StyledSearchBar,
-	StyledDateSearch,
 	SpacedLabel,
-	POSelectArea,
 	FirstLabel,
 	SecondLeftLabel,
-	StyledPOListing,
 	StyledPOListingArea,
 } from '../Components/PageCSS/POsCSS';
-import {eventBus, SortingUpdate} from '../EventBus';
 
 function POs() {
 	let POListingData = [
@@ -55,25 +50,20 @@ function POs() {
 
 	return (
 		<div>
-			{/*Daniel*/}
 			<MainBody>
+				<StyledSearchBar/>
 				<SearchRow>
-					<StyledSearchBar/>
+					{/*Add div bettween magic buttons*/}
+					<FirstLabel name="PO ID" sortingID="poID"/>
+					<SecondLeftLabel name="Supplier" sortingID="supplier"/>
+					<SpacedLabel contents="All data"/>
+					<SpacedLabel contents="Jason"/>
+					<SpacedLabel contents="Ann"/>
+					<SpacedLabel contents="Send"/>
+					<SpacedLabel contents="Accepted"/>
+					<SpacedLabel contents="Delivered"/>
 				</SearchRow>
-				<POSelectArea>
-					<SearchRow>
-						<FirstLabel name="PO ID" sortingID="poID"/>
-						<SecondLeftLabel name="Supplier" sortingID="supplier"/>
-						<SpacedLabel contents="All data"/>
-						<SpacedLabel contents="Jason"/>
-						<SpacedLabel contents="Ann"/>
-						<SpacedLabel contents="Send"/>
-						<SpacedLabel contents="Accepted"/>
-						<SpacedLabel contents="Delivered"/>
-					</SearchRow>
-					<StyledPOListingArea poListingData={POListingData}/>
-					{/*genPOs()*/}
-				</POSelectArea>
+				<StyledPOListingArea poListingData={POListingData}/>
 			</MainBody>
 		</div>
 	);
