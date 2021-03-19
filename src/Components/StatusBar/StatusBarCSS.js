@@ -6,6 +6,11 @@ export const FilledDot = styled.div`
     border: 1px solid #9D4EDD;
 	background-color: #9D4EDD;
     border-radius: 40px;
+
+	@media screen and (max-width: 900px){
+		height: 20px;
+		width: 20px;
+	}
 `;
 
 export const EmptyDot = styled.div`
@@ -13,17 +18,26 @@ export const EmptyDot = styled.div`
     width: 40px;
     border: 1px solid #9D4EDD;
     border-radius: 40px;
+
+	@media screen and (max-width: 900px){
+		height: 20px;
+		width: 20px;
+	}
 `;
 
 export const EmptyLine = styled.div`
 	height: 3px;
-	width: 3em;
+	width: 4.5vw;
 	background-color: #ADB5BD;
+
+	@media screen and (max-width: 900px){
+		width: 6vw;
+	}
 `;
 
 export const MainDiv = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 1em 2em ;
+	margin: 1em 4vw 1em 3vw ;
 `;

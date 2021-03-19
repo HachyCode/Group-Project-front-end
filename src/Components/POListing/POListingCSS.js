@@ -14,7 +14,24 @@ export const Box = styled.div`
 	}
 `;
 
-export const FirstTwoSections = styled.div`
-    margin: 0 0 0 2em;
-	padding: 0 2vw;
+export const SupplierSections = styled.div`
+	margin: 0 1.5vw;
+	width: 25vw;
+
+	display: flex;
+	align-items: center;
+	justify-content: left;
+
+	@media screen and (max-width: 650px){
+		width: 20vw;
+	}
+`;
+
+export const POIDSections = styled.div`
+	margin: 0 0 0 1.5vw;
+	width: 6vw;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
