@@ -12,9 +12,19 @@ class NewsContainer extends React.Component {
 		this.state = {
 			news: this.props.news,  
 		};
+	}
 
-		eventBus.on(NewsBoxDelete, (data) => {this.deletedNewsIndexes.push(this.newsByIndex[data.box]); this.setState({});});
+	componentDidMount = () => {
+		eventBus.on(NewsBoxDelete, this.deleteEventTriggered);
+	}
 
+	componentWillUnmount = () => {
+		eventBus.off(NewsBoxDelete, this.deleteEventTriggered);
+	}
+
+	deleteEventTriggered = (data) => {
+		this.deletedNewsIndexes.push(data.id);
+		this.setState({});
 	}
 
     generateNews = () => {
@@ -33,11 +43,13 @@ class NewsContainer extends React.Component {
     					image={currNews.image} 
     					alt={currNews.alt} 
     					isRed={isNewsRed} 
-    					onDelete={() => {this.deletedNewsIndexes.push(i); this.setState({});}}
+    					onDelete={() => {
+    						this.deletedNewsIndexes.push(i); 
+    						this.setState({});
+    					}}
     					key={i}
     					newsID={i}/>);
     				newsToGenerate.push(newsBox);
-    				this.newsByIndex[newsBox] = i;
     			}
     		}
     	}

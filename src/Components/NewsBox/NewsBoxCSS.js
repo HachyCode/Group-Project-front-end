@@ -51,6 +51,7 @@ export const InfoIcon = styled(FontAwesomeIcon)`
 export const NewsImage = styled.img`
     height: 8em;
     width: auto;
+	border-radius: 10px;
 
     @media screen and (max-width: 700px){
         height: auto;

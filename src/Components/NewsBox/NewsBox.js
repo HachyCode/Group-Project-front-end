@@ -43,12 +43,14 @@ class NewsBox extends React.Component {
 	}	
 	genDeleteButton = () => {
 		if (this.state.isSelected) {
-			return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}}>
+			return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {id: this.props.newsID});}}>
 				<XIcon icon={faTimesCircle}/></XButton>);
 		}
 	}	
+
 	delete = () => {
 		this.props.onDelete();
+		eventBus.emit(NewsBoxDelete, {box: this.props.newsID});
 	}
 
 	newIcon = () => {
@@ -74,7 +76,7 @@ class NewsBox extends React.Component {
 					<Date>{this.props.date}</Date>
 				</DateArea>
 				{/*{ this.state.isSelected ? this.genDeleteButton() : ""}*/}
-				<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {box: this});}} colour={this.getColour}>
+				<XButton onClick={this.delete} colour={this.getColour}>
 					<XIcon icon={faTimesCircle}/>
 				</XButton>
 			</MainBox>
