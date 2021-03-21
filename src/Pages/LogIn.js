@@ -24,7 +24,7 @@ function LogIn() {
 	//is it too late to make this a Vue site?
 	const userDefault = "Staff ID";
 	const pwdDefault = "Password";
-	let warnMessage = "You need to log in to use this program";
+	let warnMessage = "";
 	const forceUpdateHook = forceUpdate();
 
 	function login() {
@@ -45,6 +45,7 @@ function LogIn() {
 					if (response["token"]) {
 						//successful login
 						//set SESSION variable to token response
+						sessionStorage.setItem("user_token", response["token"]);
 						//send them to the home page
 						this.props.history.push("/home");
 					} else {
@@ -102,7 +103,7 @@ function LogIn() {
 					<div>
 						<WarningBox>
 							<FontAwesomeIcon icon={faExclamationTriangle}/>
-							{getWarnMessage()}
+							You need to log in to use this program
 							<FontAwesomeIcon icon={faExclamationTriangle}/>
 						</WarningBox>
 					</div>
