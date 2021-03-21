@@ -14,12 +14,11 @@ import {
 	InfoIconBox
 } from './NewsBoxCSS';
 import {faExclamationTriangle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
-import Image from '../../Images/HomeNotificationImages/404error.jpg';
+import DefaultImage from '../../Images/HomeNotificationImages/404error.jpg';
 
 class NewsBox extends React.Component {
 	constructor(props) {
 		super(props);
-		eventBus.on(NewsBoxClick, (data) => { if (data.sender !== this && this.state.isSelected) this.toggleSelected(false);});
 		this.props = props;
 		let paragraph = props.paragraph.slice(0, 220);
 
@@ -34,13 +33,39 @@ class NewsBox extends React.Component {
 		};
 	}
 
+	componentDidMount = () => {
+		eventBus.on(NewsBoxClick, this.onClickEvent);
+		eventBus.on(NewsBoxDelete, this.updateOnDelete);
+	}
+
+	componentWillUnmount = () => {
+		eventBus.off(NewsBoxClick, this.onClickEvent);
+		eventBus.off(NewsBoxDelete, this.updateOnDelete);
+	}
+
+	onClickEvent = (data) => {
+		if (data.sender !== this && this.state.isSelected) {
+			this.toggleSelected(false);
+		}
+	}
+
+	updateOnDelete = (data) => {
+		if (data.box && data.box === this.props.newsID) {
+			this.setState({isRed: this.props.isRed});
+		}
+	}
+
 	getColour = () => {
 		return this.state.isSelected ? "#9D4EDD" : (this.state.isRed === "true" ? "#FF9E00" : "#ADB5BD");
 	}	
+
 	toggleSelected = (emit = true) => {
-		if (emit) eventBus.emit(NewsBoxClick, { sender: this });
-		this.setState({isSelected: !this.state.isSelected});
-	}	
+		if (emit) {
+			eventBus.emit(NewsBoxClick, { sender: this });
+		}
+		//this.setState({isSelected: !this.state.isSelected});
+	}
+
 	genDeleteButton = () => {
 		if (this.state.isSelected) {
 			return (<XButton onClick={() => {eventBus.emit(NewsBoxDelete, {id: this.props.newsID});}}>
@@ -67,7 +92,7 @@ class NewsBox extends React.Component {
 				<InfoIconBox>
 					<InfoIcon icon={faExclamationTriangle} newIcon={this.newIcon}/>
 				</InfoIconBox>
-				<NewsImage src={Image} alt={this.props.alt}/>
+				<NewsImage src={DefaultImage} alt={this.props.alt}/>
 				<NewsBoxMain>
 					<NewsHeader>{this.props.heading}</NewsHeader>
 					<NewsParagraph>{this.props.paragraph}</NewsParagraph>

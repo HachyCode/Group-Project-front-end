@@ -30,27 +30,31 @@ class NewsContainer extends React.Component {
     generateNews = () => {
     	console.log("generate");
     	let newsToGenerate = [];
+    	let counted = 0;
+
     	for (let i = 0; i < Object.keys(this.state.news).length; i++) {
     		if (!this.deletedNewsIndexes.includes(i)) {
-    			let currNews = this.state.news[i];
+    			const currNews = this.state.news[i];
 
     			if (currNews.heading !== "") {
-    				let isNewsRed = i < 2 ? "true" : "";
-    				let newsBox = (<StyledNewsBox 
-    					heading={currNews.heading} 
+    				const isNewsRed = counted < 2 ? "true" : "";
+    				const newsBox = (<StyledNewsBox
+    					heading={currNews.heading}
     					paragraph={currNews.paragraph}
-    					date={currNews.date} 
-    					image={currNews.image} 
-    					alt={currNews.alt} 
-    					isRed={isNewsRed} 
+    					date={currNews.date}
+    					image={currNews.image}
+    					alt={currNews.alt}
+    					isRed={isNewsRed}
     					onDelete={() => {
-    						this.deletedNewsIndexes.push(i); 
+    						this.deletedNewsIndexes.push(i);
     						this.setState({});
     					}}
-    					key={i}
+    					//key={i}
     					newsID={i}/>);
     				newsToGenerate.push(newsBox);
     			}
+
+    			counted++;
     		}
     	}
 
