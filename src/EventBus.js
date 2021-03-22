@@ -32,3 +32,4 @@ export const ForceUpdate = "ForceUpdate";
 export const NewsBoxDelete = "NewsBoxDelete";
 export const SortingUpdate = "SortingUpdate";
 export const StatusBarShouldUpdate = "StatusBarShouldUpdate";
+export const WarningBoxVisibilityUpdate = "WarningBoxVisibilityUpdate";
