@@ -13,6 +13,7 @@ export const MainBox = styled.div`
 
     min-height: 8em;
     width: 50%;
+	cursor: pointer;
 
     @media screen and (max-width: 1000px){
         width: 80%;

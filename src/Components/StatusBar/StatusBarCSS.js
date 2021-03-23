@@ -1,43 +1,43 @@
 import styled from 'styled-components';
 
 export const FilledDot = styled.div`
-    color: purple;
-    background-color: darkorchid;
-    height: 20px;
-    width: 20px;
-    border: 1px solid darkorchid;
-    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #9D4EDD;
+	background-color: #9D4EDD;
+    border-radius: 40px;
+
+	@media screen and (max-width: 900px){
+		height: 20px;
+		width: 20px;
+	}
 `;
 
 export const EmptyDot = styled.div`
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #9D4EDD;
+    border-radius: 40px;
+
+	@media screen and (max-width: 900px){
+		height: 20px;
+		width: 20px;
+	}
 `;
 
 export const EmptyLine = styled.div`
-    height: 1px;
-    width: 3em;
-    border: 1px solid black;
-	background-color: black;
-    border-right: none;
-    border-left: none;
-`;
+	height: 3px;
+	width: 4.5vw;
+	background-color: #ADB5BD;
 
-export const FilledLine = styled.div`
-    height: 1px;
-    width: 3em;
-    border: 1px solid darkorchid;
-    border-right: none;
-    border-left: none;
-    color: purple;
-    background-color: darkorchid;
+	@media screen and (max-width: 900px){
+		width: 6vw;
+	}
 `;
 
 export const MainDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    height: 24px;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 1em 4vw 1em 3vw ;
 `;

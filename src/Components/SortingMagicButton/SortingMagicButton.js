@@ -15,7 +15,7 @@ props:
 	name - string name of button
 	sortID - id of the sorting event this fires on click
 */
-//I mean it's not really magic but that's what Vika's calling them so
+//I mean it's not really magic but that's what Vika calling them so
 class SortingMagicButton extends React.Component {
 	constructor(props) {
 		super(props);

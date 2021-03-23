@@ -3,7 +3,6 @@ import {
 	FilledDot, 
 	EmptyDot, 
 	EmptyLine, 
-	FilledLine, 
 	MainDiv
 } from './StatusBarCSS';
 import {eventBus, StatusBarShouldUpdate} from '../../EventBus';

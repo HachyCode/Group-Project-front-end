@@ -1,8 +1,5 @@
 import SearchBar from '../SearchBar/SearchBar';
-import DateSearch from '../DateSearch/DateSearch';
 import Label from '../Label/Label';
-import POListing from '../POListing/POListing';
-import DropDownSelect from '../DropDownSelect/DropDownSelect';
 import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
 import POListingArea from '../POListingArea/POListingArea';
 import styled from 'styled-components';
@@ -10,50 +7,68 @@ import styled from 'styled-components';
 export const MainBody = styled.div`
     display: flex;
     flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media screen and (max-width: 900px){
+		font-size: 0.8em;
+	}
+
+	@media screen and (max-width: 700px){
+		font-size: 0.7em;
+	}
+`;
+
+export const StyledSearchBar = styled(SearchBar)`
+	margin: 2em 1.5em;
+	width: 90vw;
 `;
 
 export const SearchRow = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 1em 0;
-`;
-
-export const StyledSearchBar = styled(SearchBar)`
-    margin: 0 1.5em;
-    width: 70%;
-`;
-
-export const StyledDateSearch = styled(DateSearch)`
-    width: 25%;
-    margin: 0 1.5em 0 0;
-`;
-
-export const SpacedLabel = styled(Label)`
-    
-`;
-
-export const POSelectArea = styled.div`
-    margin-left: 20vw;
-    margin-right: 20vw;
-    width: 60vw;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const FirstLabel = styled(SortingMagicButton)`
-    margin-left: 1em;
+    
+`;
+
+export const FirstLabelBox = styled.div`
+    min-width: 7vw;
+	margin: 0;
+`;
+
+export const FilterTop = styled.div`
+	position: sticky;
+	top: 50px;
+
+	background: white;
 `;
 
 export const SecondLeftLabel = styled(SortingMagicButton)`
-    margin-left: 3em;
-    margin-right: 15%;
+    
 `;
 
-export const StyledPOListing = styled(POListing)`
-    margin-top: 1em;
-    margin-bottom: 1em;
+export const SecondLeftLabelBox = styled.div`
+    width: 20vw;
+	margin: 0 6vw 0 2vw;
+
+	@media screen and (max-width: 800px){
+		margin: 0 2vw 0 2vw;
+		width: 15vw;
+	}
+`;
+
+export const SpacedLabel = styled(Label)`
+    margin: 0.3vw;
+	width: 3.5vw;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export const StyledPOListingArea = styled(POListingArea)`
-
+	
 `;

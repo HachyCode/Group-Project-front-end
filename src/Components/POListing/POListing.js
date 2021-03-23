@@ -1,7 +1,7 @@
 import React from 'react';
 import StatusBar from '../StatusBar/StatusBar';
 import { withRouter } from 'react-router-dom';
-import {Box, FirstTwoSections} from './POListingCSS';
+import {Box, POIDSections, SupplierSections} from './POListingCSS';
 import {eventBus, StatusBarShouldUpdate} from '../../EventBus';
 
 class POListing extends React.Component {
@@ -17,12 +17,12 @@ class POListing extends React.Component {
     render = () => {
     	return (
     		<Box className = {this.props.className} onClick={() => this.props.history.push("/poForm")}>
-    			<FirstTwoSections>
+    			<POIDSections>
     				{this.props.poID}
-    			</FirstTwoSections>
-    			<FirstTwoSections>
+    			</POIDSections>
+    			<SupplierSections>
     				{this.props.supplier}
-    			</FirstTwoSections>
+    			</SupplierSections>
     			<StatusBar barID={this.props.barID} progress={this.props.progress}/>
     		</Box>
     	);
