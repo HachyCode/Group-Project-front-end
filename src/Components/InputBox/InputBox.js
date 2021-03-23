@@ -35,12 +35,17 @@ class InputBox extends React.Component {
     }
 
     handleChange = (event) => {
-    	if (this.disabled) event.preventDefault();
-    	else this.setState({text: event.target.value });
+    	if (this.disabled) {
+    		event.preventDefault();
+    	} else {
+    		this.setState({text: event.target.value });
+    	}
     }
 
     onKeyPress = (event) => {
-    	if (this.disabled) event.preventDefault();
+    	if (this.disabled) {
+    		event.preventDefault();
+    	}
     }
 
     onUnfocus = () => {
@@ -72,7 +77,7 @@ class InputBox extends React.Component {
     	//also I'm too far deep into the sunk cost fallacy to turn back now
     		<Input 
     			ref={this.props.innerRef} 
-    			type="text" 
+    			type={this.props.password && this.state.text !== this.props.default ? "password" : "text"}
     			value={this.state.text} 
     			onClick={this.clearOnClick} 
     			onSelect={this.clearOnClick} 
