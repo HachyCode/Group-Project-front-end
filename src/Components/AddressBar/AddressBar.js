@@ -37,10 +37,10 @@ class AddressBar extends React.Component {
 
 					<AddressBox>
 						<Address>Gadgets for you</Address>
-						<Address>144 Number Street</Address>
-						<Address>town</Address>
-						<Address>location</Address>
-						<Address>Post Code</Address>
+						<Address>Park Crescent</Address>
+						<Address>Peterborough</Address>
+						<Address>Cambridgeshire</Address>
+						<Address>PE1 4DZ</Address>
 					</AddressBox>
                 
 
