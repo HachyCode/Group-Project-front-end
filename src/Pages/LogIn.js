@@ -15,7 +15,7 @@ import {
 	BannerHider
 } from '../Components/PageCSS/LogInCSS';
 import FixedWarningBox from '../Components/FixedWarningBox/FixedWarningBox';
-import {eventBus, WarningBoxVisibilityUpdate} from '../EventBus';
+import {eventBus, WarningBoxVisibilityUpdate, RouterUpdate} from '../EventBus';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 
@@ -45,7 +45,8 @@ function LogIn() {
 					if (response["data"]["token"]) {
 						//successful login
 						//set SESSION variable to token response
-						sessionStorage.setItem("user_token", response["token"]);
+						sessionStorage.setItem(Config.userTokenSession, response["token"]);
+						eventBus.emit(RouterUpdate);
 						//send them to the home page
 						history.push("/home");
 					} else {
@@ -73,9 +74,6 @@ function LogIn() {
 		<div>
 			<MainDiv>
 				{/*Daniel*/}
-				{/*<ProfileSidebar>
-                    <ProfilePic alt="profile"/>
-                </ProfileSidebar>*/}
 				<MainPageBody>
 					<Logo alt="logo"/>
 					<LoginBody>
