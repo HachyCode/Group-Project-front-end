@@ -3,27 +3,27 @@ import axios from 'axios';
 import Config from '../Config';
 import {withRouter, useHistory} from 'react-router-dom';
 import {
-	MainDiv, 
-	MainPageBody, 
-	LoginBody, 
-	LoginSidePadding, 
-	LoginMainArea, 
-	LoginButton, 
-	LoginBox, 
-	WarningBox, 
-	Logo, 
-	BannerHider
+	MainDiv,
+	Background,
+	LoginBody,
+	LoginButton,
+	LoginBox,
+	WarningBox,
+	WarningMesage,
+	Logo,
+	WarningIcon,
+	WarningText
 } from '../Components/PageCSS/LogInCSS';
 import FixedWarningBox from '../Components/FixedWarningBox/FixedWarningBox';
 import {eventBus, WarningBoxVisibilityUpdate, RouterUpdate} from '../EventBus';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
+import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import background from '../Images/Background/Orange_3.jpg';
+import logo from '../Images/Logo/black_logo.png';
 
 function LogIn() {
+	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
 	const id = React.useRef(null);
 	const password = React.useRef(null);
-	//I shouldn't have to use this but apparently I do
-	//is it too late to make this a Vue site?
 	const userDefault = "Email";
 	const pwdDefault = "Password";
 	const history = useHistory();
@@ -72,40 +72,32 @@ function LogIn() {
 
 	return (
 		<div>
+			<Background alt="Background" src={background}/>
 			<MainDiv>
-				{/*Daniel*/}
-				<MainPageBody>
-					<Logo alt="logo"/>
-					<LoginBody>
-						<LoginSidePadding>&nbsp;</LoginSidePadding>
-						<LoginMainArea>
-							<LoginBox ref={id} id="staffID" default={userDefault}/>
-							<LoginBox 
-								ref={password} 
-								id="password" 
-								default={pwdDefault}
-								password={true}
-							/>
-							<LoginButton onClick={login}>Log In</LoginButton>
-						</LoginMainArea>
-						<LoginSidePadding>&nbsp;</LoginSidePadding>
-					</LoginBody>
-					<div>
-						<WarningBox>
-							<FontAwesomeIcon icon={faExclamationTriangle}/>
-							You need to log in to use this program
-							<FontAwesomeIcon icon={faExclamationTriangle}/>
-						</WarningBox>
-					</div>
-				</MainPageBody>
-				<FixedWarningBox
-					content="Username or password is incorrect!"
-					visible={false}
-					color={"white"}
-					backgroundColor={"red"}
-					bottom={0}
-					left={"33vw"}
-				/>
+				<Logo alt="logo" src={logo}/>
+				<LoginBody>
+					<FixedWarningBox
+						content="Username or password is incorrect!"
+						visible={false}
+						color={"white"}
+						backgroundColor={"red"}
+					/>
+					<LoginBox ref={id} id="staffID" default={userDefault}/>
+					<LoginBox 
+						ref={password}
+						id="password"
+						default={pwdDefault}
+						password={true}
+					/>
+					<LoginButton onClick={login}>Log In</LoginButton>
+				</LoginBody>
+				<WarningBox>
+					<WarningMesage>
+						<WarningIcon icon={faInfoCircle}/>
+						<WarningText>You need to log in to use this program</WarningText> 
+						<WarningIcon icon={faInfoCircle}/>
+					</WarningMesage>
+				</WarningBox>
 			</MainDiv>
 		</div>
 	);
