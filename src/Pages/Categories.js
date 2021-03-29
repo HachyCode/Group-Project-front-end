@@ -7,8 +7,11 @@ import {
 	SpacedLabel,
 	SupplierNameFilter,
 	AmountFilter,
-	DeliveryTimeFilter
+	DeliveryTimeFilter,
+	ProductCodeFilter
 } from '../Components/PageCSS/CategoriesCSS';
+import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
+import {CategoriesList} from '../Data/CategoriesList';
 
 function genItems(){
 	return [
@@ -25,12 +28,13 @@ function Categories() {
 			</SearchBox>
 			<FilterBox>
 				<SpacedLabel contents="Image"/>
-				<SupplierNameFilter default="SupplierName"/>
-				<AmountFilter default="Amount"/>
-				<DeliveryTimeFilter default="DeliveryTime"/>
+				<ProductCodeFilter name="Product Code" sortId="productCode"/>
+				<SupplierNameFilter name="Supplier Name" sortID="supplierName"/>
+				<AmountFilter name="Amount" sortID="amount"/>
+				<DeliveryTimeFilter name="Delivery Time" sortID="deliveryTime"/>
 			</FilterBox>
 			<CategoriesBox>
-				Categories
+				<CategoriesListArea categoriesData={CategoriesList}/>
 			</CategoriesBox>
 		</div>
 	);

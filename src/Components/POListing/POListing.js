@@ -10,13 +10,21 @@ class POListing extends React.Component {
 		this.props = props;
 	}
 
-	componentDidMount() {
-		eventBus.on(StatusBarShouldUpdate, () => {this.forceUpdate();});
+	componentDidMount = () => {
+		eventBus.on(StatusBarShouldUpdate, this.forceUpdate);
+	}
+
+	componentWillUnmount = () => {
+		eventBus.off(StatusBarShouldUpdate, this.forceUpdate);
+	}
+
+	goToPoForm = () => {
+		this.props.history.push("/poForm");
 	}
 
     render = () => {
     	return (
-    		<Box className = {this.props.className} onClick={() => this.props.history.push("/poForm")}>
+    		<Box className = {this.props.className} onClick={this.goToPoForm}>
     			<POIDSections>
     				{this.props.poID}
     			</POIDSections>
