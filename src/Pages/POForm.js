@@ -17,6 +17,11 @@ import {
 	SecondLeftLabelBox,
 } from '../Components/PageCSS/POsCSS';
 import { useLocation } from 'react-router';
+import {getDataOfCurrentUser} from '../Data/UserData';
+import Config from '../Config';
+
+const currentUser = getDataOfCurrentUser();
+const annOrJason = currentUser.username === Config.annID || currentUser.username === Config.jasonID;
 
 function POForm() {
 	const location = useLocation();

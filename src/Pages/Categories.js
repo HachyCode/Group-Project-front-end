@@ -13,12 +13,6 @@ import {
 import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
 import {CategoriesList} from '../Data/CategoriesList';
 
-function genItems(){
-	return [
-
-	];
-}
-
 function Categories() {
 	return (
 		<div>
