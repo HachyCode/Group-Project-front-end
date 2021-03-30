@@ -42,4 +42,19 @@ function getDataFromDB() {
 	];
 }
 
-export let POList = getDataFromDB();
+let POList = getDataFromDB();
+
+function updateByPOID(poID, newPO) {
+	for (const po of POList) {
+		if (po.poID === poID) {
+			po.supplier = newPO.supplier;
+			po.progress = newPO.progress;
+		}
+	}
+}
+
+function updateDB() {
+	//take data from POList
+}
+
+export {POList, updateDB, updateByPOID};

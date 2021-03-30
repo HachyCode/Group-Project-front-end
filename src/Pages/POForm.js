@@ -27,7 +27,6 @@ function POForm() {
 	const location = useLocation();
 	let POListingData = false;
 	if (location.state) {
-		console.log(!!location.state.poID);
 		POListingData = [ 
 			{
 				poID: location.state.poID,
