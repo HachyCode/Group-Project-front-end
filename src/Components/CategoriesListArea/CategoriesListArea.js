@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoriesAccordion from '../CategoriesAccordion/CategoriesAccordion';
+import {StyledCategoriesAccordion, CategoriesListAreaBox} from './CategoriesListAreaCSS';
 
 /*
 props:
@@ -15,7 +15,7 @@ class CategoriesListArea extends React.Component {
 		let result = [];
 
 		for (let i = 0; i < this.props.categoriesData.length; i++) {
-			result.push(<CategoriesAccordion 
+			result.push(<StyledCategoriesAccordion 
 				image={this.props.categoriesData[i].image}
 				productCode={this.props.categoriesData[i].productCode}
 				supplierName={this.props.categoriesData[i].supplierName}
@@ -31,9 +31,9 @@ class CategoriesListArea extends React.Component {
 
 	render = () => {
 		return (
-			<div>
+			<CategoriesListAreaBox>
 				{this.generateCategoriesAccordions()}
-			</div>
+			</CategoriesListAreaBox>
 		);
 	}
 }

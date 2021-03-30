@@ -19,7 +19,15 @@ class POListing extends React.Component {
 	}
 
 	goToPoForm = () => {
-		this.props.history.push("/poForm");
+		this.props.history.push({
+			pathname: "/poForm",
+			//search: "", TODO: have IDs for POForms
+			state: {
+				poID: this.props.poID,
+				supplier: this.props.supplier,
+				progress: this.props.progress,
+			} //TEMP: replace with a POForm ID later
+		});
 	}
 
     render = () => {

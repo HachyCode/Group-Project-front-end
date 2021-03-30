@@ -2,11 +2,16 @@ import React from 'react';
 import { 
 	AccordionDropdownBox, 
 	AccordionMainBox,
-	DropDownBoxLabelsSection
+	DropDownBoxLabelsSection,
+	AccordionContainer,
+	ImageBox,
+	ProductCodeBox,
+	SupplierNameBox,
+	AmountBox,
+	DeliveryTimeBox,
+	StyledCategoriesElement
 } from './CategoriesAccordionCSS';
 import Label from '../Label/Label';
-import CategoriesElement from '../CategoriesElement/CategoriesElement';
-
 
 /*
 	props:
@@ -43,10 +48,8 @@ class CategoriesAccordion extends React.Component {
 	generateCategories = () => {
 		let result = [];
 
-		console.log(!!this.categoriesData);
-
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
-			result.push(<CategoriesElement
+			result.push(<StyledCategoriesElement
 				supplierName={this.categoriesData[i].supplierName}
 				cost={this.categoriesData[i].cost}
 				deliveryTime={this.categoriesData[i].deliveryTime}
@@ -58,21 +61,23 @@ class CategoriesAccordion extends React.Component {
 
 	render = () => {
 		return (
-			<div>
+			<AccordionContainer>
 				<AccordionMainBox onClick={this.toggleExpanded}>
-					<img src={this.props.image} alt="Missing image"/>
-					<div>
+					<ImageBox>
+						<img src={this.props.image} alt="missing"/>
+					</ImageBox>
+					<ProductCodeBox>
 						{this.props.productCode}
-					</div>
-					<div>
+					</ProductCodeBox>
+					<SupplierNameBox>
 						{this.props.supplierName}
-					</div>
-					<div>
+					</SupplierNameBox>
+					<AmountBox>
 						{this.props.amount}
-					</div>
-					<div>
+					</AmountBox>
+					<DeliveryTimeBox>
 						{this.props.deliveryTime + " days"}
-					</div>
+					</DeliveryTimeBox>
 				</AccordionMainBox>
 				<AccordionDropdownBox visible={this.state.showingAccordion}>
 					<DropDownBoxLabelsSection>
@@ -82,7 +87,7 @@ class CategoriesAccordion extends React.Component {
 					</DropDownBoxLabelsSection>
 					{this.generateCategories()}
 				</AccordionDropdownBox>
-			</div>
+			</AccordionContainer>
 		);
 	}
 }
