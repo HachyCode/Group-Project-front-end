@@ -1,89 +1,96 @@
 import styled from 'styled-components';
 import InputBox from '../InputBox/InputBox';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-//formatting elements
+export const Background = styled.img`
+    height: 100vh;
+    width: 100vw;
+
+    position: absolute;
+    z-index: 1;
+`;
+
 export const MainDiv = styled.div`
     display: flex;
-    flex-direction: row;
-    height: 93vh;
+    flex-direction: column;
+    z-index: 10;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    background: transparent;
 `;
 
-export const ProfileSidebar = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 25%;
-    border-right: 1px solid black;
-`;
-
-export const MainPageBody = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+export const Logo = styled.img`
+    height: 5em;
+    width: 13em;
+    margin: 2em 0 0 2em;
 `;
 
 export const LoginBody = styled.div`
     display: flex;
-    flex-flow: row nowrap;
-`;
-
-export const LoginSidePadding = styled.div`
-    padding-left: 25%;
-`;
-
-export const LoginMainArea = styled.div`
-    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width:50%;
+    height: 60vh;
 `;
-
 //actual components
 export const LoginButton = styled.button`
-    margin-top: 1em;
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 4em;
+    padding: 1em 5em;
+    margin: 1em 0 2em 0;
+
+    border-radius: 30px;
+    border: none;
+    background: #FF9E00;
+    font-size: 1.1em;
 `;
 
 export const LoginBox = styled(InputBox)`
-    margin-left: 2em;
-    margin-right: 2em;
-    margin-bottom: 2em;
-    height: 3em;
+    padding: 1em 2em;
+    margin: 0 0 1em 0;
+    font-size: 1.1em;
+    width: 50vw;
+
+    border-radius: 30px;
+    border: none;
+    color: black;
+
+    background: rgb(230, 230, 230, 0.7);
 `;
 
 export const WarningBox = styled.div`
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 5px;
-    padding-left: 27%;
-    margin-left: 2em;
-    margin-right: 2em;
-    margin-top: 25vh;
-    height: 15vh;
     display: flex;
+    justify-content: center;
     align-items: center;
 `;
 
-export const Logo = styled.img`
-    height: 100px;
-    width: 300px;
+export const WarningMesage = styled.div`
+    padding: 1em;
+    font-size: 1.1em;
+    width: 50vw;
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(to right, rgb(230, 230, 230), rgb(230, 230, 230, 0.2), rgb(230, 230, 230)) ;
 `;
 
-export const ProfilePic = styled.img`
-    margin-left: 20%;
-    margin-bottom: 10%;
-    width: 13vw;
-    height: 13vw;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 50%;
+export const WarningIcon = styled(FontAwesomeIcon)`
+    color: #FF9E00;
+    font-size: 2em;
 `;
-export const BannerHider = styled.div`
-    background-color: white;
-    zIndex: 99;
-    width: 100%;
-    height: 7vh;
+
+export const WarningText = styled.div`
+    width: 42vw;
+    padding: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
 `;
+
+
+
+
