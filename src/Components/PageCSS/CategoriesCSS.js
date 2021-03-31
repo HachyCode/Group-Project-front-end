@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import SearchBar from '../SearchBar/SearchBar';
 import Label from '../Label/Label';
 import DropDownSelect from '../DropDownSelect/DropDownSelect';
+import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
 
 export const SearchBox = styled.div`
     display: flex;
@@ -27,15 +28,19 @@ export const SpacedLabel = styled(Label)`
     
 `;
 
-export const SupplierNameFilter = styled(DropDownSelect)`
+export const SupplierNameFilter = styled(SortingMagicButton)`
     
 `;
 
-export const AmountFilter = styled(DropDownSelect)`
+export const ProductCodeFilter = styled(SortingMagicButton)`
+
+`;
+
+export const AmountFilter = styled(SortingMagicButton)`
     
 `;
 
-export const DeliveryTimeFilter = styled(DropDownSelect)`
+export const DeliveryTimeFilter = styled(SortingMagicButton)`
     
 `;
 

@@ -16,15 +16,33 @@ import {
 	FirstLabelBox,
 	SecondLeftLabelBox,
 } from '../Components/PageCSS/POsCSS';
+import { useLocation } from 'react-router';
+import {getDataOfCurrentUser} from '../Data/UserData';
+import Config from '../Config';
+
+const currentUser = getDataOfCurrentUser();
+const annOrJason = currentUser.username === Config.annID || currentUser.username === Config.jasonID;
 
 function POForm() {
-	let POListingData = [
-		{
-			poID: "0000 0007",
-			supplier: "-",
-			progress: 0,
-		},
-	];
+	const location = useLocation();
+	let POListingData = false;
+	if (location.state) {
+		POListingData = [ 
+			{
+				poID: location.state.poID,
+				supplier: location.state.supplier,
+				progress: location.state.progress,
+			}
+		];
+	} else {
+		POListingData = [
+			{
+				poID: "0000 0007",
+				supplier: "-",
+				progress: 0,
+			},
+		];
+	}
 
 	return (
 		<div> 
