@@ -7,8 +7,8 @@ import {
 	SpacedLabel,
 	SupplierNameFilter,
 	AmountFilter,
-	DeliveryTimeFilter,
-	ProductCodeFilter
+	ProductCodeFilter,
+	FilterTop
 } from '../Components/PageCSS/CategoriesCSS';
 import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
 import {CategoriesList} from '../Data/CategoriesList';
@@ -16,17 +16,17 @@ import {CategoriesList} from '../Data/CategoriesList';
 function Categories() {
 	return (
 		<div>
-			{/*Viktorija*/}
-			<SearchBox>
-				<StyledSearchBar/>
-			</SearchBox>
-			<FilterBox>
-				<SpacedLabel contents="Image"/>
-				<ProductCodeFilter name="Product Code" sortId="productCode"/>
-				<SupplierNameFilter name="Supplier Name" sortID="supplierName"/>
-				<AmountFilter name="Amount" sortID="amount"/>
-				<DeliveryTimeFilter name="Delivery Time" sortID="deliveryTime"/>
-			</FilterBox>
+			<FilterTop>
+				<SearchBox>
+					<StyledSearchBar/>
+				</SearchBox>
+				<FilterBox>
+					<SpacedLabel contents="Image"/>
+					<ProductCodeFilter name="Code" sortId="productCode"/>
+					<SupplierNameFilter name="Item Name" sortID="supplierName"/>
+					<AmountFilter name="QTY stored" sortID="amount"/>
+				</FilterBox>
+			</FilterTop>
 			<CategoriesBox>
 				<CategoriesListArea categoriesData={CategoriesList}/>
 			</CategoriesBox>

@@ -16,6 +16,13 @@ export const StyledSearchBar = styled(SearchBar)`
     width: 90%;
 `;
 
+export const FilterTop = styled.div`
+	position: sticky;
+	top: 50px;
+
+	background: white;
+`;
+
 export const FilterBox = styled.div`
     display: flex;
     flex-direction: row;
