@@ -23,7 +23,7 @@ function Categories() {
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
 					<ProductCodeFilter name="Code" sortId="productCode"/>
-					<SupplierNameFilter name="Item Name" sortID="supplierName"/>
+					<SupplierNameFilter name="Item Name" sortID="itemName"/>
 					<AmountFilter name="QTY stored" sortID="amount"/>
 				</FilterBox>
 			</FilterTop>

@@ -1,10 +1,12 @@
+import error from '../Images/CategorieItems/404error.png';
+
 function getCategories() {
 	//get stuff
 	return [
 		{
-			image: "",
+			image: error,
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
@@ -23,7 +25,7 @@ function getCategories() {
 		{
 			image: "",
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
@@ -42,7 +44,7 @@ function getCategories() {
 		{
 			image: "",
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
@@ -61,7 +63,7 @@ function getCategories() {
 		{
 			image: "",
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
@@ -80,7 +82,7 @@ function getCategories() {
 		{
 			image: "",
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
@@ -99,7 +101,7 @@ function getCategories() {
 		{
 			image: "",
 			productCode: "--------",
-			supplierName: "Shenxen Hosing Technology Development Co., Ltd.",
+			itemName: "Shenxen Hosing Technology Development Co., Ltd.",
 			amount: "---",
 			deliveryTime: 2,
 			categoriesData: [
