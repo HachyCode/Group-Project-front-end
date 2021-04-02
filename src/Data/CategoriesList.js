@@ -21,6 +21,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "PWR43",
@@ -39,6 +40,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "PWR44",
@@ -57,6 +59,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "SC01",
@@ -75,6 +78,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "PPF03",
@@ -93,6 +97,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "SW08",
@@ -116,6 +121,7 @@ function getCategories() {
 				},
 			]
 		},
+
 		{
 			image: error,
 			productCode: "POL03",
@@ -134,6 +140,102 @@ function getCategories() {
 				},
 			]
 		},
+
+		{
+			image: error,
+			productCode: "NRF10",
+			itemName: "Nerf N-Strike Elite Disruptor",
+			amount: "199",
+			categoriesData: [
+				{
+					supplierName: "BI",
+					cost: "£12.99",
+					deliveryTime: 12,
+				},
+				{
+					supplierName: "SH",
+					cost: "£10.50",
+					deliveryTime: 30,
+				},
+			]
+		},
+
+		{
+			image: error,
+			productCode: "KST01",
+			itemName: "KLIKBOT Studio Thud",
+			amount: "199",
+			categoriesData: [
+				{
+					supplierName: "BS",
+					cost: "£9.92",
+					deliveryTime: 12,
+				},
+				{
+					supplierName: "SH",
+					cost: "£28.59",
+					deliveryTime: 30,
+				},
+			]
+		},
+
+		{
+			image: error,
+			productCode: "PIN00",
+			itemName: "Plan Toys Pinball",
+			amount: "199",
+			categoriesData: [
+				{
+					supplierName: "BI",
+					cost: "£40.00",
+					deliveryTime: 5,
+				},
+				{
+					supplierName: "CT",
+					cost: "£38.25",
+					deliveryTime: 6,
+				},
+			]
+		},
+
+		{
+			image: error,
+			productCode: "FP59",
+			itemName: "Funko Pop! Disney: Frozen 2 - Olaf",
+			amount: "199",
+			categoriesData: [
+				{
+					supplierName: "SH",
+					cost: "£7.50",
+					deliveryTime: 5,
+				},
+				{
+					supplierName: "CT",
+					cost: "£7.10",
+					deliveryTime: 6,
+				},
+			]
+		},
+
+		{
+			image: error,
+			productCode: "LEX95",
+			itemName: "LEGO Classic Bricks and Ideas - 11001",
+			amount: "199",
+			categoriesData: [
+				{
+					supplierName: "SH",
+					cost: "£7.68",
+					deliveryTime: 10,
+				},
+				{
+					supplierName: "CT",
+					cost: "£8.00",
+					deliveryTime: 5,
+				},
+			]
+		},
+
 	];
 }
 

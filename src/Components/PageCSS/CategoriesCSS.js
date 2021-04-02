@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import SearchBar from '../SearchBar/SearchBar';
 import Label from '../Label/Label';
-import DropDownSelect from '../DropDownSelect/DropDownSelect';
 import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
 
 export const MainBody = styled.div`
@@ -37,10 +36,14 @@ export const FilterBox = styled.div`
 export const SpacedLabel = styled(Label)`
 	margin: 0 1.5em 0 0;
 	width: 3em;
+
+	@media screen and (max-width: 700px){
+		margin: 0 1em 0 0;
+	}
 `;
 
 export const ItemNameFilterBox = styled.div`
-	margin: 0 1em 0 0;
+	margin: 0;
 	width: 10em;
 `;
 
@@ -50,7 +53,7 @@ export const ProductCodeFilterBox = styled.div`
 `;
 
 export const AmountFilterBox = styled.div`
-	margin: 0 0 0 4em;
+	margin: 0 0 0 5.5em;
 	width: 6em;
 
 	display: flex;
@@ -58,7 +61,7 @@ export const AmountFilterBox = styled.div`
 	align-items: center;
 
 	@media screen and (max-width: 700px){
-		margin: 0 0 0 3em;
+		margin: 0 0 0 1em;
 	}
 `;
 

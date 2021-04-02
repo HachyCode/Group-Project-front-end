@@ -64,6 +64,10 @@ export const SupplierNameBox = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	@media screen and (max-width: 700px){
+		width: 12em;
+	}
 `;
 export const AmountBox = styled.div`
 	margin: 0 2em;
