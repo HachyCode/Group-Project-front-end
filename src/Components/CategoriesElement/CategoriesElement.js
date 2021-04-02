@@ -1,5 +1,10 @@
 import React from 'react';
-import {MainBox} from './CategoriesElementCSS';
+import {
+	MainBox,
+	SupplierName,
+	Cost,
+	DeliveryTime
+} from './CategoriesElementCSS';
 
 /*
 props:
@@ -11,15 +16,15 @@ class CategoriesElement extends React.Component {
 	render = () => {
 		return (
 			<MainBox>
-				<div>
+				<SupplierName>
 					{this.props.supplierName}
-				</div>
-				<div>
+				</SupplierName>
+				<Cost>
 					{this.props.cost}
-				</div>
-				<div>
+				</Cost>
+				<DeliveryTime >
 					{this.props.deliveryTime}
-				</div>
+				</DeliveryTime >
 			</MainBox>
 		);
 	}

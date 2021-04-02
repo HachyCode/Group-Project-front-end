@@ -63,9 +63,7 @@ class CategoriesAccordion extends React.Component {
 		return (
 			<AccordionContainer>
 				<AccordionMainBox onClick={this.toggleExpanded}>
-					<ImageBox>
-						<img src={this.props.image} alt="missing"/>
-					</ImageBox>
+					<ImageBox src={this.props.image} alt="missing"/>
 					<ProductCodeBox>
 						{this.props.productCode}
 					</ProductCodeBox>
@@ -75,9 +73,6 @@ class CategoriesAccordion extends React.Component {
 					<AmountBox>
 						{this.props.amount}
 					</AmountBox>
-					<DeliveryTimeBox>
-						{this.props.deliveryTime + " days"}
-					</DeliveryTimeBox>
 				</AccordionMainBox>
 				<AccordionDropdownBox visible={this.state.showingAccordion}>
 					<DropDownBoxLabelsSection>

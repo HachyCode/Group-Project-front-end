@@ -1,36 +1,32 @@
 import React from 'react';
 import {
 	StyledSearchBar, 
-	SearchBox,
 	CategoriesBox,
 	FilterBox,
 	SpacedLabel,
-	SupplierNameFilter,
+	ItemNameFilter,
 	AmountFilter,
 	ProductCodeFilter,
-	FilterTop
+	FilterTop,
+	MainBody
 } from '../Components/PageCSS/CategoriesCSS';
 import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
 import {CategoriesList} from '../Data/CategoriesList';
 
 function Categories() {
 	return (
-		<div>
+		<MainBody>
 			<FilterTop>
-				<SearchBox>
-					<StyledSearchBar/>
-				</SearchBox>
+				<StyledSearchBar/>
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
 					<ProductCodeFilter name="Code" sortId="productCode"/>
-					<SupplierNameFilter name="Item Name" sortID="itemName"/>
+					<ItemNameFilter name="Item Name" sortID="itemName"/>
 					<AmountFilter name="QTY stored" sortID="amount"/>
 				</FilterBox>
 			</FilterTop>
-			<CategoriesBox>
-				<CategoriesListArea categoriesData={CategoriesList}/>
-			</CategoriesBox>
-		</div>
+			<CategoriesListArea categoriesData={CategoriesList}/>
+		</MainBody>
 	);
 }
 

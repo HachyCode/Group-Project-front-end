@@ -4,16 +4,24 @@ import Label from '../Label/Label';
 import DropDownSelect from '../DropDownSelect/DropDownSelect';
 import SortingMagicButton from '../SortingMagicButton/SortingMagicButton';
 
-export const SearchBox = styled.div`
+export const MainBody = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
+
+	@media screen and (max-width: 900px){
+		font-size: 0.8em;
+	}
+
+	@media screen and (max-width: 700px){
+		font-size: 0.7em;
+	}
 `;
 
 export const StyledSearchBar = styled(SearchBar)`
-    margin: 1em 1.5em;
-    width: 90%;
+    margin: 2em 1.5em;
+    width: 90vw;
 `;
 
 export const FilterTop = styled.div`
@@ -25,17 +33,16 @@ export const FilterTop = styled.div`
 
 export const FilterBox = styled.div`
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    margin: 2em 0;
 `;
 
 export const SpacedLabel = styled(Label)`
     
 `;
 
-export const SupplierNameFilter = styled(SortingMagicButton)`
+export const ItemNameFilter = styled(SortingMagicButton)`
     
 `;
 
@@ -45,12 +52,4 @@ export const ProductCodeFilter = styled(SortingMagicButton)`
 
 export const AmountFilter = styled(SortingMagicButton)`
     
-`;
-
-export const DeliveryTimeFilter = styled(SortingMagicButton)`
-    
-`;
-
-export const CategoriesBox = styled.div`
-
 `;
