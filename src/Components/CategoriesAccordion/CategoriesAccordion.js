@@ -9,9 +9,11 @@ import {
 	SupplierNameBox,
 	AmountBox,
 	DeliveryTimeBox,
-	StyledCategoriesElement
+	StyledCategoriesElement,
+	SupplierNameLabel,
+	CostLabel,
+	DeliveryTimeLabel
 } from './CategoriesAccordionCSS';
-import Label from '../Label/Label';
 
 /*
 	props:
@@ -63,9 +65,7 @@ class CategoriesAccordion extends React.Component {
 		return (
 			<AccordionContainer>
 				<AccordionMainBox onClick={this.toggleExpanded}>
-					<ImageBox>
-						<img src={this.props.image} alt="missing"/>
-					</ImageBox>
+					<ImageBox src={this.props.image} alt="missing"/>
 					<ProductCodeBox>
 						{this.props.productCode}
 					</ProductCodeBox>
@@ -75,15 +75,12 @@ class CategoriesAccordion extends React.Component {
 					<AmountBox>
 						{this.props.amount}
 					</AmountBox>
-					<DeliveryTimeBox>
-						{this.props.deliveryTime + " days"}
-					</DeliveryTimeBox>
 				</AccordionMainBox>
 				<AccordionDropdownBox visible={this.state.showingAccordion}>
 					<DropDownBoxLabelsSection>
-						<Label contents="Supplier Name"/>
-						<Label contents="Cost"/>
-						<Label contents="Delivery Time"/>
+						<SupplierNameLabel contents="Supplier Name"/>
+						<CostLabel contents="Cost"/>
+						<DeliveryTimeLabel contents="Delivery Time"/>
 					</DropDownBoxLabelsSection>
 					{this.generateCategories()}
 				</AccordionDropdownBox>

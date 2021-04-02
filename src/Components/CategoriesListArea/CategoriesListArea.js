@@ -18,7 +18,7 @@ class CategoriesListArea extends React.Component {
 			result.push(<StyledCategoriesAccordion 
 				image={this.props.categoriesData[i].image}
 				productCode={this.props.categoriesData[i].productCode}
-				supplierName={this.props.categoriesData[i].supplierName}
+				supplierName={this.props.categoriesData[i].itemName}
 				amount={this.props.categoriesData[i].amount}
 				deliveryTime={this.props.categoriesData[i].deliveryTime}
 				categoriesData={this.props.categoriesData[i].categoriesData}
