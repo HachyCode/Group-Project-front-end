@@ -10,12 +10,8 @@ export const MainBody = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	@media screen and (max-width: 900px){
-		font-size: 0.8em;
-	}
-
 	@media screen and (max-width: 700px){
-		font-size: 0.7em;
+		font-size: 0.8em;
 	}
 `;
 
@@ -35,21 +31,39 @@ export const FilterBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2em 0;
+    margin: 1em 0;
 `;
 
 export const SpacedLabel = styled(Label)`
-    
+	margin: 0 1.5em 0 0;
+	width: 3em;
 `;
 
-export const ItemNameFilter = styled(SortingMagicButton)`
-    
+export const ItemNameFilterBox = styled.div`
+	margin: 0 1em 0 0;
+	width: 10em;
 `;
 
-export const ProductCodeFilter = styled(SortingMagicButton)`
-
+export const ProductCodeFilterBox = styled.div`
+	margin: 0 1em 0 0;
+	min-width: 7em;
 `;
 
-export const AmountFilter = styled(SortingMagicButton)`
-    
+export const AmountFilterBox = styled.div`
+	margin: 0 0 0 4em;
+	width: 6em;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@media screen and (max-width: 700px){
+		margin: 0 0 0 3em;
+	}
 `;
+
+export const ItemNameFilter = styled(SortingMagicButton)``;
+
+export const ProductCodeFilter = styled(SortingMagicButton)``;
+
+export const AmountFilter = styled(SortingMagicButton)``;

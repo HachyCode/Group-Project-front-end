@@ -8,7 +8,10 @@ import {
 	AmountFilter,
 	ProductCodeFilter,
 	FilterTop,
-	MainBody
+	MainBody,
+	ItemNameFilterBox,
+	ProductCodeFilterBox,
+	AmountFilterBox
 } from '../Components/PageCSS/CategoriesCSS';
 import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
 import {CategoriesList} from '../Data/CategoriesList';
@@ -20,9 +23,15 @@ function Categories() {
 				<StyledSearchBar/>
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
-					<ProductCodeFilter name="Code" sortId="productCode"/>
-					<ItemNameFilter name="Item Name" sortID="itemName"/>
-					<AmountFilter name="QTY stored" sortID="amount"/>
+					<ProductCodeFilterBox>
+						<ProductCodeFilter name="Code" sortId="productCode"/>
+					</ProductCodeFilterBox>
+					<ItemNameFilterBox>
+						<ItemNameFilter name="Item Name" sortID="itemName"/>
+					</ItemNameFilterBox>
+					<AmountFilterBox>
+						<AmountFilter name="QTY stored" sortID="amount"/>
+					</AmountFilterBox>
 				</FilterBox>
 			</FilterTop>
 			<CategoriesListArea categoriesData={CategoriesList}/>
