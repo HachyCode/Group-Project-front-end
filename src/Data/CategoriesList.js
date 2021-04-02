@@ -145,7 +145,7 @@ function getCategories() {
 			image: error,
 			productCode: "NRF10",
 			itemName: "Nerf N-Strike Elite Disruptor",
-			amount: "199",
+			amount: "173",
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -164,7 +164,7 @@ function getCategories() {
 			image: error,
 			productCode: "KST01",
 			itemName: "KLIKBOT Studio Thud",
-			amount: "199",
+			amount: "42",
 			categoriesData: [
 				{
 					supplierName: "BS",
@@ -183,7 +183,7 @@ function getCategories() {
 			image: error,
 			productCode: "PIN00",
 			itemName: "Plan Toys Pinball",
-			amount: "199",
+			amount: "10",
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -202,7 +202,7 @@ function getCategories() {
 			image: error,
 			productCode: "FP59",
 			itemName: "Funko Pop! Disney: Frozen 2 - Olaf",
-			amount: "199",
+			amount: "23",
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -221,7 +221,7 @@ function getCategories() {
 			image: error,
 			productCode: "LEX95",
 			itemName: "LEGO Classic Bricks and Ideas - 11001",
-			amount: "199",
+			amount: "255",
 			categoriesData: [
 				{
 					supplierName: "SH",
