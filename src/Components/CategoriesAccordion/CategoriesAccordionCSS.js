@@ -3,7 +3,7 @@ import CategoriesElement from '../CategoriesElement/CategoriesElement';
 import Label from '../Label/Label';
 
 export const AccordionMainBox = styled.div`
-	border: 2px solid #9D4EDD;
+	border: 2px solid #9D4EDD; //FF9E00 , 30 or less, <= 30 
     border-radius: 10px;
 
 	display: flex;
@@ -42,6 +42,7 @@ export const StyledCategoriesElement = styled(CategoriesElement)`
 `;
 
 export const AccordionContainer = styled.div`
+	
 `;
 
 export const ImageBox = styled.img`
@@ -63,10 +64,11 @@ export const SupplierNameBox = styled.div`
 
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
 
 	@media screen and (max-width: 700px){
 		width: 12em;
+		margin: 0;
 	}
 `;
 export const AmountBox = styled.div`
@@ -83,11 +85,14 @@ export const AmountBox = styled.div`
 `;
 
 export const SupplierNameLabel = styled(Label)`
-    
+    margin: 0 0.5em;
+	width: 7em;
 `;
 export const CostLabel = styled(Label)`
-    
+	margin: 0;
+	width: 3em;
 `;
 export const DeliveryTimeLabel = styled(Label)`
-    
+	margin: 0 0.5em;
+	width: 6em;
 `;
