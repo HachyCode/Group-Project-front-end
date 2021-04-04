@@ -16,7 +16,7 @@ import {
 import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListArea';
 import {CategoriesList} from '../Data/CategoriesList';
 
-function Categories() {
+function Categories(props) {
 	return (
 		<MainBody>
 			<FilterTop>
@@ -34,7 +34,7 @@ function Categories() {
 					</AmountFilterBox>
 				</FilterBox>
 			</FilterTop>
-			<CategoriesListArea categoriesData={CategoriesList}/>
+			<CategoriesListArea categoriesData={CategoriesList} selectableItems={props.selectableItems}/>
 		</MainBody>
 	);
 }
