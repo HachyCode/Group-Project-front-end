@@ -18,13 +18,13 @@ import {CategoriesList} from '../Data/CategoriesList';
 
 function Categories(props) {
 	return (
-		<MainBody>
+		<MainBody className={props.className}>
 			<FilterTop>
 				<StyledSearchBar/>
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
 					<ProductCodeFilterBox>
-						<ProductCodeFilter name="Code" sortId="productCode"/>
+						<ProductCodeFilter name="Code" sortID="productCode"/>
 					</ProductCodeFilterBox>
 					<ItemNameFilterBox>
 						<ItemNameFilter name="Item Name" sortID="itemName"/>

@@ -49,6 +49,12 @@ class CategoriesAccordion extends React.Component {
 		});
 	}
 
+	selectableElementClick = (categoriesItem) => {
+		if (this.props.selectableItems) {
+			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem});
+		}
+	}
+
 	generateCategories = () => {
 		let result = [];
 
@@ -63,12 +69,6 @@ class CategoriesAccordion extends React.Component {
 		}
 
 		return result;
-	}
-
-	selectableElementClick = (categoriesItem) => {
-		if (this.props.selectableItems) {
-			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem});
-		}
 	}
 
 	render = () => {
