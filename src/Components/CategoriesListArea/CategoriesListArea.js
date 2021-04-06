@@ -24,6 +24,7 @@ class CategoriesListArea extends React.Component {
 				deliveryTime={this.props.categoriesData[i].deliveryTime}
 				categoriesData={this.props.categoriesData[i].categoriesData}
 				selectableItems={this.props.selectableItems}
+				categoryID={this.props.categoryID}
 				key={i}
 			/>);
 		}

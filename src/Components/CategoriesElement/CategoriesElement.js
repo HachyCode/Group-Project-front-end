@@ -21,7 +21,7 @@ class CategoriesElement extends React.Component {
 
 	selectableElementClick = (categoriesItem) => {
 		if (this.props.selectableItems) {
-			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem});
+			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem, categoryID: this.props.categoryID});
 		}
 	}
 

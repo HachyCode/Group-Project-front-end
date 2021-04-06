@@ -34,7 +34,11 @@ function Categories(props) {
 					</AmountFilterBox>
 				</FilterBox>
 			</FilterTop>
-			<CategoriesListArea categoriesData={CategoriesList} selectableItems={props.selectableItems}/>
+			<CategoriesListArea 
+				categoriesData={CategoriesList} 
+				selectableItems={props.selectableItems}
+				categoryID={!!props.categoryID ? props.categoryID : -1}
+			/>
 		</MainBody>
 	);
 }
