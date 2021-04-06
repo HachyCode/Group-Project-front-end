@@ -38,7 +38,7 @@ class PoOrderAddItemButton extends React.Component {
 			<div>
 				<OrderAddBtn onClick={this.addItemPress}>{this.state.text}</OrderAddBtn>
 				<CategoriesDiv 
-					selectableItems={true}
+					selectableItems
 					displayCategories={this.state.categoriesVisible}
 				/>
 			</div>

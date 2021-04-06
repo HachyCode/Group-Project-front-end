@@ -14,7 +14,6 @@ import {
 	CostLabel,
 	DeliveryTimeLabel
 } from './CategoriesAccordionCSS';
-import {eventBus, CategoryClick} from '../../EventBus';
 
 /*
 	props:
@@ -49,22 +48,13 @@ class CategoriesAccordion extends React.Component {
 		});
 	}
 
-	selectableElementClick = (categoriesItem) => {
-		if (this.props.selectableItems) {
-			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem});
-		}
-	}
-
 	generateCategories = () => {
 		let result = [];
 
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
 			result.push(<StyledCategoriesElement
-				supplierName={this.categoriesData[i].supplierName}
-				cost={this.categoriesData[i].cost}
-				deliveryTime={this.categoriesData[i].deliveryTime}
+				categoriesItem={this.categoriesData[i]}
 				selectableItems={this.props.selectableItems}
-				onClick={() => {this.selectableElementClick(this.categoriesData[i]);}}
 			/>);
 		}
 

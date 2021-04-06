@@ -5,6 +5,7 @@ import {
 	Cost,
 	DeliveryTime
 } from './CategoriesElementCSS';
+import {eventBus, CategoryClick} from '../../EventBus';
 
 /*
 props:
@@ -13,17 +14,28 @@ props:
 	deliveryTime
 */
 class CategoriesElement extends React.Component {
+	constructor(props) {
+		super(props);
+		this.props = props;
+	}
+
+	selectableElementClick = (categoriesItem) => {
+		if (this.props.selectableItems) {
+			eventBus.emit(CategoryClick, {categoriesItem: categoriesItem});
+		}
+	}
+
 	render = () => {
 		return (
-			<MainBox>
+			<MainBox className={this.props.className} onClick={() => this.selectableElementClick(this.props.categoriesItem)}>
 				<SupplierName>
-					{this.props.supplierName}
+					{this.props.categoriesItem.supplierName}
 				</SupplierName>
 				<Cost>
-					{this.props.cost}
+					{this.props.categoriesItem.cost}
 				</Cost>
 				<DeliveryTime >
-					{this.props.deliveryTime}
+					{this.props.categoriesItem.deliveryTime}
 				</DeliveryTime >
 			</MainBox>
 		);
