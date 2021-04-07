@@ -5,7 +5,8 @@ import Home from './Pages/Home';
 import Categories from './Pages/Categories';
 import POs from './Pages/POs';
 import POForm from './Pages/POForm';
-import LogOff from './Pages/LogIn';
+import LogOff from './Pages/LogOff';
+import LogIn from './Pages/LogIn';
 import Config from './Config';
 import React from 'react';
 import {eventBus, RouterUpdate} from './EventBus';
@@ -44,7 +45,8 @@ class App extends React.Component {
 					<Route path='/categories' component={Categories} />
 					<Route path='/pos' component={POs} />
 					<Route path='/poForm' component={POForm} />
-					<Route path='/' component={LogOff} />
+					<Route path='/logOff' component={LogOff} />
+					<Route path='/' component={LogIn} />
 				</Switch>
 			</Router>
 		);

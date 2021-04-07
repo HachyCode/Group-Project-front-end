@@ -27,6 +27,7 @@ import {
 			cost
 			deliveryTime
 		]
+		selectableItems
 
 
 */
@@ -52,9 +53,9 @@ class CategoriesAccordion extends React.Component {
 
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
 			result.push(<StyledCategoriesElement
-				supplierName={this.categoriesData[i].supplierName}
-				cost={this.categoriesData[i].cost}
-				deliveryTime={this.categoriesData[i].deliveryTime}
+				categoriesItem={this.categoriesData[i]}
+				selectableItems={this.props.selectableItems}
+				categoryID={this.props.categoryID}
 			/>);
 		}
 

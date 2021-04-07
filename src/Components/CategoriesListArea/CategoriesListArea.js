@@ -4,6 +4,7 @@ import {StyledCategoriesAccordion, CategoriesListAreaBox} from './CategoriesList
 /*
 props:
 	categoriesData
+	selectableItems - clicked items in a Category will emit an event and have the mouseover thingy
 */
 class CategoriesListArea extends React.Component {
 	constructor(props) {
@@ -22,6 +23,8 @@ class CategoriesListArea extends React.Component {
 				amount={this.props.categoriesData[i].amount}
 				deliveryTime={this.props.categoriesData[i].deliveryTime}
 				categoriesData={this.props.categoriesData[i].categoriesData}
+				selectableItems={this.props.selectableItems}
+				categoryID={this.props.categoryID}
 				key={i}
 			/>);
 		}

@@ -4,6 +4,7 @@ export const MainBox = styled.div`
 	display: flex;
 	align-items: center;
 	margin: 0 0 0.5em 0;
+	cursor: ${props => props.selectableItems ? "pointer" : "default"};
 `;
 
 export const SupplierName = styled.div`

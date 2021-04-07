@@ -10,6 +10,7 @@ import {
 	SmallFilter,
 	LargeFilter
 } from './PoOrdersCSS';
+import PoOrderAddItemButton from '../PoOrderAddItemButton/PoOrderAddItemButton';
 
 function PoOrders() {
 	return (
@@ -32,10 +33,14 @@ function PoOrders() {
 					<SmallText>£____.___</SmallText>{/* Unit Price */}
 					<SmallText>£________.__</SmallText>{/* Sub-Total */}
 				</ItemBox>
+				<PoOrderAddItemButton text="Add Item"/>
+				<PoOrderAddItemButton text="Add Item"/>
+				<PoOrderAddItemButton text="Add Item"/>
+				<PoOrderAddItemButton text="Add Item"/>
+				{/*<OrderAddBtn>Add Item</OrderAddBtn>
 				<OrderAddBtn>Add Item</OrderAddBtn>
 				<OrderAddBtn>Add Item</OrderAddBtn>
-				<OrderAddBtn>Add Item</OrderAddBtn>
-				<OrderAddBtn>Add Item</OrderAddBtn>
+				<OrderAddBtn>Add Item</OrderAddBtn>*/}
 			</OrderBox>
 		</div>
 	);

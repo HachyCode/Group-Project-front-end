@@ -5,6 +5,7 @@ const Config = {
 	//don't know why there's a space in ann's ID and not in jason's but whatever
 	annID: "GRE 056",
 	jasonID: "BRE510",
+	developerAccountIDs: ["DEV024"],
 };
 
 export default Config;

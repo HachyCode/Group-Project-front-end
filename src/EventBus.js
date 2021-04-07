@@ -26,6 +26,7 @@ class EventBus {
   
 export const eventBus = new EventBus();
 
+//TODO: move these to a separate file
 export const NewsBoxClick = "NewsBoxClick";
 //hacky but lol
 export const ForceUpdate = "ForceUpdate";
@@ -34,3 +35,4 @@ export const SortingUpdate = "SortingUpdate";
 export const StatusBarShouldUpdate = "StatusBarShouldUpdate";
 export const WarningBoxVisibilityUpdate = "WarningBoxVisibilityUpdate";
 export const RouterUpdate = "RouterUpdate";
+export const CategoryClick = "CategoryClick";
