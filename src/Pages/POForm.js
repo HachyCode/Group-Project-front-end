@@ -77,8 +77,8 @@ function POForm() {
 				<Logo/>
 				<MainPoInfo ID = {location.state.poID}/>
 			</MainInfoBox>
-			<Address/>
-			<Orders OrderSupplier = {location.state.supplier}/>
+			<Address OrderSupplier = {location.state.supplier}/>
+			<Orders/>
 			<Totals/>
 			<Authorisation/>
 		</div>
