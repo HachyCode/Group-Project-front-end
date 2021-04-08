@@ -75,10 +75,10 @@ function POForm() {
 			<ThreeButtons/>
 			<MainInfoBox>
 				<Logo/>
-				<MainPoInfo/>
+				<MainPoInfo ID = {location.state.poID}/>
 			</MainInfoBox>
 			<Address/>
-			<Orders/>
+			<Orders OrderSupplier = {location.state.supplier}/>
 			<Totals/>
 			<Authorisation/>
 		</div>
