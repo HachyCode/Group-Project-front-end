@@ -20,11 +20,11 @@ class MainPoInfo extends React.Component{
 				<InfoBox>
 					<Box>
 						<Text>SA Name: </Text>
-						<Input/>
+						<TextAnswer>Name</TextAnswer>
 					</Box>
 					<Box>
 						<Text>SA ID: </Text>
-						<Input/>
+						<TextAnswer>ID</TextAnswer>
 					</Box>
 					<Box>
 						<Text>PO Form ID: </Text>

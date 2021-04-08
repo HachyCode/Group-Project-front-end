@@ -37,25 +37,7 @@ export const TextAnswer = styled.div`
     padding: 2px 10px;
     margin: 0 1em;
     font-size: 1.2rem;
-    background: palevioletred;
-
-    @media screen and (max-width: 1000px) {
-        font-size: 1rem;
-    }
-
-    @media screen and (max-width: 500px) {
-        font-size: 1rem;
-        width: 15em;
-    }
-`;
-
-export const Input = styled.input`
-    width: 25em;
-    padding: 2px 10px;
-    margin: 0 1em;
-    font-size: 1.2rem;
-    background: palevioletred;
-    border: transparent ;
+    background: #FF9E00;
 
     @media screen and (max-width: 1000px) {
         font-size: 1rem;
