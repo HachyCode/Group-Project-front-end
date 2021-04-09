@@ -4,7 +4,7 @@ import {Address} from './AddressBarCSS';
 class AddressStatements extends React.Component {
 	render(){
 		switch(parseInt(this.props.supplier)){
-		case 0:
+		case -1:
 			return(
 				<div>
 					<Address>
@@ -25,7 +25,7 @@ class AddressStatements extends React.Component {
 				</div>
 			);
 
-		case 1:
+		case 0:
 			return(
 				<div>
 					<Address>
@@ -46,7 +46,7 @@ class AddressStatements extends React.Component {
 				</div>
 			);
 
-		case 2:
+		case 1:
 			return(
 				<div>
 					<Address>
@@ -67,7 +67,7 @@ class AddressStatements extends React.Component {
 				</div>
 			);
 
-		case 3:
+		case 2:
 			return(
 				<div>
 					<Address>
@@ -88,7 +88,7 @@ class AddressStatements extends React.Component {
 				</div>
 			);
 
-		case 4:
+		case 3:
 			return(
 				<div>
 					<Address>

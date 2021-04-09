@@ -36,7 +36,7 @@ function getDataFromDB() {
 		},
 		{
 			poID: "0000 0007",
-			supplier: "-",
+			supplier: null,
 			progress: 0,
 		},
 	];
@@ -53,8 +53,16 @@ function updateByPOID(poID, newPO) {
 	}
 }
 
+function getByPOID(poID) {
+	for (const po of POList) {
+		if (po.poID === poID) {
+			return po;
+		}
+	}
+}
+
 function updateDB() {
 	//take data from POList
 }
 
-export {POList, updateDB, updateByPOID};
+export {POList, updateDB, updateByPOID, getByPOID};

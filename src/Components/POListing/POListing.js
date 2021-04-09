@@ -37,7 +37,7 @@ class POListing extends React.Component {
     				{this.props.poID}
     			</POIDSections>
     			<SupplierSections>
-    				{this.props.supplier}
+    				{this.props.supplier ? this.props.supplier : "-"}
     			</SupplierSections>
     			<StatusBar barID={this.props.barID} progress={this.props.progress}/>
     		</Box>

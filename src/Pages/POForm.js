@@ -1,5 +1,5 @@
 import React from 'react';
-import Address from '../Components/AddressBar/AddressBar';
+import AddressBar from '../Components/AddressBar/AddressBar';
 import ThreeButtons from '../Components/ThreeButtons/ThreeButtons';
 import Logo from '../Components/Logo/Logo';
 import MainPoInfo from '../Components/MainPoInfo/MainPoInfo';
@@ -77,7 +77,7 @@ function POForm() {
 				<Logo/>
 				<MainPoInfo/>
 			</MainInfoBox>
-			<Address/>
+			<AddressBar poItem={POListingData[0]}/>
 			<Orders/>
 			<Totals/>
 			<Authorisation/>
