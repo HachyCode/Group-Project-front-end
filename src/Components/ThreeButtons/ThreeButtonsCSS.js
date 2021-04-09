@@ -21,8 +21,8 @@ export const RightBtn = styled.div`
 
 export const Btn = styled.button`
     border-radius: 20px;
-    border: 2px solid palevioletred;
-    color: palevioletred;
+    border: 2px solid #9D4EDD;
+    color: #9D4EDD;
     margin: 0 1em;
     padding: 0.25em 1em;
     font-size: 1.5rem;

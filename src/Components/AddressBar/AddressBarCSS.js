@@ -66,6 +66,6 @@ export const Select = styled.select`
     border: 6px solid transparent;
     border-color: transparent transparent;
 
-    background: purple;
-    color: #fff;
+    background: #9D4EDD;
+    color: #000;
 `;

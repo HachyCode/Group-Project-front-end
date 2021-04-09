@@ -43,12 +43,8 @@ const Navbar = ({ toggle }) => {
                     POs
 					</NavLink>
 
-					<NavLink to='/poForm' activeStyle onClick={toggleHome}>
-                    POForm
-					</NavLink>
-
 					<NavLink to='/logOff' activeStyle onClick={toggleHome}>
-                    LogOff
+                    Log-Out
 					</NavLink>
 				</NavMenu>
 			</Nav>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Address from '../Components/AddressBar/AddressBar';
 import ThreeButtons from '../Components/ThreeButtons/ThreeButtons';
-import Logo from '../Components/Logo/Logo';
 import MainPoInfo from '../Components/MainPoInfo/MainPoInfo';
 import {
 	MainInfoBox, 
@@ -23,6 +22,8 @@ import {
 import {useLocation} from 'react-router';
 import {getDataOfCurrentUser} from '../Data/UserData';
 import Config from '../Config';
+import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
+import Logo from '../Images/Logo/black_logo.png';
 
 const currentUser = getDataOfCurrentUser();
 const annOrJason = currentUser.username === Config.annID || 
@@ -74,10 +75,10 @@ function POForm() {
 			</TopMainBody>
 			<ThreeButtons/>
 			<MainInfoBox>
-				<Logo/>
-				<MainPoInfo/>
+				<TopBoxImage alt="logo" src={Logo}/>
+				<MainPoInfo ID = {location.state.poID}/>
 			</MainInfoBox>
-			<Address/>
+			<Address OrderSupplier = {location.state.supplier}/>
 			<Orders/>
 			<Totals/>
 			<Authorisation/>
