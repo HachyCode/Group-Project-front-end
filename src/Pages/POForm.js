@@ -75,7 +75,7 @@ function POForm() {
 			<ThreeButtons/>
 			<MainInfoBox>
 				<Logo/>
-				<MainPoInfo/>
+				<MainPoInfo poItem={POListingData[0]}/>
 			</MainInfoBox>
 			<AddressBar poItem={POListingData[0]}/>
 			<Orders/>

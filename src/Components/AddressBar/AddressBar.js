@@ -9,15 +9,6 @@ import {
 import AddressStatements from './AddressStatements';
 import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
 
-const options = [
-	{ value: 0, label: 'Select Supplier'},
-
-	{ value: 1, label: 'Bitmore Inc'},
-	{ value: 2, label: 'Cottage Toys'},
-	{ value: 3, label: 'BrainStorm Ltd'},
-	{ value: 4, label: 'Shenzhen Hosing Technology Development Co., Ltd'},
-];
-
 //TODO: Separate Address and supplier box
 class AddressBar extends React.Component {
 	constructor(props) {
