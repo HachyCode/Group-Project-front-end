@@ -16,3 +16,11 @@ export function getSupplierFromName(name) {
 		}
 	}
 }
+
+export function getSupplierFromID(id) {
+	for (const supplier of Suppliers) {
+		if (supplier.supplierID === id) {
+			return supplier.supplierName;
+		}
+	}
+}
