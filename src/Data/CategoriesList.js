@@ -1,8 +1,9 @@
 import error from '../Images/CategorieItems/404error.png';
+import axios from 'axios';
+import Config from '../Config';
 
 function getCategories() {
-	//get stuff
-	return [
+	const result = [
 		{
 			image: error,
 			productCode: "PWR41",
@@ -237,6 +238,30 @@ function getCategories() {
 		},
 
 	];
+
+	//REMOVEME when the data for products is done on backend
+	return result;
+
+	axios.get(Config.serverLocation +  "/products", {
+		'Content-Type': 'application/json',
+		'Authorization': sessionStorage.getItem(Config.userTokenSession)
+	}).then(
+		(response) => {
+			result = [];
+			for (const item of response["data"]) {
+				result.push({
+					image: error,
+					productCode: item["productCode"],
+					itemName: item["productName"],
+					amount: 30
+				});
+			}
+
+			return result;
+		}
+	);
+	//get stuff
+	return ;
 }
 
 export let CategoriesList = getCategories();

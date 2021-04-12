@@ -62,7 +62,10 @@ class POListingArea extends React.Component {
 		if (data.sortingID === "supplier") {
 			let newListingData = this.state.poListingData.sort((a, b) => {
 				//adapted from https://stackoverflow.com/a/45544166
-				return a.supplier.localeCompare(b.supplier);
+				//it will error if we give it null for supplier (which it is until one is selected so we replace it with '-')
+				const aSupplier = a.supplier ? a.supplier : "-";
+				const bSupplier = b.supplier ? b.supplier : "-";
+				return aSupplier.localeCompare(bSupplier);
 			});
 
 			if (data.sortDirection === descending) {
