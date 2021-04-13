@@ -3,7 +3,8 @@ import {
 	InfoBox, 
 	Box, 
 	Text, 
-	Input
+	Input,
+	TextAnswer
 } from './MainPoInfoCSS';
 import {getSupplierFromName} from '../../Data/Suppliers';
 import {eventBus, POFormDone} from '../../EventBus';
@@ -32,22 +33,18 @@ class MainPoInfo extends React.Component {
 	render = () => {
 		return (
 			<div>
-				<div/>
 				<InfoBox>
 					<Box>
 						<Text>SA Name: </Text>
-						<Input value={this.props.poItem.supplier} onChange={(e) => {this.saName = e.target.value;}}/>
+						<TextAnswer>Name</TextAnswer>
 					</Box>
 					<Box>
 						<Text>SA ID: </Text>
-						<Input defaultValue={this.props.poItem.poID} onChange={(e) => {this.saID = e.target.value;}}/>
+						<TextAnswer>ID</TextAnswer>
 					</Box>
 					<Box>
 						<Text>PO Form ID: </Text>
-						<Input 
-							defaultValue={getSupplierFromName(this.props.poItem.supplier)} 
-							onChange={(e) => {this.poFormID = e.target.value;}}
-						/>
+						<TextAnswer>{this.props.ID}</TextAnswer>
 					</Box>
 				</InfoBox>
 			</div>

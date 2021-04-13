@@ -9,14 +9,38 @@ import {
 import AddressStatements from './AddressStatements';
 import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
 
-//TODO: Separate Address and supplier box
+const options = [
+	{ value: 0, label: 'Select Supplier'},
+
+	{ value: 1, label: 'Bitmore Inc'},
+	{ value: 2, label: 'Cottage Toys'},
+	{ value: 3, label: 'BrainStorm Ltd'},
+	{ value: 4, label: 'Shenzhen Hosing Technology Development Co., Ltd.'},
+];
 class AddressBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.props = props;
-		this.state = {
-			supplier: -1
-		};
+		if (this.props.OrderSupplier === 'Bitmore Inc'){
+			this.state = {
+				supplier: 1
+			};
+		}else if (this.props.OrderSupplier === 'Cottage Toys'){
+			this.state = {
+				supplier: 2
+			};
+		}else if (this.props.OrderSupplier === 'BrainStorm Ltd'){
+			this.state = {
+				supplier: 3
+			};
+		}else if (this.props.OrderSupplier === 'Shenzhen Hosing Technology Development Co., Ltd.'){
+			this.state = {
+				supplier: 4
+			};
+		}else{
+			this.state = {
+				supplier: 0
+			};
+		}
 		this.handleChange = this.handleChange.bind(this);
 		console.log(this.props.poItem.supplier);
 	}
