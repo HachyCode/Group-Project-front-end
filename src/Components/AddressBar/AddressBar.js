@@ -20,32 +20,14 @@ const options = [
 class AddressBar extends React.Component {
 	constructor(props) {
 		super(props);
-		if (this.props.OrderSupplier === 'Bitmore Inc'){
-			this.state = {
-				supplier: 1
-			};
-		}else if (this.props.OrderSupplier === 'Cottage Toys'){
-			this.state = {
-				supplier: 2
-			};
-		}else if (this.props.OrderSupplier === 'BrainStorm Ltd'){
-			this.state = {
-				supplier: 3
-			};
-		}else if (this.props.OrderSupplier === 'Shenzhen Hosing Technology Development Co., Ltd.'){
-			this.state = {
-				supplier: 4
-			};
-		}else{
-			this.state = {
-				supplier: 0
-			};
-		}
-		this.handleChange = this.handleChange.bind(this);
+		this.state = {
+			supplier: this.props.OrderSupplier ? this.props.OrderSupplier : -1
+		};
+		
 		console.log(this.props.poItem.supplier);
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 		console.log("Supplier Selected!!");
 		this.setState({ supplier: getSupplierFromName(e.target.value) });
 	}
@@ -67,7 +49,9 @@ class AddressBar extends React.Component {
 					<AddressBox>
 						<Supplier>
 							<Select 
-								value={this.props.poItem.supplierName ? this.props.poItem.supplierName : this.state.supplier} 
+								defaultValue={
+									this.props.poItem.supplierName ? this.props.poItem.supplierName : this.state.supplier
+								} 
 								onChange={this.handleChange} 
 								disabled={!!this.props.poItem.supplier}
 							>

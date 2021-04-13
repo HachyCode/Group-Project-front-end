@@ -3,7 +3,6 @@ import Config from '../Config';
 
 export function getDataOfCurrentUser() {
 	const userToken = sessionStorage.getItem(Config.userTokenSession);
-	console.log("get data current user: " + userToken);
 
 	if (userToken) {
 		return axios.get(Config.serverLocation + "/user/me", {
@@ -16,7 +15,7 @@ export function getDataOfCurrentUser() {
 					createdAt: response["data"]["Created at"],
 					username: response["data"]["Username"],
 					email: response["data"]["Email Address"],
-					password: response["data"]["Password"],
+					staffID: response["data"]["StaffID"],
 				};
 			}
 		);

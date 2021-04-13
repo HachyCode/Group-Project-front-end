@@ -6,19 +6,31 @@ import {
 	Input,
 	TextAnswer
 } from './MainPoInfoCSS';
-import {getSupplierFromName} from '../../Data/Suppliers';
 import {eventBus, POFormDone} from '../../EventBus';
+import {getDataOfCurrentUser} from '../../Data/UserData';
+import {getByPOID} from '../../Data/POList';
 
 class MainPoInfo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		this.saName = "";
-		this.saID = "";
-		this.poFormID = "";
+		this.po = getByPOID(props.ID);
+		
+		this.state = {
+			saName: "",
+			saID: "",
+			poFormID: props.ID
+		};
+		
+		this.currentUser = getDataOfCurrentUser();
 	}
 
 	donePressed = () => {
+		this.setState({
+			saName: (this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
+			saID: (this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
+		});
+		
 		//this.props.poItem.supplier = 
 	}
 
@@ -36,15 +48,15 @@ class MainPoInfo extends React.Component {
 				<InfoBox>
 					<Box>
 						<Text>SA Name: </Text>
-						<TextAnswer>Name</TextAnswer>
+						<TextAnswer>{this.state.saName ? this.state.saName : "-"}</TextAnswer>
 					</Box>
 					<Box>
 						<Text>SA ID: </Text>
-						<TextAnswer>ID</TextAnswer>
+						<TextAnswer>{this.state.saID ? this.state.saID : "-"}</TextAnswer>
 					</Box>
 					<Box>
 						<Text>PO Form ID: </Text>
-						<TextAnswer>{this.props.ID}</TextAnswer>
+						<TextAnswer>{this.state.poFormID}</TextAnswer>
 					</Box>
 				</InfoBox>
 			</div>
