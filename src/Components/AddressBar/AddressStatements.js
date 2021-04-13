@@ -3,6 +3,7 @@ import {Address} from './AddressBarCSS';
 
 class AddressStatements extends React.Component {
 	render(){
+		//TODO: dynamically generate address from database
 		switch(parseInt(this.props.supplier)){
 		case -1:
 			return(

@@ -23,13 +23,11 @@ class AddressBar extends React.Component {
 		this.state = {
 			supplier: this.props.OrderSupplier ? this.props.OrderSupplier : -1
 		};
-		
-		console.log(this.props.poItem.supplier);
 	}
 
 	handleChange = (e) => {
 		console.log("Supplier Selected!!");
-		this.setState({ supplier: getSupplierFromName(e.target.value) });
+		this.setState({ supplier: e.target.value });
 	}
 
 	render() {
@@ -49,9 +47,7 @@ class AddressBar extends React.Component {
 					<AddressBox>
 						<Supplier>
 							<Select 
-								defaultValue={
-									this.props.poItem.supplierName ? this.props.poItem.supplierName : this.state.supplier
-								} 
+								value={this.state.supplier}
 								onChange={this.handleChange} 
 								disabled={!!this.props.poItem.supplier}
 							>
@@ -61,7 +57,7 @@ class AddressBar extends React.Component {
 								))}
 							</Select>
 						</Supplier>
-						<AddressStatements supplier={this.state.supplier}/>
+						<AddressStatements supplier={this.state.supplier === -1 ? -1 : getSupplierFromName(this.state.supplier)}/>
 					</AddressBox>
 
 				</AddressDiv>
