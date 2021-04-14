@@ -46,7 +46,7 @@ function LogIn() {
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
-						//received in App.js
+						//Received in App.js
 						eventBus.emit(RouterUpdate);
 						//send them to the home page
 						history.push("/home");

@@ -31,7 +31,7 @@ class POs extends React.Component {
 
 		POList.push({
 			poID: finalID,
-			supplier: "-",
+			supplier: null,
 			progress: 0,
 		});
 
@@ -61,7 +61,7 @@ class POs extends React.Component {
 						</SearchRow>
 					</FilterTop>
 					<StyledPOListingArea poListingData={POList}/>
-					<AddPOButton onClick={this.addPOButtonPress}>Add</AddPOButton>
+					<AddPOButton onClick={this.addPOButtonPress}>+</AddPOButton>
 				</MainBody>
 			</div>
 		);

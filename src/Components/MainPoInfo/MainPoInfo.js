@@ -23,12 +23,13 @@ class MainPoInfo extends React.Component {
 		};
 		
 		this.currentUser = getDataOfCurrentUser();
+		console.log(JSON.stringify("userobj: " + this.currentUser));
 	}
 
 	donePressed = () => {
 		this.setState({
-			saName: (this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
-			saID: (this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
+			saName: (this.state.saName && this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
+			saID: (this.state.saID && this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
 		});
 		
 		//this.props.poItem.supplier = 
