@@ -34,7 +34,6 @@ class MainPoInfo extends React.Component {
 
 	async componentDidMount() {
 		this.currentUser = await getDataOfCurrentUser();
-		console.log(JSON.stringify("userobj: " + JSON.stringify(this.currentUser)));
 		eventBus.on(POFormDone, this.donePressed);
 	}
 
