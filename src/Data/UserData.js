@@ -2,7 +2,7 @@ import axios from 'axios';
 import Config from '../Config';
 
 export function getDataOfCurrentUser() {
-	const userToken = sessionStorage.getItem(Config.userTokenSession).toString();
+	const userToken = sessionStorage.getItem(Config.userTokenSession);
 	console.log("token: " + userToken);
 
 	if (userToken) {
