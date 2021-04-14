@@ -72,3 +72,5 @@ export const SpacedLabel = styled(Label)`
 export const StyledPOListingArea = styled(POListingArea)`
 	
 `;
+
+export const AddPOButton = styled.button``;

@@ -55,6 +55,7 @@ class CategoriesAccordion extends React.Component {
 			result.push(<StyledCategoriesElement
 				categoriesItem={this.categoriesData[i]}
 				selectableItems={this.props.selectableItems}
+				itemName={this.props.supplierName}
 				categoryID={this.props.categoryID}
 			/>);
 		}

@@ -52,7 +52,7 @@ function POForm() {
 	}
 
 	return (
-		<div> 
+		<div>
 			<TopMainBody>
 				<FilterTop>
 					<SearchRow>
@@ -76,9 +76,9 @@ function POForm() {
 			<ThreeButtons/>
 			<MainInfoBox>
 				<TopBoxImage alt="logo" src={Logo}/>
-				<MainPoInfo ID = {location.state.poID}/>
+				<MainPoInfo ID={location.state.poID}/>
 			</MainInfoBox>
-			<Address OrderSupplier = {location.state.supplier}/>
+			<Address poItem={POListingData[0]} OrderSupplier={location.state.supplier}/>
 			<Orders/>
 			<Totals/>
 			<Authorisation/>

@@ -21,7 +21,7 @@ class PoOrderAddItemButton extends React.Component {
 
 	selectItem = (data) => {
 		if (data.categoryID === this.state.id) {
-			this.setState({text: data.categoriesItem.supplierName, categoriesVisible: false});
+			this.setState({text: data.itemName + ", " + data.categoriesItem.supplierName, categoriesVisible: false});
 		}
 	}
 

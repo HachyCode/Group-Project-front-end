@@ -7,6 +7,7 @@ import {
 	Select
 } from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
+import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
 
 const options = [
 	{ value: 0, label: 'Select Supplier'},
@@ -19,38 +20,19 @@ const options = [
 class AddressBar extends React.Component {
 	constructor(props) {
 		super(props);
-		if (this.props.OrderSupplier == 'Bitmore Inc'){
-			this.state = {
-				supplier: 1
-			};
-		}else if (this.props.OrderSupplier == 'Cottage Toys'){
-			this.state = {
-				supplier: 2
-			};
-		}else if (this.props.OrderSupplier == 'BrainStorm Ltd'){
-			this.state = {
-				supplier: 3
-			};
-		}else if (this.props.OrderSupplier == 'Shenzhen Hosing Technology Development Co., Ltd.'){
-			this.state = {
-				supplier: 4
-			};
-		}else{
-			this.state = {
-				supplier: 0
-			};
-		}
-		this.handleChange = this.handleChange.bind(this);
+		this.state = {
+			supplier: this.props.OrderSupplier ? this.props.OrderSupplier : -1
+		};
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 		console.log("Supplier Selected!!");
 		this.setState({ supplier: e.target.value });
 	}
 
 	render() {
 		return (
-			<div>
+			<div className={this.props.className}>{/*Viktorija*/}
 				<AddressDiv>
 
 					<AddressBox>
@@ -64,13 +46,18 @@ class AddressBar extends React.Component {
 
 					<AddressBox>
 						<Supplier>
-							<Select value={this.state.supplier} onChange={this.handleChange}>
-								{options.map((option) => (
-									<option value={option.value}>{option.label}</option>
+							<Select 
+								value={this.state.supplier}
+								onChange={this.handleChange} 
+								disabled={!!this.props.poItem.supplier}
+							>
+								<option value={-1} disabled>Select Supplier</option>
+								{Suppliers.map((option) => (
+									<option value={option.supplierName}>{option.supplierName}</option>
 								))}
 							</Select>
 						</Supplier>
-						<AddressStatements supplier = {this.state.supplier}/>
+						<AddressStatements supplier={this.state.supplier === -1 ? -1 : getSupplierFromName(this.state.supplier)}/>
 					</AddressBox>
 
 				</AddressDiv>

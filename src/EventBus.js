@@ -36,3 +36,5 @@ export const StatusBarShouldUpdate = "StatusBarShouldUpdate";
 export const WarningBoxVisibilityUpdate = "WarningBoxVisibilityUpdate";
 export const RouterUpdate = "RouterUpdate";
 export const CategoryClick = "CategoryClick";
+export const POFormSave = "POFormSave";
+export const POFormDone = "POFormDone";
