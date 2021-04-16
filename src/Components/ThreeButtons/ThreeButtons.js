@@ -2,7 +2,7 @@ import React from 'react';
 import {Btn, BtnBox, LeftBtn, RightBtn} from './ThreeButtonsCSS';
 import {eventBus, POFormDone, POFormSave} from '../../EventBus';
 
-function ThreeButtons() {
+function ThreeButtons(props) {
 	return (
 		<div>
 			<BtnBox>

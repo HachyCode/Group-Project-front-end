@@ -2,7 +2,7 @@ import error from '../Images/CategorieItems/404error.png';
 import axios from 'axios';
 import Config from '../Config';
 
-function getCategories() {
+async function getCategories() {
 	const result = [
 		{
 			image: error,
@@ -242,9 +242,11 @@ function getCategories() {
 	//REMOVEME when the data for products is done on backend
 	return result;
 
-	axios.get(Config.serverLocation +  "/products", {
-		'Content-Type': 'application/json',
-		'Authorization': sessionStorage.getItem(Config.userTokenSession)
+	return await axios.get(Config.serverLocation +  "/products", {
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': sessionStorage.getItem(Config.userTokenSession)
+		}
 	}).then(
 		(response) => {
 			result = [];

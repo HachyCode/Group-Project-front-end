@@ -38,3 +38,4 @@ export const RouterUpdate = "RouterUpdate";
 export const CategoryClick = "CategoryClick";
 export const POFormSave = "POFormSave";
 export const POFormDone = "POFormDone";
+export const POFormShouldUpdate = "POFormShouldUpdate";
