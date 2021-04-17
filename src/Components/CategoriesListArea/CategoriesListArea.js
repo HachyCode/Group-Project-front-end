@@ -34,7 +34,7 @@ class CategoriesListArea extends React.Component {
 
 	render = () => {
 		return (
-			<CategoriesListAreaBox>
+			<CategoriesListAreaBox >
 				{this.generateCategoriesAccordions()}
 			</CategoriesListAreaBox>
 		);
