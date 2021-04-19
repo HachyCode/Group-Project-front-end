@@ -10,7 +10,8 @@ import {
 	SmallFilter,
 	LargeFilter
 } from './PoOrdersCSS';
-import PoOrderAddItemButton from '../PoOrderAddItemButton/PoOrderAddItemButton';
+import POFormItemSelection from '../POFormItemSelection/POFormItemSelection';
+import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
 
 function PoOrders(props) {
 	return (
@@ -25,22 +26,19 @@ function PoOrders(props) {
 					<SmallFilter>Sub-Total</SmallFilter>
 				</ItemBox>
 				<Line/>
-				<ItemBox>
-					<SmallText>999999999</SmallText>{/* Order ID */}
-					<SmallText>NRF10</SmallText>{/* Item ID */}
-					<LargeText>LEGO Classic Bricks and Ideas - 11001</LargeText>{/* Item Name */}
-					<Qty/>{/* QTY */}
-					<SmallText>£____.___</SmallText>{/* Unit Price */}
-					<SmallText>£________.__</SmallText>{/* Sub-Total */}
-				</ItemBox>
-				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
-				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
-				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
-				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
-				{/*<OrderAddBtn>Add Item</OrderAddBtn>
-				<OrderAddBtn>Add Item</OrderAddBtn>
-				<OrderAddBtn>Add Item</OrderAddBtn>
-				<OrderAddBtn>Add Item</OrderAddBtn>*/}
+				<SelectedPOFormItem orderID={999999999} itemID="NRF10" itemName="LEGO Classic Bricks and Ideas - 11001"/>
+				{/*<ItemBox>
+					<SmallText>999999999</SmallText>{/* Order ID /}
+					<SmallText>NRF10</SmallText>{/* Item ID /}
+					<LargeText>LEGO Classic Bricks and Ideas - 11001</LargeText>{/* Item Name /}
+					<Qty/>{/* QTY /}
+					<SmallText>£____.___</SmallText>{/* Unit Price /}
+					<SmallText>£________.__</SmallText>{/* Sub-Total /}
+				</ItemBox>*/}
+				<POFormItemSelection poID={props.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poID} text="Add Item"/>
 			</OrderBox>
 		</div>
 	);

@@ -8,17 +8,9 @@ import {
 } from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
 import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
-import {eventBus, POFormDone, POFormShouldUpdate, StatusBarShouldUpdate} from '../../EventBus';
+import {eventBus, POFormDone, POFormSend, POFormShouldUpdate, StatusBarShouldUpdate} from '../../EventBus';
 import {updateByPOID} from '../../Data/POList';
 
-const options = [
-	{ value: 0, label: 'Select Supplier'},
-
-	{ value: 1, label: 'Bitmore Inc'},
-	{ value: 2, label: 'Cottage Toys'},
-	{ value: 3, label: 'BrainStorm Ltd'},
-	{ value: 4, label: 'Shenzhen Hosing Technology Development Co., Ltd.'},
-];
 class AddressBar extends React.Component {
 	constructor(props) {
 		super(props);
@@ -27,13 +19,13 @@ class AddressBar extends React.Component {
 		};
 	}
 
-	donePressed = () => {
-		if (this.state.supplier !== -1) {
+	setProgress = (progress) => {
+		if (this.state.supplier !== -1 && this.props.poItem.progress < progress) {
 			this.props.poItem.supplier = this.state.supplier;
 			
 			//0 is falsy so this should work for that as well
 			if (!this.props.poItem.progress) {
-				this.props.poItem.progress = 1;
+				this.props.poItem.progress = progress;
 			}
 
 			updateByPOID(this.props.poItem.poID, this.props.poItem);
@@ -43,12 +35,22 @@ class AddressBar extends React.Component {
 		}
 	}
 
+	donePressed = () => {
+		this.setProgress(1);
+	}
+
+	sendPressed = () => {
+		this.setProgress(4);
+	}
+
 	componentDidMount = () => {
 		eventBus.on(POFormDone, this.donePressed);
+		eventBus.on(POFormSend, this.sendPressed);
 	}
 
 	componentWillUnmount = () => {
 		eventBus.off(POFormDone, this.donePressed);
+		eventBus.off(POFormSend, this.sendPressed);
 	}
 
 	handleChange = (e) => {
