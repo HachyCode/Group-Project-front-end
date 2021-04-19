@@ -18,7 +18,7 @@ class POFormItemSelection extends React.Component {
 
 	onSelectItem = (categoriesItem) => {
 		this.setState({
-			selectedItem: true,
+			selectedItem: categoriesItem,
 			itemID: categoriesItem.productCode,
 			itemName: categoriesItem.itemName,
 			unitPrice: getPriceBySupplierForCategory(categoriesItem.productCode, categoriesItem.supplierName)
@@ -40,3 +40,5 @@ class POFormItemSelection extends React.Component {
 		);
 	}
 }
+
+export default POFormItemSelection;
