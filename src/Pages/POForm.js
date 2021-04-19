@@ -100,7 +100,7 @@ class POForm extends React.Component {
 					<MainPoInfo poItem={this.POListingData[0]} ID={this.props.location.state.poID}/>
 				</MainInfoBox>
 				<Address poItem={this.POListingData[0]} OrderSupplier={this.props.location.state.supplier}/>
-				<Orders/>
+				<Orders poItem={this.POListingData[0]}/>
 				<Totals/>
 				<Authorisation/>
 			</div>

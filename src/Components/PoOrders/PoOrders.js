@@ -12,7 +12,7 @@ import {
 } from './PoOrdersCSS';
 import PoOrderAddItemButton from '../PoOrderAddItemButton/PoOrderAddItemButton';
 
-function PoOrders() {
+function PoOrders(props) {
 	return (
 		<div>
 			<OrderBox>
@@ -33,10 +33,10 @@ function PoOrders() {
 					<SmallText>£____.___</SmallText>{/* Unit Price */}
 					<SmallText>£________.__</SmallText>{/* Sub-Total */}
 				</ItemBox>
-				<PoOrderAddItemButton text="Add Item"/>
-				<PoOrderAddItemButton text="Add Item"/>
-				<PoOrderAddItemButton text="Add Item"/>
-				<PoOrderAddItemButton text="Add Item"/>
+				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
+				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
+				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
+				<PoOrderAddItemButton poID={props.poID} text="Add Item"/>
 				{/*<OrderAddBtn>Add Item</OrderAddBtn>
 				<OrderAddBtn>Add Item</OrderAddBtn>
 				<OrderAddBtn>Add Item</OrderAddBtn>

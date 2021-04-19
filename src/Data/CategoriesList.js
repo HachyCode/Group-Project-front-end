@@ -267,3 +267,17 @@ async function getCategories() {
 }
 
 export let CategoriesList = getCategories();
+
+export function getPriceBySupplierForCategory(categoryID, supplierID) {
+	for (const item of CategoriesList) {
+		if (item.productCode === categoryID) {
+			for (const catData of item.categoriesData) {
+				if (catData.supplierName === supplierID) {
+					return catData.cost;
+				}
+			}
+		}
+	}
+
+	return false;
+}

@@ -8,7 +8,7 @@ class SelectedPOFormItem extends React.Component {
 		this.props = props;
 
 		this.state = {
-			quantity: this.props.unitPrice
+			quantity: 1
 		};
 	}
 
