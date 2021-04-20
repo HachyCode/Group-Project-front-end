@@ -2,6 +2,8 @@ import React from 'react';
 import PoOrderAddItemButton from '../PoOrderAddItemButton/PoOrderAddItemButton';
 import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
 import {getPriceBySupplierForCategory} from '../../Data/CategoriesList';
+import {getSupplierFromAbbrev} from '../../Data/Suppliers';
+import {numPriceFromFormattedPrice} from '../../Utillity';
 
 class POFormItemSelection extends React.Component {
 	constructor(props) {
@@ -18,10 +20,20 @@ class POFormItemSelection extends React.Component {
 
 	onSelectItem = (data) => {
 		console.log(JSON.stringify(data));
+		//the naming has become a mess
+		const actualSupplierName = getSupplierFromAbbrev(data.categoriesItem.supplierName);
+		let unitPrice = getPriceBySupplierForCategory(data.productCode, data.categoriesItem.supplierName);
+
+		if (unitPrice.startsWith("£")) {
+			unitPrice = numPriceFromFormattedPrice(unitPrice);
+		}
+
+		console.log(unitPrice + ", " + typeof unitPrice);
+
 		this.setState({
 			itemID: data.productCode,
 			itemName: data.itemName,
-			unitPrice: getPriceBySupplierForCategory(data.productCode, data.supplierName),
+			unitPrice: unitPrice,
 			selectedItem: data.categoriesItem
 		});
 	}
@@ -34,10 +46,10 @@ class POFormItemSelection extends React.Component {
 						orderID={this.props.poID}
 						itemID={this.state.itemID}
 						itemName={this.state.itemName}
+						unitPrice={this.state.unitPrice}
 					/> : <PoOrderAddItemButton 
 						text={this.props.text} 
 						onSelectItem={this.onSelectItem}
-						unitPrice={this.state.unitPrice}
 						supplierFilter={this.props.supplierFilter}
 					/>}
 			</div>
