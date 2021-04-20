@@ -5,6 +5,7 @@ import {StyledCategoriesAccordion, CategoriesListAreaBox} from './CategoriesList
 props:
 	categoriesData
 	selectableItems - clicked items in a Category will emit an event and have the mouseover thingy
+	supplierFilter - the only supplier to show
 */
 class CategoriesListArea extends React.Component {
 	constructor(props) {
@@ -14,8 +15,10 @@ class CategoriesListArea extends React.Component {
 
 	generateCategoriesAccordions = () => {
 		let result = [];
+		console.log("gen accordions, len: " + this.props.categoriesData.length);
 
 		for (let i = 0; i < this.props.categoriesData.length; i++) {
+			console.log("accordion push");
 			result.push(<StyledCategoriesAccordion 
 				image={this.props.categoriesData[i].image}
 				productCode={this.props.categoriesData[i].productCode}
@@ -25,6 +28,7 @@ class CategoriesListArea extends React.Component {
 				categoriesData={this.props.categoriesData[i].categoriesData}
 				selectableItems={this.props.selectableItems}
 				categoryID={this.props.categoryID}
+				supplierFilter={this.props.supplierFilter}
 				key={i}
 			/>);
 		}
@@ -34,7 +38,7 @@ class CategoriesListArea extends React.Component {
 
 	render = () => {
 		return (
-			<CategoriesListAreaBox>
+			<CategoriesListAreaBox className={this.props.className}>
 				{this.generateCategoriesAccordions()}
 			</CategoriesListAreaBox>
 		);

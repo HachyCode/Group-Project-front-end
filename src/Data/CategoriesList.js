@@ -2,7 +2,8 @@ import error from '../Images/CategorieItems/404error.png';
 import axios from 'axios';
 import Config from '../Config';
 
-async function getCategories() {
+//future me: don't set this to async or you break categories.
+function getCategories() {
 	const result = [
 		{
 			image: error,
@@ -241,7 +242,10 @@ async function getCategories() {
 
 	//REMOVEME when the data for products is done on backend
 	return result;
+}
 
+async function getCategoriesAsync() {
+	let result = [];
 	return await axios.get(Config.serverLocation +  "/products", {
 		headers: {
 			'Content-Type': 'application/json',
@@ -262,8 +266,6 @@ async function getCategories() {
 			return result;
 		}
 	);
-	//get stuff
-	return ;
 }
 
 export let CategoriesList = getCategories();

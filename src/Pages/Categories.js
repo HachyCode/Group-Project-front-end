@@ -17,6 +17,7 @@ import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListA
 import {CategoriesList} from '../Data/CategoriesList';
 
 function Categories(props) {
+	console.log(JSON.stringify(CategoriesList));
 	return (
 		<MainBody className={props.className}>
 			<FilterTop>

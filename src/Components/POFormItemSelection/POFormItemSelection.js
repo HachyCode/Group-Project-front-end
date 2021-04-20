@@ -14,6 +14,8 @@ class POFormItemSelection extends React.Component {
 			itemName: "",
 			unitPrice: 0
 		};
+
+		console.log("const: " + !!this.state.selectedItem);
 	}
 
 	onSelectItem = (categoriesItem) => {
@@ -25,18 +27,19 @@ class POFormItemSelection extends React.Component {
 		});
 	}
 
+	generateContents = () => {
+		console.log("gen: " + !!this.state.selectedItem + ", " + this.state.selectedItem);
+		return !!this.state.selectedItem ?
+			<SelectedPOFormItem
+				orderID={this.props.poID}
+				itemID={this.state.itemID}
+				itemName={this.state.itemName}
+			/> : <PoOrderAddItemButton text={this.props.text} onSelectItem={this.onSelectItem}/>;
+	}
+
 	render = () => {
 		return (
-			<div>{
-				this.state.selectedItem ? 
-					<PoOrderAddItemButton text={this.props.text} onSelectItem={this.onSelectItem}/> :
-					<SelectedPOFormItem 
-						orderID={this.props.poID} 
-						itemID={this.state.itemID}
-						itemName={this.state.itemName}
-					/> 
-			}
-			</div>
+			<div>{this.generateContents()}</div>
 		);
 	}
 }

@@ -28,6 +28,7 @@ import {
 			deliveryTime
 		]
 		selectableItems
+		supplierFilter
 
 
 */
