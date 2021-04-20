@@ -242,6 +242,8 @@ function getCategories() {
 
 	//REMOVEME when the data for products is done on backend
 	return result;
+
+	return (async () => {await getCategoriesAsync();})();
 }
 
 async function getCategoriesAsync() {

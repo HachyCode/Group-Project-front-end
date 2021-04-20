@@ -17,6 +17,10 @@ class AddressBar extends React.Component {
 		this.state = {
 			supplier: this.props.OrderSupplier ? this.props.OrderSupplier : -1
 		};
+
+		if (this.state.supplier !== -1) {
+			this.props.updateFilter(this.state.supplier);
+		}
 	}
 
 	setProgress = (progress) => {
@@ -56,6 +60,7 @@ class AddressBar extends React.Component {
 	handleChange = (e) => {
 		console.log("Supplier Selected!!");
 		this.setState({ supplier: e.target.value });
+		this.props.updateFilter(e.target.value);
 	}
 
 	render() {

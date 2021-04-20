@@ -14,32 +14,33 @@ class POFormItemSelection extends React.Component {
 			itemName: "",
 			unitPrice: 0
 		};
-
-		console.log("const: " + !!this.state.selectedItem);
 	}
 
-	onSelectItem = (categoriesItem) => {
+	onSelectItem = (data) => {
+		console.log(JSON.stringify(data));
 		this.setState({
-			selectedItem: categoriesItem,
-			itemID: categoriesItem.productCode,
-			itemName: categoriesItem.itemName,
-			unitPrice: getPriceBySupplierForCategory(categoriesItem.productCode, categoriesItem.supplierName)
+			itemID: data.productCode,
+			itemName: data.itemName,
+			unitPrice: getPriceBySupplierForCategory(data.productCode, data.supplierName),
+			selectedItem: data.categoriesItem
 		});
-	}
-
-	generateContents = () => {
-		console.log("gen: " + !!this.state.selectedItem + ", " + this.state.selectedItem);
-		return !!this.state.selectedItem ?
-			<SelectedPOFormItem
-				orderID={this.props.poID}
-				itemID={this.state.itemID}
-				itemName={this.state.itemName}
-			/> : <PoOrderAddItemButton text={this.props.text} onSelectItem={this.onSelectItem}/>;
 	}
 
 	render = () => {
 		return (
-			<div>{this.generateContents()}</div>
+			<div className={this.props.className}>
+				{this.state.selectedItem ?
+					<SelectedPOFormItem
+						orderID={this.props.poID}
+						itemID={this.state.itemID}
+						itemName={this.state.itemName}
+					/> : <PoOrderAddItemButton 
+						text={this.props.text} 
+						onSelectItem={this.onSelectItem}
+						unitPrice={this.state.unitPrice}
+						supplierFilter={this.props.supplierFilter}
+					/>}
+			</div>
 		);
 	}
 }

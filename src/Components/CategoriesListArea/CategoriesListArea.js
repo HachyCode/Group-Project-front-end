@@ -15,10 +15,8 @@ class CategoriesListArea extends React.Component {
 
 	generateCategoriesAccordions = () => {
 		let result = [];
-		console.log("gen accordions, len: " + this.props.categoriesData.length);
 
 		for (let i = 0; i < this.props.categoriesData.length; i++) {
-			console.log("accordion push");
 			result.push(<StyledCategoriesAccordion 
 				image={this.props.categoriesData[i].image}
 				productCode={this.props.categoriesData[i].productCode}

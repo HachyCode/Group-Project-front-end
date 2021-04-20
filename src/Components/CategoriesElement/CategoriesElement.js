@@ -24,7 +24,8 @@ class CategoriesElement extends React.Component {
 			eventBus.emit(CategoryClick, {
 				categoriesItem: categoriesItem, 
 				categoryID: this.props.categoryID,
-				itemName: this.props.itemName
+				itemName: this.props.itemName,
+				productCode: this.props.productCode
 			});
 		}
 	}

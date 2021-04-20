@@ -38,7 +38,9 @@ class POForm extends React.Component {
 
 		this.POListingData = false;
 
-		this.state = {};
+		this.state = {
+			filter: false,
+		};
 
 		if (this.props.location.state) {
 			this.POListingData = [ 
@@ -71,6 +73,12 @@ class POForm extends React.Component {
 		eventBus.off(POFormShouldUpdate, this.update);
 	}
 
+	setCategoriesFilter = (filter) => {
+		this.setState({
+			filter: filter
+		});
+	}
+
 	render = ()  => {
 		return (
 			<div>
@@ -99,8 +107,12 @@ class POForm extends React.Component {
 					<TopBoxImage alt="logo" src={Logo}/>
 					<MainPoInfo poItem={this.POListingData[0]} ID={this.props.location.state.poID}/>
 				</MainInfoBox>
-				<Address poItem={this.POListingData[0]} OrderSupplier={this.props.location.state.supplier}/>
-				<Orders poItem={this.POListingData[0]}/>
+				<Address 
+					updateFilter={this.setCategoriesFilter} 
+					poItem={this.POListingData[0]} 
+					OrderSupplier={this.props.location.state.supplier}
+				/>
+				<Orders supplierFilter={this.state.filter} poItem={this.POListingData[0]}/>
 				<Totals/>
 				<Authorisation/>
 			</div>

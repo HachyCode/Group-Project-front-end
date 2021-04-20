@@ -26,7 +26,12 @@ function PoOrders(props) {
 					<SmallFilter>Sub-Total</SmallFilter>
 				</ItemBox>
 				<Line/>
-				<SelectedPOFormItem orderID={999999999} itemID="NRF10" itemName="LEGO Classic Bricks and Ideas - 11001"/>
+				<SelectedPOFormItem 
+					orderID={999999999} 
+					itemID="NRF10" 
+					itemName="LEGO Classic Bricks and Ideas - 11001"
+					unitPrice={10}
+				/>
 				{/*<ItemBox>
 					<SmallText>999999999</SmallText>{/* Order ID /}
 					<SmallText>NRF10</SmallText>{/* Item ID /}
@@ -35,10 +40,10 @@ function PoOrders(props) {
 					<SmallText>£____.___</SmallText>{/* Unit Price /}
 					<SmallText>£________.__</SmallText>{/* Sub-Total /}
 				</ItemBox>*/}
-				<POFormItemSelection poID={props.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
 			</OrderBox>
 		</div>
 	);

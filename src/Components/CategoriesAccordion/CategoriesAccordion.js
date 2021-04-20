@@ -53,12 +53,15 @@ class CategoriesAccordion extends React.Component {
 		let result = [];
 
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
-			result.push(<StyledCategoriesElement
-				categoriesItem={this.categoriesData[i]}
-				selectableItems={this.props.selectableItems}
-				itemName={this.props.supplierName}
-				categoryID={this.props.categoryID}
-			/>);
+			if (!this.props.supplierFilter || this.categoriesData[i].supplierName === this.props.supplierFilter) {
+				result.push(<StyledCategoriesElement
+					categoriesItem={this.categoriesData[i]}
+					selectableItems={this.props.selectableItems}
+					itemName={this.props.supplierName}
+					productCode={this.props.productCode}
+					categoryID={this.props.categoryID}
+				/>);
+			}
 		}
 
 		return result;

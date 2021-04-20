@@ -17,7 +17,6 @@ import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListA
 import {CategoriesList} from '../Data/CategoriesList';
 
 function Categories(props) {
-	console.log(JSON.stringify(CategoriesList));
 	return (
 		<MainBody className={props.className}>
 			<FilterTop>
@@ -39,6 +38,7 @@ function Categories(props) {
 				categoriesData={CategoriesList} 
 				selectableItems={props.selectableItems}
 				categoryID={!!props.categoryID ? props.categoryID : -1}
+				supplierFilter={props.supplierFilter}
 			/>
 		</MainBody>
 	);
