@@ -14,6 +14,7 @@ import {
 	CostLabel,
 	DeliveryTimeLabel
 } from './CategoriesAccordionCSS';
+import {getSupplierAbbrevFromName} from '../../Data/Suppliers';
 
 /*
 	props:
@@ -49,11 +50,14 @@ class CategoriesAccordion extends React.Component {
 		});
 	}
 
+	/*TODO: this calls way more than I'd think it would, I think this is the one and only time where React re rendering too much
+	//has been a problem for me. I must say it's comparatively pleasant.*/
 	generateCategories = () => {
 		let result = [];
 
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
-			if (!this.props.supplierFilter || this.categoriesData[i].supplierName === this.props.supplierFilter) {
+			if (!this.props.supplierFilter || 
+				this.categoriesData[i].supplierName === getSupplierAbbrevFromName(this.props.supplierFilter)) {
 				result.push(<StyledCategoriesElement
 					categoriesItem={this.categoriesData[i]}
 					selectableItems={this.props.selectableItems}

@@ -33,3 +33,11 @@ export function getSupplierFromAbbrev(abbrev) {
 		}
 	}
 }
+
+export function getSupplierAbbrevFromName(name) {
+	for (const supplier of Suppliers) {
+		if (supplier.supplierName === name) {
+			return supplier.supplierAbbrev;
+		}
+	}
+}

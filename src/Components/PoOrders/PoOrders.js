@@ -40,10 +40,11 @@ function PoOrders(props) {
 					<SmallText>£____.___</SmallText>{/* Unit Price /}
 					<SmallText>£________.__</SmallText>{/* Sub-Total /}
 				</ItemBox>*/}
-				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection poID={props.poItem.poID} text="Add Item"/>
+				{/*TODO: have these auto convert if the requisite number of items are already in the POForm */}
+				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
 			</OrderBox>
 		</div>
 	);
