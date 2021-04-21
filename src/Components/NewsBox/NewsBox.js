@@ -14,7 +14,7 @@ import {
 	InfoIconBox
 } from './NewsBoxCSS';
 import {faExclamationTriangle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
-import DefaultImage from '../../Images/HomeNotificationImages/404error.jpg';
+import DefaultImage from '../../Images/HomeNotificationImages/notification.jpg';
 
 class NewsBox extends React.Component {
 	constructor(props) {
