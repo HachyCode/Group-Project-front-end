@@ -9,7 +9,8 @@ function getCategories() {
 			image: error,
 			productCode: "PWR41",
 			itemName: "USB Power Bank 10000mAh",
-			amount: "58",
+			amount: 58,
+			itemID: 1,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -28,7 +29,8 @@ function getCategories() {
 			image: error,
 			productCode: "PWR43",
 			itemName: "USB Power Bank 20000mAh",
-			amount: "154",
+			amount: 154,
+			itemID: 2,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -47,7 +49,8 @@ function getCategories() {
 			image: error,
 			productCode: "PWR44",
 			itemName: "USB Power Bank 25800mAh",
-			amount: "21",
+			amount: 21,
+			itemID: 3,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -66,7 +69,8 @@ function getCategories() {
 			image: error,
 			productCode: "SC01",
 			itemName: "Spider Catcher",
-			amount: "93",
+			amount: 93,
+			itemID: 4,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -85,7 +89,8 @@ function getCategories() {
 			image: error,
 			productCode: "PPF03",
 			itemName: "Portable Personal Fan",
-			amount: "104",
+			amount: 104,
+			itemID: 5,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -104,7 +109,8 @@ function getCategories() {
 			image: error,
 			productCode: "SW08",
 			itemName: "Star Wars USB Cup Warmer BB-8",
-			amount: "37",
+			amount: 37,
+			itemID: 6,
 			categoriesData: [
 				{
 					supplierName: "BS",
@@ -128,7 +134,8 @@ function getCategories() {
 			image: error,
 			productCode: "POL03",
 			itemName: "Polaroid Play 3D Pen",
-			amount: "199",
+			amount: 199,
+			itemID: 7,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -147,7 +154,8 @@ function getCategories() {
 			image: error,
 			productCode: "NRF10",
 			itemName: "Nerf N-Strike Elite Disruptor",
-			amount: "173",
+			amount: 173,
+			itemID: 8,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -166,7 +174,8 @@ function getCategories() {
 			image: error,
 			productCode: "KST01",
 			itemName: "KLIKBOT Studio Thud",
-			amount: "42",
+			amount: 42,
+			itemID: 9,
 			categoriesData: [
 				{
 					supplierName: "BS",
@@ -185,7 +194,8 @@ function getCategories() {
 			image: error,
 			productCode: "PIN00",
 			itemName: "Plan Toys Pinball",
-			amount: "10",
+			amount: 10,
+			itemID: 10,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -204,7 +214,8 @@ function getCategories() {
 			image: error,
 			productCode: "FP59",
 			itemName: "Funko Pop! Disney: Frozen 2 - Olaf",
-			amount: "23",
+			amount: 23,
+			itemID: 11,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -223,7 +234,8 @@ function getCategories() {
 			image: error,
 			productCode: "LEX95",
 			itemName: "LEGO Classic Bricks and Ideas - 11001",
-			amount: "255",
+			amount: 255,
+			itemID: 12,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -280,6 +292,16 @@ export function getPriceBySupplierForCategory(categoryID, supplierID) {
 					return catData.cost;
 				}
 			}
+		}
+	}
+
+	return false;
+}
+
+export function getCategoryByItemID(categoryItemID) {
+	for (const item of CategoriesList) {
+		if (item.itemID === categoryItemID) {
+			return item;
 		}
 	}
 

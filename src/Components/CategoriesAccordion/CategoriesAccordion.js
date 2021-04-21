@@ -37,7 +37,7 @@ class CategoriesAccordion extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		this.categoriesData = props.categoriesData;
+		this.categoriesData = props.categoriesData.categoriesData;
 
 		this.state = {
 			showingAccordion: false
@@ -64,6 +64,7 @@ class CategoriesAccordion extends React.Component {
 					itemName={this.props.supplierName}
 					productCode={this.props.productCode}
 					categoryID={this.props.categoryID}
+					categoriesData={this.props.categoriesData}
 				/>);
 			}
 		}

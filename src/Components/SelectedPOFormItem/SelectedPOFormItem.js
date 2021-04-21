@@ -2,6 +2,15 @@ import React from 'react';
 import {ItemBox, SmallText, LargeText, Qty} from './SelectedPOFormItemCSS';
 import {format} from '../../Utillity';
 
+/*
+props:
+	updateItemSelection [method]
+	orderID
+	itemID
+	itemName
+	supplierName
+	unitPrice
+*/
 class SelectedPOFormItem extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,7 +22,12 @@ class SelectedPOFormItem extends React.Component {
 	}
 
 	changeQTY = (e) => {
-		this.setState({quantity: e.target.value});
+		const quantity = e.target.value;
+		if (quantity) {
+			this.props.updateItemSelection(this.props.itemNumID, this.props.unitPrice, quantity);
+		}
+
+		this.setState({quantity: quantity});
 	}
 
 	render = () => {

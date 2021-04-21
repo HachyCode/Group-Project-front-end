@@ -26,11 +26,11 @@ function PoOrders(props) {
 					<SmallFilter>Sub-Total</SmallFilter>
 				</ItemBox>
 				<Line/>
-				<SelectedPOFormItem 
-					orderID={999999999} 
-					itemID="NRF10" 
-					itemName="LEGO Classic Bricks and Ideas - 11001"
-					unitPrice={10}
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
 				/>
 				{/*<ItemBox>
 					<SmallText>999999999</SmallText>{/* Order ID /}
@@ -41,10 +41,30 @@ function PoOrders(props) {
 					<SmallText>£________.__</SmallText>{/* Sub-Total /}
 				</ItemBox>*/}
 				{/*TODO: have these auto convert if the requisite number of items are already in the POForm */}
-				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
-				<POFormItemSelection supplierFilter={props.supplierFilter} poID={props.poItem.poID} text="Add Item"/>
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/>
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/>
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/>
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/>
 			</OrderBox>
 		</div>
 	);

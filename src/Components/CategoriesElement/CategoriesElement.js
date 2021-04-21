@@ -25,7 +25,8 @@ class CategoriesElement extends React.Component {
 				categoriesItem: categoriesItem, 
 				categoryID: this.props.categoryID,
 				itemName: this.props.itemName,
-				productCode: this.props.productCode
+				productCode: this.props.productCode,
+				categoriesData: this.props.categoriesData
 			});
 		}
 	}

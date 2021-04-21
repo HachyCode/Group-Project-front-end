@@ -23,7 +23,7 @@ class CategoriesListArea extends React.Component {
 				supplierName={this.props.categoriesData[i].itemName}
 				amount={this.props.categoriesData[i].amount}
 				deliveryTime={this.props.categoriesData[i].deliveryTime}
-				categoriesData={this.props.categoriesData[i].categoriesData}
+				categoriesData={this.props.categoriesData[i]}
 				selectableItems={this.props.selectableItems}
 				categoryID={this.props.categoryID}
 				supplierFilter={this.props.supplierFilter}

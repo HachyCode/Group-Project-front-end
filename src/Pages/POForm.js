@@ -35,6 +35,8 @@ class POForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
+		// {itemID, quantity}
+		this.selectedItems = [];
 
 		this.POListingData = false;
 
@@ -59,6 +61,8 @@ class POForm extends React.Component {
 				},
 			];
 		}
+
+		this.updateItemSelection.bind(this);
 	}
 
 	update = () => {
@@ -77,6 +81,29 @@ class POForm extends React.Component {
 		this.setState({
 			filter: filter
 		});
+	}
+
+	updateItemSelection = (itemID, price, quantity) => {
+		let found = false;
+		for (const item of this.selectedItems) {
+			if (item.itemID === itemID) {
+				item.price = price;
+				item.quantity = quantity;
+				found = true;
+			}
+		}
+
+		if (!found) {
+			this.selectedItems.push({
+				itemID: itemID,
+				price: price,
+				quantity: quantity
+			});
+
+			console.log(JSON.stringify(this.selectedItems));
+		}
+
+		this.setState({});
 	}
 
 	render = ()  => {
@@ -112,8 +139,12 @@ class POForm extends React.Component {
 					poItem={this.POListingData[0]} 
 					OrderSupplier={this.props.location.state.supplier}
 				/>
-				<Orders supplierFilter={this.state.filter} poItem={this.POListingData[0]}/>
-				<Totals/>
+				<Orders 
+					supplierFilter={this.state.filter} 
+					poItem={this.POListingData[0]} 
+					updateItemSelection={this.updateItemSelection}
+				/>
+				<Totals selectedItems={this.selectedItems}/>
 				<Authorisation/>
 			</div>
 		);

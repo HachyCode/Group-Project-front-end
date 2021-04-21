@@ -19,22 +19,22 @@ class POFormItemSelection extends React.Component {
 	}
 
 	onSelectItem = (data) => {
-		console.log(JSON.stringify(data));
-		//the naming has become a mess
-		const actualSupplierName = getSupplierFromAbbrev(data.categoriesItem.supplierName);
 		let unitPrice = getPriceBySupplierForCategory(data.productCode, data.categoriesItem.supplierName);
 
 		if (unitPrice.startsWith("£")) {
 			unitPrice = numPriceFromFormattedPrice(unitPrice);
 		}
 
-		console.log(unitPrice + ", " + typeof unitPrice);
+		console.log("itemID: " + data.categoriesData.itemID);
+
+		this.props.updateItemSelection(data.categoriesData.itemID, unitPrice, 1);
 
 		this.setState({
 			itemID: data.productCode,
 			itemName: data.itemName,
 			unitPrice: unitPrice,
-			selectedItem: data.categoriesItem
+			selectedItem: data.categoriesItem,
+			itemNumID: data.categoryID,
 		});
 	}
 
@@ -47,6 +47,8 @@ class POFormItemSelection extends React.Component {
 						itemID={this.state.itemID}
 						itemName={this.state.itemName}
 						unitPrice={this.state.unitPrice}
+						updateItemSelection={this.props.updateItemSelection}
+						itemNumID={this.state.itemNumID}
 					/> : <PoOrderAddItemButton 
 						text={this.props.text} 
 						onSelectItem={this.onSelectItem}
