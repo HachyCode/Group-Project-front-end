@@ -2,6 +2,7 @@ import error from '../Images/CategorieItems/404error.png';
 import axios from 'axios';
 import Config from '../Config';
 
+//future me: don't set this to async or you break categories.
 import Fan from '../Images/CategorieItems/Fan.jpg';
 import Lego from '../Images/CategorieItems/Lego.jpg';
 import Klikbot from '../Images/CategorieItems/Klikbot.jpg';
@@ -19,7 +20,8 @@ function getCategories() {
 			image: PowerBank,
 			productCode: "PWR41",
 			itemName: "USB Power Bank 10000mAh",
-			amount: "58",
+			amount: 58,
+			itemID: 1,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -38,7 +40,8 @@ function getCategories() {
 			image: PowerBank,
 			productCode: "PWR43",
 			itemName: "USB Power Bank 20000mAh",
-			amount: "154",
+			amount: 154,
+			itemID: 2,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -57,7 +60,8 @@ function getCategories() {
 			image: PowerBank,
 			productCode: "PWR44",
 			itemName: "USB Power Bank 25800mAh",
-			amount: "21",
+			amount: 21,
+			itemID: 3,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -76,7 +80,8 @@ function getCategories() {
 			image: Spider,
 			productCode: "SC01",
 			itemName: "Spider Catcher",
-			amount: "93",
+			amount: 93,
+			itemID: 4,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -95,7 +100,8 @@ function getCategories() {
 			image: Fan,
 			productCode: "PPF03",
 			itemName: "Portable Personal Fan",
-			amount: "104",
+			amount: 104,
+			itemID: 5,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -114,7 +120,8 @@ function getCategories() {
 			image: StarWars,
 			productCode: "SW08",
 			itemName: "Star Wars USB Cup Warmer BB-8",
-			amount: "37",
+			amount: 37,
+			itemID: 6,
 			categoriesData: [
 				{
 					supplierName: "BS",
@@ -138,7 +145,8 @@ function getCategories() {
 			image: Polaroid,
 			productCode: "POL03",
 			itemName: "Polaroid Play 3D Pen",
-			amount: "199",
+			amount: 199,
+			itemID: 7,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -157,7 +165,8 @@ function getCategories() {
 			image: Nerf,
 			productCode: "NRF10",
 			itemName: "Nerf N-Strike Elite Disruptor",
-			amount: "173",
+			amount: 173,
+			itemID: 8,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -176,7 +185,8 @@ function getCategories() {
 			image: Klikbot,
 			productCode: "KST01",
 			itemName: "KLIKBOT Studio Thud",
-			amount: "42",
+			amount: 42,
+			itemID: 9,
 			categoriesData: [
 				{
 					supplierName: "BS",
@@ -195,7 +205,8 @@ function getCategories() {
 			image: Pinball,
 			productCode: "PIN00",
 			itemName: "Plan Toys Pinball",
-			amount: "10",
+			amount: 10,
+			itemID: 10,
 			categoriesData: [
 				{
 					supplierName: "BI",
@@ -214,7 +225,8 @@ function getCategories() {
 			image: Olaf,
 			productCode: "FP59",
 			itemName: "Funko Pop! Disney: Frozen 2 - Olaf",
-			amount: "23",
+			amount: 23,
+			itemID: 11,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -233,7 +245,8 @@ function getCategories() {
 			image: Lego,
 			productCode: "LEX95",
 			itemName: "LEGO Classic Bricks and Ideas - 11001",
-			amount: "255",
+			amount: 255,
+			itemID: 12,
 			categoriesData: [
 				{
 					supplierName: "SH",
@@ -253,9 +266,16 @@ function getCategories() {
 	//REMOVEME when the data for products is done on backend
 	return result;
 
-	axios.get(Config.serverLocation +  "/products", {
-		'Content-Type': 'application/json',
-		'Authorization': sessionStorage.getItem(Config.userTokenSession)
+	return (async () => {await getCategoriesAsync();})();
+}
+
+async function getCategoriesAsync() {
+	let result = [];
+	return await axios.get(Config.serverLocation +  "/products", {
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': sessionStorage.getItem(Config.userTokenSession)
+		}
 	}).then(
 		(response) => {
 			result = [];
@@ -271,8 +291,30 @@ function getCategories() {
 			return result;
 		}
 	);
-	//get stuff
-	return ;
 }
 
 export let CategoriesList = getCategories();
+
+export function getPriceBySupplierForCategory(categoryID, supplierID) {
+	for (const item of CategoriesList) {
+		if (item.productCode === categoryID) {
+			for (const catData of item.categoriesData) {
+				if (catData.supplierName === supplierID) {
+					return catData.cost;
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
+export function getCategoryByItemID(categoryItemID) {
+	for (const item of CategoriesList) {
+		if (item.itemID === categoryItemID) {
+			return item;
+		}
+	}
+
+	return false;
+}

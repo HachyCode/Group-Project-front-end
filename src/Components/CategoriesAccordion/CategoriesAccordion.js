@@ -14,6 +14,7 @@ import {
 	CostLabel,
 	DeliveryTimeLabel
 } from './CategoriesAccordionCSS';
+import {getSupplierAbbrevFromName} from '../../Data/Suppliers';
 
 /*
 	props:
@@ -28,6 +29,7 @@ import {
 			deliveryTime
 		]
 		selectableItems
+		supplierFilter
 
 
 */
@@ -35,7 +37,7 @@ class CategoriesAccordion extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		this.categoriesData = props.categoriesData;
+		this.categoriesData = props.categoriesData.categoriesData;
 
 		this.state = {
 			showingAccordion: false,
@@ -48,16 +50,23 @@ class CategoriesAccordion extends React.Component {
 		});
 	}
 
+	/*TODO: this calls way more than I'd think it would, I think this is the one and only time where React re rendering too much
+	//has been a problem for me. I must say it's comparatively pleasant.*/
 	generateCategories = () => {
 		let result = [];
 
 		for (let i = 0; i < Object.keys(this.categoriesData).length; i++) {
-			result.push(<StyledCategoriesElement
-				categoriesItem={this.categoriesData[i]}
-				selectableItems={this.props.selectableItems}
-				itemName={this.props.supplierName}
-				categoryID={this.props.categoryID}
-			/>);
+			if (!this.props.supplierFilter || 
+				this.categoriesData[i].supplierName === getSupplierAbbrevFromName(this.props.supplierFilter)) {
+				result.push(<StyledCategoriesElement
+					categoriesItem={this.categoriesData[i]}
+					selectableItems={this.props.selectableItems}
+					itemName={this.props.supplierName}
+					productCode={this.props.productCode}
+					categoryID={this.props.categoryID}
+					categoriesData={this.props.categoriesData}
+				/>);
+			}
 		}
 
 		return result;

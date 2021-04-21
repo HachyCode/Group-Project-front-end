@@ -37,6 +37,7 @@ function Categories(props) {
 				categoriesData={CategoriesList} 
 				selectableItems={props.selectableItems}
 				categoryID={!!props.categoryID ? props.categoryID : -1}
+				supplierFilter={props.supplierFilter}
 			/>
 		</MainBody>
 	);

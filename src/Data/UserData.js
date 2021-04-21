@@ -9,7 +9,6 @@ export async function getDataOfCurrentUser() {
 		}
 	}).then(
 		(response) => {
-			console.log("response: " + JSON.stringify(response["data"]));
 			return {
 				createdAt: response["data"]["Created at"],
 				username: response["data"]["Username"],

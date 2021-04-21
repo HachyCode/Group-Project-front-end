@@ -23,12 +23,12 @@ class AddPOButton extends React.Component {
 			progress: 0,
 		});
 
-		this.setState({});
+		this.props.updatePage();
 	}
 
 	render = () => {
 		return (
-			<StyledAddPOButton onClick={this.addPOButtonPress}/>
+			<StyledAddPOButton onClick={this.addPOButtonPress}>{this.props.contents}</StyledAddPOButton>
 		);
 	}
 }

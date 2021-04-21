@@ -22,6 +22,10 @@ class PoOrderAddItemButton extends React.Component {
 	selectItem = (data) => {
 		if (data.categoryID === this.state.id) {
 			this.setState({text: data.itemName + ", " + data.categoriesItem.supplierName, categoriesVisible: false});
+
+			if (!!this.props.onSelectItem) {
+				this.props.onSelectItem(data);
+			}
 		}
 	}
 
@@ -45,6 +49,7 @@ class PoOrderAddItemButton extends React.Component {
 					selectableItems
 					displayCategories={this.state.categoriesVisible}
 					categoryID={this.state.id}
+					supplierFilter={this.props.supplierFilter}
 				/>
 			</div>
 		);
