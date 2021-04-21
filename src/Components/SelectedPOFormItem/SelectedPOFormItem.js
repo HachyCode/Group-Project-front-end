@@ -23,9 +23,7 @@ class SelectedPOFormItem extends React.Component {
 
 	changeQTY = (e) => {
 		const quantity = e.target.value;
-		if (quantity) {
-			this.props.updateItemSelection(this.props.itemNumID, this.props.unitPrice, quantity);
-		}
+		this.props.updateItemSelection(this.props.itemNumID, this.props.unitPrice, quantity);
 
 		this.setState({quantity: quantity});
 	}
