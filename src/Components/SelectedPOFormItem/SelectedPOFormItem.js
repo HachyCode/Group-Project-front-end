@@ -23,9 +23,17 @@ class SelectedPOFormItem extends React.Component {
 
 	changeQTY = (e) => {
 		const quantity = e.target.value;
-		this.props.updateItemSelection(this.props.itemNumID, this.props.unitPrice, quantity);
 
-		this.setState({quantity: quantity});
+		//https://stackoverflow.com/a/1779019
+		//referenced 21/04/2021
+		//here be regex wizards
+		if (/^\d+$/.test(quantity) || !quantity) {
+			this.props.updateItemSelection(this.props.itemNumID, this.props.unitPrice, quantity);
+
+			this.setState({quantity: quantity});
+		} else {
+			e.target.value = this.state.quantity;
+		}
 	}
 
 	render = () => {
