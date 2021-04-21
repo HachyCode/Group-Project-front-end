@@ -3,7 +3,7 @@ import CategoriesElement from '../CategoriesElement/CategoriesElement';
 import Label from '../Label/Label';
 
 export const AccordionMainBox = styled.div`
-	border: 2px solid #9D4EDD; //FF9E00 , 30 or less, <= 30 
+	border: 2px solid ${props => props.colour}; //FF9E00 , 30 or less, <= 30 
     border-radius: 10px;
 
 	display: flex;
@@ -42,7 +42,6 @@ export const StyledCategoriesElement = styled(CategoriesElement)`
 `;
 
 export const AccordionContainer = styled.div`
-	
 `;
 
 export const ImageBox = styled.img`

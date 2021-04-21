@@ -40,7 +40,7 @@ class CategoriesAccordion extends React.Component {
 		this.categoriesData = props.categoriesData.categoriesData;
 
 		this.state = {
-			showingAccordion: false
+			showingAccordion: false,
 		};
 	}
 
@@ -72,10 +72,18 @@ class CategoriesAccordion extends React.Component {
 		return result;
 	}
 
+	getColour = () => {
+		if (this.props.amount <= 30){
+			return "#FF9E00";
+		}else {
+			return "#9D4EDD";
+		}
+	}
+
 	render = () => {
 		return (
 			<AccordionContainer>
-				<AccordionMainBox onClick={this.toggleExpanded}>
+				<AccordionMainBox onClick={this.toggleExpanded} colour={this.getColour}>
 					<ImageBox src={this.props.image} alt="missing"/>
 					<ProductCodeBox>
 						{this.props.productCode}

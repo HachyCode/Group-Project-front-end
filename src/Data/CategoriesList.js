@@ -3,10 +3,21 @@ import axios from 'axios';
 import Config from '../Config';
 
 //future me: don't set this to async or you break categories.
+import Fan from '../Images/CategorieItems/Fan.jpg';
+import Lego from '../Images/CategorieItems/Lego.jpg';
+import Klikbot from '../Images/CategorieItems/Klikbot.jpg';
+import Nerf from '../Images/CategorieItems/Nerf.jpg';
+import Olaf from '../Images/CategorieItems/Olaf.jpg';
+import Pinball from '../Images/CategorieItems/Pinball.jpg';
+import Polaroid from '../Images/CategorieItems/Polaroid.jpg';
+import PowerBank from '../Images/CategorieItems/PowerBank.jpg';
+import Spider from '../Images/CategorieItems/Spider.jpg';
+import StarWars from '../Images/CategorieItems/StarWars.jpg';
+
 function getCategories() {
 	const result = [
 		{
-			image: error,
+			image: PowerBank,
 			productCode: "PWR41",
 			itemName: "USB Power Bank 10000mAh",
 			amount: 58,
@@ -26,7 +37,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: PowerBank,
 			productCode: "PWR43",
 			itemName: "USB Power Bank 20000mAh",
 			amount: 154,
@@ -46,7 +57,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: PowerBank,
 			productCode: "PWR44",
 			itemName: "USB Power Bank 25800mAh",
 			amount: 21,
@@ -66,7 +77,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Spider,
 			productCode: "SC01",
 			itemName: "Spider Catcher",
 			amount: 93,
@@ -86,7 +97,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Fan,
 			productCode: "PPF03",
 			itemName: "Portable Personal Fan",
 			amount: 104,
@@ -106,7 +117,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: StarWars,
 			productCode: "SW08",
 			itemName: "Star Wars USB Cup Warmer BB-8",
 			amount: 37,
@@ -131,7 +142,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Polaroid,
 			productCode: "POL03",
 			itemName: "Polaroid Play 3D Pen",
 			amount: 199,
@@ -151,7 +162,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Nerf,
 			productCode: "NRF10",
 			itemName: "Nerf N-Strike Elite Disruptor",
 			amount: 173,
@@ -171,7 +182,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Klikbot,
 			productCode: "KST01",
 			itemName: "KLIKBOT Studio Thud",
 			amount: 42,
@@ -191,7 +202,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Pinball,
 			productCode: "PIN00",
 			itemName: "Plan Toys Pinball",
 			amount: 10,
@@ -211,7 +222,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Olaf,
 			productCode: "FP59",
 			itemName: "Funko Pop! Disney: Frozen 2 - Olaf",
 			amount: 23,
@@ -231,7 +242,7 @@ function getCategories() {
 		},
 
 		{
-			image: error,
+			image: Lego,
 			productCode: "LEX95",
 			itemName: "LEGO Classic Bricks and Ideas - 11001",
 			amount: 255,
