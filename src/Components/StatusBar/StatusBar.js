@@ -17,18 +17,18 @@ class StatusBar extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		eventBus.on(StatusBarShouldUpdate, this.updateProgress);
-	}
-
-	componentWillUnmount() {
-		eventBus.off(StatusBarShouldUpdate, this.updateProgress);
-	}
-
 	updateProgress = (data) => {
 		this.setState({
 			progress: data.poListingData[this.props.barID].progress
 		});
+	}
+
+	componentDidMount = () => {
+		eventBus.on(StatusBarShouldUpdate, this.updateProgress);
+	}
+
+	componentWillUnmount = () => {
+		eventBus.off(StatusBarShouldUpdate, this.updateProgress);
 	}
 
     generateBar = () => {
