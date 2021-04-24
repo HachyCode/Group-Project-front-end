@@ -45,6 +45,8 @@ class InputBox extends React.Component {
     onKeyPress = (event) => {
     	if (this.disabled) {
     		event.preventDefault();
+    	} else if (this.props.keyPressHandle) {
+    		this.props.keyPressHandle(event);
     	}
     }
 

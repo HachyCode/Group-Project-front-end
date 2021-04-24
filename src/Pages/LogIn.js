@@ -62,6 +62,12 @@ function LogIn() {
 		}
 	}
 
+	function keyPressed(event) {
+		if (event.key === 'Enter') {
+			login();
+		}
+	}
+
 	//yoinked from https://stackoverflow.com/a/53837442, accessed 03/03/2021
 	function forceUpdate() {
 		//"not a react function component"
@@ -89,6 +95,7 @@ function LogIn() {
 						id="password"
 						default={pwdDefault}
 						password={true}
+						keyPressHandle={keyPressed}
 					/>
 					<LoginButton onClick={login}>Log In</LoginButton>
 				</LoginBody>
