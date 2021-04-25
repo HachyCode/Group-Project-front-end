@@ -11,6 +11,7 @@ class POListingArea extends React.Component {
 
 		this.state = {
 			poListingData: this.props.poListingData,
+			searchFilter: null,
 		};
 	}
 
@@ -29,9 +30,19 @@ class POListingArea extends React.Component {
 		for (let i = 0; i < this.state.poListingData.length; i++) {
 			const poListingData = this.state.poListingData[i];
 			const index = this.state.poListingData.indexOf(poListingData);
+			const poID = poListingData.poID;
+			const supplier = poListingData.supplier;
+			console.log("supplier: " + poListingData.supplier);
+
+			if (this.props.searchFilter && 
+				!poID.toLowerCase().includes(this.props.searchFilter.toLowerCase()) &&
+				(supplier ? !supplier.toLowerCase().includes(this.props.searchFilter.toLowerCase()) : true)) {
+				continue;
+			}
+
 			poListings.push(<StyledPOListing 
-				poID={poListingData.poID} 
-				supplier={poListingData.supplier} 
+				poID={poID} 
+				supplier={supplier} 
 				progress={poListingData.progress}
 				barID={index}
 				key={index}

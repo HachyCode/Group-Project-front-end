@@ -17,7 +17,14 @@ import AddPOButton from '../Components/AddPOButton/AddPOButton';
 class POs extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			searchFilter: null,
+		};
+	}
+
+	filter = (searchFilter) => {
+		console.log("set state " + searchFilter); 
+		this.setState({searchFilter: searchFilter});
 	}
 
 	render = () => {
@@ -25,7 +32,7 @@ class POs extends React.Component {
 			<div>
 				<MainBody>
 					<FilterTop>
-						<StyledSearchBar/>
+						<StyledSearchBar clicked={this.filter}/>
 						<SearchRow>
 							{/*Add div bettween magic buttons*/}
 							<FirstLabelBox>
@@ -42,7 +49,7 @@ class POs extends React.Component {
 							<SpacedLabel contents="Delivered"/>
 						</SearchRow>
 					</FilterTop>
-					<StyledPOListingArea poListingData={POList}/>
+					<StyledPOListingArea poListingData={POList} searchFilter={this.state.searchFilter}/>
 					<AddPOButton updatePage={() => {this.setState({});}} contents="+"/>
 				</MainBody>
 			</div>

@@ -13,6 +13,7 @@ import Polaroid from '../Images/CategorieItems/Polaroid.jpg';
 import PowerBank from '../Images/CategorieItems/PowerBank.jpg';
 import Spider from '../Images/CategorieItems/Spider.jpg';
 import StarWars from '../Images/CategorieItems/StarWars.jpg';
+import { getDefaultNormalizer } from '@testing-library/dom';
 
 function getCategories() {
 	const result = [

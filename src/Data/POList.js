@@ -1,13 +1,36 @@
+import axios from 'axios';
+import Config from '../Config';
+import {formatPOIDFromNum} from '../Utillity';
+
+function getItemsInOrder(data) {
+	let result = [];
+
+	for (const item of data) {
+		result.push({
+			itemID: item["itemId"],
+			quantity: item["itemQuantity"]
+		});
+	}
+
+	return result;
+}
+
 function getDataFromDB() {
 	//database stuff here
 	//construct list
 
 	//return gotten data (temporarily the default list)
-	return [
+	let defaultList =  [
 		{
 			poID: "0000 0001",
 			supplier: "Bitmore Inc",
 			progress: 6,
+			orderItems: [
+				{
+					itemID: 3,
+					quantity: 69
+				}
+			]
 		},
 		{
 			poID: "0000 0002",
@@ -40,6 +63,38 @@ function getDataFromDB() {
 			progress: 0,
 		},
 	];
+
+	return defaultList;
+
+	let result = [];
+
+	(async () => {
+		await getDataFromDBAsync().then(
+			(response) => {
+				const data = response["data"];
+				if (data) {
+					for (const order of data) {
+						result.push({
+							poID: formatPOIDFromNum(order["orderId"]),
+							supplier: order["orderSupplier"],
+							progress: order["orderState"],
+							orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
+						});
+					}
+				}
+			}
+		);//.catch(err => console.log(err));
+	})();
+
+	return result;
+}
+
+async function getDataFromDBAsync() {
+	return await axios.get(Config.serverLocation + "/orders", {
+		headers: {
+			Authorization: sessionStorage.getItem(Config.userTokenSession)
+		}
+	});
 }
 
 let POList = getDataFromDB();

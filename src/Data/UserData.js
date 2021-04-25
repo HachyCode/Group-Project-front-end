@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Config from '../Config';
 
-export async function getDataOfCurrentUser() {
-	return await axios.get(Config.serverLocation + "/user/me", {
+export function getDataOfCurrentUser() {
+	return axios.get(Config.serverLocation + "/user/me", {
 		headers: {
 			"Content-Type": "application/json",
 			"Authorization": sessionStorage.getItem(Config.userTokenSession)
