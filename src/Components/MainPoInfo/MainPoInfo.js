@@ -7,7 +7,7 @@ import {
 	TextAnswer
 } from './MainPoInfoCSS';
 import {eventBus, POFormDone} from '../../EventBus';
-import {getDataOfCurrentUser} from '../../Data/UserData';
+import {getDataOfCurrentUser, currentUser} from '../../Data/UserData';
 import {getByPOID} from '../../Data/POList';
 
 class MainPoInfo extends React.Component {
@@ -21,8 +21,6 @@ class MainPoInfo extends React.Component {
 			saID: "",
 			poFormID: props.ID
 		};
-		
-		this.componentDidMount = this.componentDidMount.bind(this);
 	}
 
 	donePressed = () => {
@@ -32,8 +30,17 @@ class MainPoInfo extends React.Component {
 		});
 	}
 
-	async componentDidMount() {
-		this.currentUser = await getDataOfCurrentUser();
+	componentDidMount = () => {
+		const self = this;
+		currentUser.then(
+			(response) => {
+				const responseData = response["data"];
+				self.currentUser = {
+					username: responseData["Username"],
+					staffID: responseData["StaffID"],
+				};
+			}
+		);
 		eventBus.on(POFormDone, this.donePressed);
 	}
 

@@ -97,7 +97,25 @@ async function getDataFromDBAsync() {
 	});
 }
 
-let POList = getDataFromDB();
+let POList = [];
+
+export function initialise() {
+	getDataFromDBAsync().then(
+		(response) => {
+			const data = response["data"];
+			if (data) {
+				for (const order of data) {
+					POList.push({
+						poID: formatPOIDFromNum(order["orderId"]),
+						supplier: order["orderSupplier"],
+						progress: order["orderState"],
+						orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
+					});
+				}
+			}
+		}
+	);
+}
 
 function updateByPOID(poID, newPO) {
 	for (const po of POList) {

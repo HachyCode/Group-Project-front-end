@@ -28,7 +28,6 @@ class NewsContainer extends React.Component {
 	}
 
     generateNews = () => {
-    	console.log("generate");
     	let newsToGenerate = [];
     	let counted = 0;
 

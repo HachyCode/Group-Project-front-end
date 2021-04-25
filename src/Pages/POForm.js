@@ -20,16 +20,17 @@ import {
 	SecondLeftLabelBox,
 } from '../Components/PageCSS/POsCSS';
 import {withRouter} from 'react-router';
-import {getDataOfCurrentUser} from '../Data/UserData';
+import {getDataOfCurrentUser, currentUser} from '../Data/UserData';
 import Config from '../Config';
 import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
 import Logo from '../Images/Logo/black_logo.png';
 import {eventBus, POFormShouldUpdate} from '../EventBus';
 
-const currentUser = getDataOfCurrentUser();
-const annOrJason = currentUser.username === Config.annID || 
-	currentUser.username === Config.jasonID || 
-	Config.developerAccountIDs.includes(currentUser.username);
+let annOrJason = null;
+
+// currentUser.staffID === Config.annID || 
+// 	currentUser.staffID === Config.jasonID || 
+// 	Config.developerAccountIDs.includes(currentUser.staffID);
 
 class POForm extends React.Component {
 	constructor(props) {
@@ -70,6 +71,15 @@ class POForm extends React.Component {
 	}
 
 	componentDidMount = () => {
+		const self = this;
+		currentUser.then((response) => {
+			const staffID = response["data"]["StaffID"];
+			annOrJason = staffID === Config.annID || 
+				staffID === Config.jasonID ||
+				Config.developerAccountIDs.includes(staffID);
+			self.setState({});
+		});
+
 		eventBus.on(POFormShouldUpdate, this.update);
 	}
 
@@ -99,8 +109,6 @@ class POForm extends React.Component {
 				price: price,
 				quantity: quantity
 			});
-
-			console.log(JSON.stringify(this.selectedItems));
 		}
 
 		this.setState({});
@@ -145,7 +153,7 @@ class POForm extends React.Component {
 					updateItemSelection={this.updateItemSelection}
 				/>
 				<Totals selectedItems={this.selectedItems}/>
-				<Authorisation/>
+				{annOrJason ? <Authorisation/> : null}
 			</div>
 		);
 	}

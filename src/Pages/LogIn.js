@@ -19,6 +19,7 @@ import {eventBus, WarningBoxVisibilityUpdate, RouterUpdate} from '../EventBus';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import background from '../Images/Background/Orange_3.jpg';
 import logo from '../Images/Logo/black_logo.png';
+import {initialise} from '../Data/POList';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -46,6 +47,7 @@ function LogIn() {
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
+						initialise();
 						//Received in App.js
 						eventBus.emit(RouterUpdate);
 						//send them to the home page

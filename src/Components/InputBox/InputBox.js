@@ -52,7 +52,6 @@ class InputBox extends React.Component {
 
     onUnfocus = () => {
     	if (this.state.text === "") {
-    		console.log("unfocus");
     		this.colour = "lightgrey";
     		this.setText(this.props.default);
     		this.hasBeenClicked = false;

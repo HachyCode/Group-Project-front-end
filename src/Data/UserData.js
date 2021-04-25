@@ -7,14 +7,20 @@ export function getDataOfCurrentUser() {
 			"Content-Type": "application/json",
 			"Authorization": sessionStorage.getItem(Config.userTokenSession)
 		}
-	}).then(
-		(response) => {
-			return {
-				createdAt: response["data"]["Created at"],
-				username: response["data"]["Username"],
-				email: response["data"]["Email Address"],
-				staffID: response["data"]["StaffID"],
-			};
-		}
-	);
+	});
 }
+
+export let currentUser = getDataOfCurrentUser();
+
+
+
+// .then(
+// 	(response) => {
+// 		currentUser = {
+// 			createdAt: response["data"]["Created at"],
+// 			username: response["data"]["Username"],
+// 			email: response["data"]["Email Address"],
+// 			staffID: response["data"]["StaffID"],
+// 		};
+// 	}
+// );

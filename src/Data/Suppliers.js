@@ -7,7 +7,11 @@ function getSuppliersFromDB() {
 	];
 }
 
-export const Suppliers = getSuppliersFromDB();
+export let Suppliers = getSuppliersFromDB();
+
+export function initialiseSuppliers() {
+
+}
 
 //TODO: RENAME ME TO "getSupplierIDFromName"
 export function getSupplierFromName(name) {

@@ -23,7 +23,6 @@ class POs extends React.Component {
 	}
 
 	filter = (searchFilter) => {
-		console.log("set state " + searchFilter); 
 		this.setState({searchFilter: searchFilter});
 	}
 
