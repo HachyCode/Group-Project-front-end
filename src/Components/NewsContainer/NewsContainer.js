@@ -1,6 +1,8 @@
 import React from 'react';
 import { eventBus, NewsBoxDelete } from '../../EventBus';
 import {StyledNewsBox, NewsScrollIcon} from './NewsContainerCSS';
+import {hasPermission, AnnOk, JohnOk} from '../../Permissions';
+import Config from '../../Config';
 
 class NewsContainer extends React.Component {
 	constructor(props) {
@@ -30,10 +32,17 @@ class NewsContainer extends React.Component {
     generateNews = () => {
     	let newsToGenerate = [];
     	let counted = 0;
+    	const currUserPermissions = parseInt(sessionStorage.getItem(Config.currUserPermissions));
 
     	for (let i = 0; i < Object.keys(this.state.news).length; i++) {
+    		const currNews = this.state.news[i];
+
+    		if (currNews.annOrJasonOnly && 
+    			!(hasPermission(currUserPermissions, AnnOk) || hasPermission(currUserPermissions, JohnOk))) {
+    			continue;
+    		}
+
     		if (!this.deletedNewsIndexes.includes(i)) {
-    			const currNews = this.state.news[i];
 
     			if (currNews.heading !== "") {
     				const isNewsRed = counted < 2 ? "true" : "";

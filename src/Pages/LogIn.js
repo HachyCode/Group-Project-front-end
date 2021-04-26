@@ -20,6 +20,7 @@ import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import background from '../Images/Background/Orange_3.jpg';
 import logo from '../Images/Logo/black_logo.png';
 import {initialise} from '../Data/POList';
+import {getDataOfCurrentUser} from '../Data/UserData';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -47,11 +48,16 @@ function LogIn() {
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
-						initialise();
-						//Received in App.js
-						eventBus.emit(RouterUpdate);
-						//send them to the home page
-						history.push("/home");
+						initialise().then((response) => {
+							getDataOfCurrentUser().then((response) => {
+								sessionStorage.setItem(Config.currUserPermissions, response["data"]["Permissions"]);
+								//Received in App.js
+								eventBus.emit(RouterUpdate);
+								//send them to the home page
+								history.push("/home");
+							});
+							
+						});
 					} else {
 						//unsuccessful login
 						eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});

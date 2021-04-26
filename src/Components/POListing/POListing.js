@@ -3,6 +3,8 @@ import StatusBar from '../StatusBar/StatusBar';
 import { withRouter } from 'react-router-dom';
 import {Box, POIDSections, SupplierSections} from './POListingCSS';
 import {eventBus, StatusBarShouldUpdate} from '../../EventBus';
+import {hasPermission, SeeActivePOs} from '../../Permissions';
+import {currentUser} from '../../Data/UserData';
 
 class POListing extends React.Component {
 	constructor(props) {
@@ -19,6 +21,23 @@ class POListing extends React.Component {
 	}
 
 	goToPoForm = () => {
+		//const self = this;
+		//currentUser.then((response) => {
+		// 	const permissions = response["data"]["Permissions"];
+		// 	if (hasPermission(permissions, SeeActivePOs)) {
+		// 		self.props.history.push({
+		// 			pathname: "/poForm",
+		// 			//search: "", TODO: have IDs for POForms
+		// 			state: {
+		// 				poID: self.props.poID,
+		// 				supplier: self.props.supplier,
+		// 				progress: self.props.progress,
+		// 				orderItems: self.props.orderItems
+		// 			} //TEMP: replace with a POForm ID later
+		// 		});
+		// 	}
+
+		// });
 		this.props.history.push({
 			pathname: "/poForm",
 			//search: "", TODO: have IDs for POForms
@@ -26,6 +45,7 @@ class POListing extends React.Component {
 				poID: this.props.poID,
 				supplier: this.props.supplier,
 				progress: this.props.progress,
+				orderItems: this.props.orderItems
 			} //TEMP: replace with a POForm ID later
 		});
 	}

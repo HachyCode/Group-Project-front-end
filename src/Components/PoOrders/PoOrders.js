@@ -12,8 +12,41 @@ import {
 } from './PoOrdersCSS';
 import POFormItemSelection from '../POFormItemSelection/POFormItemSelection';
 import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
+import {getCategoryByItemID, getPriceBySupplierForCategory} from '../../Data/CategoriesList';
 
 function PoOrders(props) {
+
+	function generatePreExistingItems() {
+		const result = [];
+		for (let i = 0; i < 5; i++) {
+			//orderItems
+
+			const poItem = props.poItem;
+			const orderItem = poItem.orderItems[i];
+			const itemCategory = getCategoryByItemID(poItem.poID);
+
+			if (orderItem && orderItem["orderItemId"]) {
+				result.push(<SelectedPOFormItem
+					orderID={poItem.poID}
+					itemID={itemCategory.productCode}
+					itemName={itemCategory.itemName}
+					unitPrice={getPriceBySupplierForCategory(poItem.supplier)}
+					updateItemSelection={props.updateItemSelection}
+					itemNumID={itemCategory.itemID}
+				/>);
+			} else {
+				result.push(<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/>);
+			}
+		}
+
+		return result;
+	}
+
 	return (
 		<div>
 			<OrderBox>
@@ -32,14 +65,8 @@ function PoOrders(props) {
 					poID={props.poItem.poID} 
 					text="Add Item"
 				/>
-				{/*<ItemBox>
-					<SmallText>999999999</SmallText>{/* Order ID /}
-					<SmallText>NRF10</SmallText>{/* Item ID /}
-					<LargeText>LEGO Classic Bricks and Ideas - 11001</LargeText>{/* Item Name /}
-					<Qty/>{/* QTY /}
-					<SmallText>£____.___</SmallText>{/* Unit Price /}
-					<SmallText>£________.__</SmallText>{/* Sub-Total /}
-				</ItemBox>*/}
+				
+				{generatePreExistingItems()}
 				{/*TODO: have these auto convert if the requisite number of items are already in the POForm */}
 				<POFormItemSelection 
 					updateItemSelection={props.updateItemSelection} 

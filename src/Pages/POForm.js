@@ -26,6 +26,7 @@ import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
 import Logo from '../Images/Logo/black_logo.png';
 import {eventBus, POFormShouldUpdate} from '../EventBus';
 import {updatePOItemListByID} from '../Data/POList';
+import {hasPermission, OkOrder} from '../Permissions';
 
 let annOrJason = null;
 
@@ -52,6 +53,7 @@ class POForm extends React.Component {
 					poID: this.props.location.state.poID,
 					supplier: this.props.location.state.supplier,
 					progress: this.props.location.state.progress,
+					orderItems: this.props.location.state.orderItems
 				}
 			];
 		} else {
@@ -74,10 +76,11 @@ class POForm extends React.Component {
 	componentDidMount = () => {
 		const self = this;
 		currentUser.then((response) => {
-			const staffID = response["data"]["StaffID"];
-			annOrJason = staffID === Config.annID || 
-				staffID === Config.jasonID ||
-				Config.developerAccountIDs.includes(staffID);
+			const permissions = response["data"]["Permissions"];
+			annOrJason = hasPermission(permissions, OkOrder);
+			// staffID === Config.annID || 
+			// 	staffID === Config.jasonID ||
+			// 	Config.developerAccountIDs.includes(staffID);
 			self.setState({});
 		});
 
@@ -156,7 +159,7 @@ class POForm extends React.Component {
 					updateItemSelection={this.updateItemSelection}
 				/>
 				<Totals selectedItems={this.selectedItems}/>
-				{annOrJason ? <Authorisation/> : null}
+				{annOrJason ? <Authorisation poItem={this.POListingData[0]}/> : null}
 			</div>
 		);
 	}

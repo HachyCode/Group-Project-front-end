@@ -89,7 +89,7 @@ function getDataFromDB() {
 	return result;
 }
 
-async function getDataFromDBAsync() {
+export async function getDataFromDBAsync() {
 	return await axios.get(Config.serverLocation + "/orders", {
 		headers: {
 			Authorization: sessionStorage.getItem(Config.userTokenSession)
@@ -101,26 +101,36 @@ export let promise = getDataFromDBAsync();
 
 let POList = [];
 
-export function initialise() {
-	updatePOList(promise);
+export function buildPOListFromResponse(response) {
+	const data = response["data"];
+	if (data) {
+		const newData = [];
+		for (const order of data) {
+			newData.push({
+				poID: formatPOIDFromNum(order["orderId"]),
+				supplier: order["orderSupplier"],
+				progress: order["orderState"],
+				orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
+			});
+		}
+
+		POList = newData;
+
+		return POList;
+	}
 }
 
-function updatePOList(poListPromise, onCompleteFunc) {
-	poListPromise.then(
-		(response) => {
-			const data = response["data"];
-			if (data) {
-				POList = [];
-				for (const order of data) {
-					POList.push({
-						poID: formatPOIDFromNum(order["orderId"]),
-						supplier: order["orderSupplier"],
-						progress: order["orderState"],
-						orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
-					});
-				}
+export function initialise() {
+	return updatePOList(promise);
+}
 
-				if (onCompleteFunc) onCompleteFunc(response, POList);
+export function updatePOList(poListPromise, onCompleteFunc) {
+	return poListPromise.then(
+		(response) => {
+			buildPOListFromResponse(response);
+			
+			if (onCompleteFunc) {
+				onCompleteFunc(response, POList);
 			}
 		}
 	);
@@ -182,6 +192,8 @@ function updateDBByID(poID) {
 		"orderId": numFromPOID(poID),
 
 	};
+
+	return;
 
 	return axios.post(Config.serverLocation + "/orders/update", requestObj, {
 		headers: {

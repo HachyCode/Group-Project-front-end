@@ -16,6 +16,7 @@ function Home() {
 			date: "07/12/2022",
 			image:"../../Images/HomeNotificationImages/authorisation.jpg",
 			alt: "authorisation",
+			annOrJasonOnly: true
 		}, 
 		1: {
 			heading: "Supplier selection needed",
@@ -37,6 +38,7 @@ function Home() {
 			date: "07/12/2022",
 			image: "../../Images/HomeNotificationImages/authorisation.jpg",
 			alt: "send",
+			annOrJasonOnly: true
 		},
 		4: {
 			heading: "Item low on stock",

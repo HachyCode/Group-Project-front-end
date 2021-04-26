@@ -6,12 +6,12 @@ import {
 	Date
 } from './AuthorisationCSS';
 
-function Authorisation() {
+function Authorisation(props) {
 	return (
 		<div>
 			<AuthorisationBox>
 				<Box>
-					<Text>Jonson's Authorisation</Text>
+					<Text>Johnson's Authorisation</Text>
 					<Date type="date"/>
 				</Box>
 				<Box>
