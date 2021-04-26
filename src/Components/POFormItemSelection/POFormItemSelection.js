@@ -25,8 +25,6 @@ class POFormItemSelection extends React.Component {
 			unitPrice = numPriceFromFormattedPrice(unitPrice);
 		}
 
-		console.log("itemID: " + data.categoriesData.itemID);
-
 		this.props.updateItemSelection(data.categoriesData.itemID, unitPrice, 1);
 
 		this.setState({

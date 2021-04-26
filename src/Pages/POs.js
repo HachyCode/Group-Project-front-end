@@ -11,7 +11,7 @@ import {
 	SecondLeftLabelBox,
 	FilterTop
 } from '../Components/PageCSS/POsCSS';
-import {POList} from '../Data/POList';
+import {POList, promise, reInitialisePOList} from '../Data/POList';
 import AddPOButton from '../Components/AddPOButton/AddPOButton';
 
 class POs extends React.Component {
@@ -19,7 +19,18 @@ class POs extends React.Component {
 		super(props);
 		this.state = {
 			searchFilter: null,
+			poListingData: POList
 		};
+	}
+
+	componentDidMount = () => {
+		const self = this;
+
+		reInitialisePOList((response, poList) => {
+			self.setState({poListingData: poList});
+		});
+		
+		this.setState({poListingData: POList});
 	}
 
 	filter = (searchFilter) => {
@@ -48,7 +59,7 @@ class POs extends React.Component {
 							<SpacedLabel contents="Delivered"/>
 						</SearchRow>
 					</FilterTop>
-					<StyledPOListingArea poListingData={POList} searchFilter={this.state.searchFilter}/>
+					<StyledPOListingArea poListingData={this.state.poListingData} searchFilter={this.state.searchFilter}/>
 					<AddPOButton updatePage={() => {this.setState({});}} contents="+"/>
 				</MainBody>
 			</div>

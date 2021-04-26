@@ -18,3 +18,7 @@ export function formatPOIDFromNum(poIDNum) {
 	//add the space
 	return poIDString.slice(0, 4) + " " + poIDString.slice(4);
 }
+
+export function numFromPOID(poID) {
+	return parseInt(poID.replace(" ", ""));
+}

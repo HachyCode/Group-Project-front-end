@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Config from '../Config';
-import {formatPOIDFromNum} from '../Utillity';
+import {formatPOIDFromNum, numFromPOID} from '../Utillity';
 
 function getItemsInOrder(data) {
 	let result = [];
@@ -97,13 +97,20 @@ async function getDataFromDBAsync() {
 	});
 }
 
+export let promise = getDataFromDBAsync();
+
 let POList = [];
 
 export function initialise() {
-	getDataFromDBAsync().then(
+	updatePOList(promise);
+}
+
+function updatePOList(poListPromise, onCompleteFunc) {
+	poListPromise.then(
 		(response) => {
 			const data = response["data"];
 			if (data) {
+				POList = [];
 				for (const order of data) {
 					POList.push({
 						poID: formatPOIDFromNum(order["orderId"]),
@@ -112,9 +119,17 @@ export function initialise() {
 						orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
 					});
 				}
+
+				if (onCompleteFunc) onCompleteFunc(response, POList);
 			}
 		}
 	);
+}
+
+export async function reInitialisePOList(onCompleteFunc) {
+	promise = getDataFromDBAsync();
+	updatePOList(promise, onCompleteFunc);
+	return promise;
 }
 
 function updateByPOID(poID, newPO) {
@@ -134,8 +149,45 @@ function getByPOID(poID) {
 	}
 }
 
-function updateDB() {
-	//take data from POList
+export function updatePOItemListByID(poID, itemID, quantity) {
+	const po = getByPOID(poID);
+	let found = false;
+
+	if (!po.orderItems) {
+		po.orderItems = [];
+	}
+
+	for (const orderItem of po.orderItems) {
+		if (orderItem.itemID === itemID) {
+			orderItem.quantity = quantity;
+			found = true;
+			break;
+		}
+	}
+
+	if (!found) {
+		po.orderItems.push({
+			itemID: itemID,
+			quantity: quantity
+		});
+	}
+
+	//updateDBByID(poID);
 }
 
-export {POList, updateDB, updateByPOID, getByPOID};
+function updateDBByID(poID) {
+	//take data from POList
+	const poObj = getByPOID(poID);
+	const requestObj = {
+		"orderId": numFromPOID(poID),
+
+	};
+
+	return axios.post(Config.serverLocation + "/orders/update", requestObj, {
+		headers: {
+			Authorization: sessionStorage.getItem(Config.userTokenSession)
+		}
+	});
+}
+
+export {POList, updateDBByID, updateByPOID, getByPOID};

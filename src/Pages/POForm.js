@@ -25,6 +25,7 @@ import Config from '../Config';
 import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
 import Logo from '../Images/Logo/black_logo.png';
 import {eventBus, POFormShouldUpdate} from '../EventBus';
+import {updatePOItemListByID} from '../Data/POList';
 
 let annOrJason = null;
 
@@ -110,6 +111,8 @@ class POForm extends React.Component {
 				quantity: quantity
 			});
 		}
+
+		updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
 
 		this.setState({});
 	}

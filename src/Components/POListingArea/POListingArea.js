@@ -32,7 +32,6 @@ class POListingArea extends React.Component {
 			const index = this.state.poListingData.indexOf(poListingData);
 			const poID = poListingData.poID;
 			const supplier = poListingData.supplier;
-			console.log("supplier: " + poListingData.supplier);
 
 			if (this.props.searchFilter && 
 				!poID.toLowerCase().includes(this.props.searchFilter.toLowerCase()) &&
