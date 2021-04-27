@@ -18,7 +18,7 @@ function PoOrders(props) {
 
 	function generatePreExistingItems() {
 		const result = [];
-		console.log(JSON.stringify(props.poItem.orderItems[0]));
+		console.log(JSON.stringify(props.poItem));
 		for (let i = 0; i < 5; i++) {
 			//orderItems
 

@@ -1,6 +1,7 @@
 import error from '../Images/CategorieItems/404error.png';
 import axios from 'axios';
 import Config from '../Config';
+import {numFromPOID} from '../Utillity';
 
 //future me: don't set this to async or you break categories.
 import Fan from '../Images/CategorieItems/Fan.jpg';
@@ -328,8 +329,10 @@ export function getPriceBySupplierForCategory(categoryID, supplierID) {
 }
 
 export function getCategoryByItemID(categoryItemID) {
+	let theId = numFromPOID(categoryItemID);
+
 	for (const item of CategoriesList) {
-		if (item.itemID === categoryItemID) {
+		if (item.itemID === theId) {
 			return item;
 		}
 	}
