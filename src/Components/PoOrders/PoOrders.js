@@ -13,6 +13,9 @@ import {
 import POFormItemSelection from '../POFormItemSelection/POFormItemSelection';
 import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
 import {getCategoryByItemID, getPriceBySupplierForCategory} from '../../Data/CategoriesList';
+import {numPriceFromFormattedPrice} from '../../Utillity';
+import {getSupplierAbbrevFromName} from '../../Data/Suppliers';
+import {getQuantityOfItem} from '../../Data/POList';
 
 function PoOrders(props) {
 
@@ -26,18 +29,25 @@ function PoOrders(props) {
 				const poItem = props.poItem;
 				const orderItem = poItem.orderItems[i];
 				const itemCategory = getCategoryByItemID(poItem.poID);
-				const price = getPriceBySupplierForCategory(poItem.supplier);
-				console.log(price);
+				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
+				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
+				console.log("price: " + price + ", unformattedPrice: " + numPriceFromFormattedPrice(price) + 
+					", itemCategory: " + JSON.stringify(itemCategory));
+				const priceUnformatted = numPriceFromFormattedPrice(price);
 
 				if (orderItem && orderItem["itemID"]) {
 					result.push(<SelectedPOFormItem
 						orderID={poItem.poID}
 						itemID={itemCategory.productCode}
 						itemName={itemCategory.itemName}
-						unitPrice={price}
+						unitPrice={priceUnformatted}
 						updateItemSelection={props.updateItemSelection}
 						itemNumID={itemCategory.itemID}
+						quantity={orderItem.quantity}
 					/>);
+
+					props.updateItemSelection(itemCategory.itemID, priceUnformatted, 
+						orderItem.quantity, true);
 				} else {
 					result.push(<POFormItemSelection 
 						updateItemSelection={props.updateItemSelection} 

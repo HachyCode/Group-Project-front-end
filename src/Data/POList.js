@@ -159,6 +159,22 @@ function getByPOID(poID) {
 	}
 }
 
+export function getQuantityOfItem(poID, itemID) {
+	const po = getByPOID(poID);
+
+	if (!po.orderItems) {
+		po.orderItems = [];
+	}
+
+	for (const orderItem of po.orderItems) {
+		if (orderItem.itemID === itemID) {
+			return orderItem.quantity;
+		}
+	}
+
+	return false;
+}
+
 export function updatePOItemListByID(poID, itemID, quantity) {
 	const po = getByPOID(poID);
 	let found = false;

@@ -106,7 +106,7 @@ class POForm extends React.Component {
 		});
 	}
 
-	updateItemSelection = (itemID, price, quantity) => {
+	updateItemSelection = (itemID, price, quantity, doNotUpdate=false) => {
 		let found = false;
 		for (const item of this.selectedItems) {
 			if (item.itemID === itemID) {
@@ -126,7 +126,9 @@ class POForm extends React.Component {
 
 		updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
 
-		this.setState({});
+		if (!doNotUpdate) {
+			this.setState({});
+		}
 	}
 
 	render = ()  => {

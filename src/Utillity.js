@@ -20,5 +20,5 @@ export function formatPOIDFromNum(poIDNum) {
 }
 
 export function numFromPOID(poID) {
-	return parseInt(poID.replace(" ", ""));
+	return typeof poID === "string" ? parseInt(poID.replace(" ", "")) : poID;
 }
