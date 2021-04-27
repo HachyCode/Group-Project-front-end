@@ -21,6 +21,7 @@ import background from '../Images/Background/Orange_3.jpg';
 import logo from '../Images/Logo/black_logo.png';
 import {initialise} from '../Data/POList';
 import {getDataOfCurrentUser} from '../Data/UserData';
+import {initialiseSuppliers} from '../Data/Suppliers';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -51,10 +52,12 @@ function LogIn() {
 						initialise().then((response) => {
 							getDataOfCurrentUser().then((response) => {
 								sessionStorage.setItem(Config.currUserPermissions, response["data"]["Permissions"]);
-								//Received in App.js
-								eventBus.emit(RouterUpdate);
-								//send them to the home page
-								history.push("/home");
+								initialiseSuppliers().then((response) => {
+									//Received in App.js
+									eventBus.emit(RouterUpdate);
+									//send them to the home page
+									history.push("/home");
+								});
 							});
 							
 						});
@@ -63,8 +66,12 @@ function LogIn() {
 						eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
 						forceUpdateHook();
 					}
+				},
+				(error) => {
+					console.log(error);
 				}
 			).catch((error) => {
+				console.log(error);
 				forceUpdateHook();
 			});
 		}

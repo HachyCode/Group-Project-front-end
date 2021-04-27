@@ -18,19 +18,22 @@ function PoOrders(props) {
 
 	function generatePreExistingItems() {
 		const result = [];
+		console.log(JSON.stringify(props.poItem.orderItems[0]));
 		for (let i = 0; i < 5; i++) {
 			//orderItems
 
 			const poItem = props.poItem;
 			const orderItem = poItem.orderItems[i];
 			const itemCategory = getCategoryByItemID(poItem.poID);
+			const price = getPriceBySupplierForCategory(poItem.supplier);
+			console.log(price);
 
-			if (orderItem && orderItem["orderItemId"]) {
+			if (orderItem && orderItem["itemID"]) {
 				result.push(<SelectedPOFormItem
 					orderID={poItem.poID}
 					itemID={itemCategory.productCode}
 					itemName={itemCategory.itemName}
-					unitPrice={getPriceBySupplierForCategory(poItem.supplier)}
+					unitPrice={price}
 					updateItemSelection={props.updateItemSelection}
 					itemNumID={itemCategory.itemID}
 				/>);
@@ -59,16 +62,10 @@ function PoOrders(props) {
 					<SmallFilter>Sub-Total</SmallFilter>
 				</ItemBox>
 				<Line/>
-				<POFormItemSelection 
-					updateItemSelection={props.updateItemSelection} 
-					supplierFilter={props.supplierFilter} 
-					poID={props.poItem.poID} 
-					text="Add Item"
-				/>
 				
 				{generatePreExistingItems()}
 				{/*TODO: have these auto convert if the requisite number of items are already in the POForm */}
-				<POFormItemSelection 
+				{/* <POFormItemSelection 
 					updateItemSelection={props.updateItemSelection} 
 					supplierFilter={props.supplierFilter} 
 					poID={props.poItem.poID} 
@@ -92,6 +89,12 @@ function PoOrders(props) {
 					poID={props.poItem.poID} 
 					text="Add Item"
 				/>
+				<POFormItemSelection 
+					updateItemSelection={props.updateItemSelection} 
+					supplierFilter={props.supplierFilter} 
+					poID={props.poItem.poID} 
+					text="Add Item"
+				/> */}
 			</OrderBox>
 		</div>
 	);

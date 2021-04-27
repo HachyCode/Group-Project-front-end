@@ -1,8 +1,27 @@
 import React from 'react';
 import {Address} from './AddressBarCSS';
+import {getSupplierAddressFromName} from '../../Data/Suppliers';
 
 class AddressStatements extends React.Component {
+	constructor(props) {
+		super(props);
+		this.props = props;
+	}
 	render(){
+		const result = [];
+		const address = getSupplierAddressFromName(this.props.supplier);
+
+		if (address) {
+			for (const addressComponent of address.split(";")) {
+				if (addressComponent) {
+					result.push(<Address>addressComponent</Address>);
+				}
+			}
+		} else {
+			result.push(<Address>Address unknown</Address>);
+		}
+
+		return result;
 		//TODO: dynamically generate address from database
 		switch(parseInt(this.props.supplier)){
 		case -1:

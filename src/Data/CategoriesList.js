@@ -13,7 +13,8 @@ import Polaroid from '../Images/CategorieItems/Polaroid.jpg';
 import PowerBank from '../Images/CategorieItems/PowerBank.jpg';
 import Spider from '../Images/CategorieItems/Spider.jpg';
 import StarWars from '../Images/CategorieItems/StarWars.jpg';
-import { getDefaultNormalizer } from '@testing-library/dom';
+
+const images = [PowerBank, PowerBank, PowerBank, Spider, Fan, StarWars, Polaroid, Nerf, Klikbot, Pinball, Olaf, Lego];
 
 function getCategories() {
 	const result = [
@@ -267,26 +268,34 @@ function getCategories() {
 	//REMOVEME when the data for products is done on backend
 	return result;
 
-	return (async () => {await getCategoriesAsync();})();
+	return getCategoriesAsync();
 }
 
-async function getCategoriesAsync() {
-	let result = [];
-	return await axios.get(Config.serverLocation +  "/products", {
+function getCategoriesAsync() {
+	return axios.get(Config.serverLocation +  "/products", {
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': sessionStorage.getItem(Config.userTokenSession)
 		}
-	}).then(
+	});
+}
+
+export function getResultsWithPromise(promise) {
+	promise.then(
 		(response) => {
-			result = [];
+			const result = [];
+			let image = 0;
 			for (const item of response["data"]) {
 				result.push({
-					image: error,
+					image: images[image],
 					productCode: item["productCode"],
 					itemName: item["productName"],
-					amount: 30
+					amount: item["productQuantity"] ? item["productQuantity"] : 0,
+					itemID: image + 1,
+					categoriesData: []
 				});
+
+				image++;
 			}
 
 			return result;
@@ -295,6 +304,14 @@ async function getCategoriesAsync() {
 }
 
 export let CategoriesList = getCategories();
+
+export function initialiseCategories() {
+	return getResultsWithPromise(getCategories()).then(
+		(result) => {
+			CategoriesList = result;
+		}
+	);
+}
 
 export function getPriceBySupplierForCategory(categoryID, supplierID) {
 	for (const item of CategoriesList) {

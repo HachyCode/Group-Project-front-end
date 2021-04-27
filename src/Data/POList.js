@@ -7,8 +7,8 @@ function getItemsInOrder(data) {
 
 	for (const item of data) {
 		result.push({
-			itemID: item["itemId"],
-			quantity: item["itemQuantity"]
+			itemID: item["orderItemId"],
+			quantity: item["orderItemQuantity"]
 		});
 	}
 
@@ -110,7 +110,7 @@ export function buildPOListFromResponse(response) {
 				poID: formatPOIDFromNum(order["orderId"]),
 				supplier: order["orderSupplier"],
 				progress: order["orderState"],
-				orderItems: order["orderItem"] ? getItemsInOrder(order["orderItem"]) : []
+				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : []
 			});
 		}
 
