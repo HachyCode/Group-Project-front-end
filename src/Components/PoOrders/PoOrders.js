@@ -25,17 +25,17 @@ function PoOrders(props) {
 		for (let i = 0; i < 5; i++) {
 			//orderItems
 
-			if (props.poItem.orderItems) {
+			if (props.poItem.orderItems && props.poItem.orderItems[i]) {
 				const poItem = props.poItem;
 				const orderItem = poItem.orderItems[i];
-				const itemCategory = getCategoryByItemID(poItem.poID);
+				const itemCategory = getCategoryByItemID(orderItem.itemID);
 				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
 				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
-				console.log("price: " + price + ", unformattedPrice: " + numPriceFromFormattedPrice(price) + 
-					", itemCategory: " + JSON.stringify(itemCategory));
+				console.log("itemCategory: " + JSON.stringify(itemCategory));
 				const priceUnformatted = numPriceFromFormattedPrice(price);
 
 				if (orderItem && orderItem["itemID"]) {
+					console.log("selectedpoform " + i + ", " + JSON.stringify(poItem.orderItems[i]));
 					result.push(<SelectedPOFormItem
 						orderID={poItem.poID}
 						itemID={itemCategory.productCode}

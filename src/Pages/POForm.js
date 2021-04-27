@@ -106,6 +106,10 @@ class POForm extends React.Component {
 		});
 	}
 
+	addInitialItemSelection = (itemID, price, quantity, doNotUpdate=false) => {
+
+	}
+
 	updateItemSelection = (itemID, price, quantity, doNotUpdate=false) => {
 		let found = false;
 		for (const item of this.selectedItems) {
@@ -123,10 +127,9 @@ class POForm extends React.Component {
 				quantity: quantity
 			});
 		}
-
-		updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
-
+		
 		if (!doNotUpdate) {
+			updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
 			this.setState({});
 		}
 	}
