@@ -1,8 +1,8 @@
 import React from 'react';
-import LogOff from '../Pages/LogOff';
+import Categories from '../Pages/Categories';
 import {render, cleanup} from '@testing-library/react';
 
 afterEach(cleanup);
-it('render LogOff', () => { 
-	render (<LogOff/>)
+test('render Categories', () => { 
+	render (<Categories/>)
 })
