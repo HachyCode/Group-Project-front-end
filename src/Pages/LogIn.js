@@ -46,13 +46,14 @@ function LogIn() {
 			}).then(
 				(response) => {
 					if (response["data"]["token"]) {
+						const token = response["data"]["token"];
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
-						initialise().then((response) => {
-							getDataOfCurrentUser().then((response) => {
+						initialise(token).then((response) => {
+							getDataOfCurrentUser(token).then((response) => {
 								sessionStorage.setItem(Config.currUserPermissions, response["data"]["Permissions"]);
-								initialiseSuppliers().then((response) => {
+								initialiseSuppliers(token).then((response) => {
 									//Received in App.js
 									eventBus.emit(RouterUpdate);
 									//send them to the home page

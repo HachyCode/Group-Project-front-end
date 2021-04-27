@@ -31,11 +31,22 @@ function PoOrders(props) {
 				const itemCategory = getCategoryByItemID(orderItem.itemID);
 				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
 				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
-				console.log("itemCategory: " + JSON.stringify(itemCategory));
+				console.log("PRICE: " + price + ", " + itemCategory.productCode + ", " + supplierNameAbbrev);
+
+				if (!price) {
+					result.push(<b></b>);
+					result.push(<POFormItemSelection 
+						updateItemSelection={props.updateItemSelection} 
+						supplierFilter={props.supplierFilter} 
+						poID={props.poItem.poID} 
+						text={"'" + itemCategory.itemName + "' is no longer supplied by '" + poItem.supplier + "'."}
+					/>);
+					continue;
+				}
+
 				const priceUnformatted = numPriceFromFormattedPrice(price);
 
 				if (orderItem && orderItem["itemID"]) {
-					console.log("selectedpoform " + i + ", " + JSON.stringify(poItem.orderItems[i]));
 					result.push(<SelectedPOFormItem
 						orderID={poItem.poID}
 						itemID={itemCategory.productCode}

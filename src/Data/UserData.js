@@ -1,11 +1,11 @@
 import axios from 'axios';
 import Config from '../Config';
 
-export function getDataOfCurrentUser() {
+export function getDataOfCurrentUser(token) {
 	return axios.get(Config.serverLocation + "/user/me", {
 		headers: {
 			"Content-Type": "application/json",
-			"Authorization": sessionStorage.getItem(Config.userTokenSession)
+			"Authorization": token ? token : sessionStorage.getItem(Config.userTokenSession)
 		}
 	});
 }

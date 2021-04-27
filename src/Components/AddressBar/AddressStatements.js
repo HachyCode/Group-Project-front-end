@@ -1,6 +1,6 @@
 import React from 'react';
 import {Address} from './AddressBarCSS';
-import {getSupplierAddressFromName} from '../../Data/Suppliers';
+import {getSupplierAddressFromName, getSupplierObjFromName} from '../../Data/Suppliers';
 
 class AddressStatements extends React.Component {
 	constructor(props) {
@@ -9,12 +9,14 @@ class AddressStatements extends React.Component {
 	}
 	render(){
 		const result = [];
-		const address = getSupplierAddressFromName(this.props.supplier);
+		console.log("SUPPLIER: " + this.props.supplier);
+		console.log("supplierObj: " + !!getSupplierObjFromName(this.props.supplier));
+		const address = getSupplierObjFromName(this.props.supplier).supplierAddress;
 
 		if (address) {
 			for (const addressComponent of address.split(";")) {
 				if (addressComponent) {
-					result.push(<Address>addressComponent</Address>);
+					result.push(<Address>{addressComponent}</Address>);
 				}
 			}
 		} else {

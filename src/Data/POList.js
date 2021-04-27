@@ -89,10 +89,10 @@ function getDataFromDB() {
 	return result;
 }
 
-export async function getDataFromDBAsync() {
+export async function getDataFromDBAsync(token) {
 	return await axios.get(Config.serverLocation + "/orders", {
 		headers: {
-			Authorization: sessionStorage.getItem(Config.userTokenSession)
+			Authorization: token ? token : sessionStorage.getItem(Config.userTokenSession)
 		}
 	});
 }
@@ -120,7 +120,8 @@ export function buildPOListFromResponse(response) {
 	}
 }
 
-export function initialise() {
+export function initialise(token) {
+	promise = getDataFromDBAsync(token);
 	return updatePOList(promise);
 }
 

@@ -90,7 +90,9 @@ class AddressBar extends React.Component {
 								))}
 							</Select>
 						</Supplier>
-						<AddressStatements supplier={this.state.supplier === -1 ? -1 : getSupplierFromName(this.state.supplier)}/>
+						<AddressStatements 
+							supplier={this.state.supplier/* === -1 ? -1 : getSupplierFromName(this.state.supplier)*/}
+						/>
 					</AddressBox>
 
 				</AddressDiv>
