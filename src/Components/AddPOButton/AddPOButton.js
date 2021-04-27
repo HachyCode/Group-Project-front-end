@@ -1,6 +1,6 @@
 import React from 'react';
 import {POList} from '../../Data/POList';
-import {StyledAddPOButton} from './AddPOButtonCSS';
+import {StyledAddPOButton, StyledAddPOButtonBox, StyledAddPOButtonIcon} from './AddPOButtonCSS';
 
 class AddPOButton extends React.Component {
 	addPOButtonPress = () => {
@@ -28,7 +28,11 @@ class AddPOButton extends React.Component {
 
 	render = () => {
 		return (
-			<StyledAddPOButton onClick={this.addPOButtonPress}>{this.props.contents}</StyledAddPOButton>
+			<StyledAddPOButtonBox>
+				<StyledAddPOButton onClick={this.addPOButtonPress}>
+					{this.props.contents}
+				</StyledAddPOButton>
+			</StyledAddPOButtonBox>
 		);
 	}
 }
