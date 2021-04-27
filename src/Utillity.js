@@ -5,7 +5,7 @@ export function format(num) {
 }
 
 export function numPriceFromFormattedPrice(price) {
-	return parseInt(price.replace("£", ""));
+	return parseFloat(price.replace("£", ""));
 }
 
 export function formatPOIDFromNum(poIDNum) {
