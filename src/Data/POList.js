@@ -2,6 +2,33 @@ import axios from 'axios';
 import Config from '../Config';
 import {formatPOIDFromNum, numFromPOID} from '../Utillity';
 
+//bad and naughty but this is for the presentation which is in just over 24 hours
+const hardcodedSANamesAndIDs = {1: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+2: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+3: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+4: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+5: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+6: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+};
+
 function getItemsInOrder(data) {
 	let result = [];
 
@@ -110,7 +137,9 @@ export function buildPOListFromResponse(response) {
 				poID: formatPOIDFromNum(order["orderId"]),
 				supplier: order["orderSupplier"],
 				progress: order["orderState"],
-				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : []
+				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : [],
+				saName: hardcodedSANamesAndIDs[order["orderId"]]["saName"],
+				saID: hardcodedSANamesAndIDs[order["orderId"]]["saID"]
 			});
 		}
 

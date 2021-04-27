@@ -17,8 +17,8 @@ class MainPoInfo extends React.Component {
 		this.po = getByPOID(props.ID);
 		
 		this.state = {
-			saName: "",
-			saID: "",
+			saName: this.props.poItem.saName ? this.props.poItem.saName : "",
+			saID: this.props.poItem.saID ? this.props.poItem.saID : "",
 			poFormID: props.ID
 		};
 
@@ -35,10 +35,12 @@ class MainPoInfo extends React.Component {
 	}
 
 	donePressed = () => {
-		this.setState({
-			saName: (this.state.saName && this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
-			saID: (this.state.saID && this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
-		});
+		if (!(this.state.saName && this.state.saName !== "" && this.state.saID && this.state.saID !== "")) {
+			this.setState({
+				saName: (this.state.saName && this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
+				saID: (this.state.saID && this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
+			});
+		}
 	}
 
 	componentDidMount = () => {		

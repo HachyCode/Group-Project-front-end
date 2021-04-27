@@ -55,7 +55,9 @@ class POForm extends React.Component {
 					poID: this.props.location.state.poID,
 					supplier: this.props.location.state.supplier,
 					progress: this.props.location.state.progress,
-					orderItems: this.props.location.state.orderItems
+					orderItems: this.props.location.state.orderItems,
+					saName: this.props.location.state.saName,
+					saID: this.props.location.state.saID,
 				}
 			];
 		} else {
@@ -127,7 +129,7 @@ class POForm extends React.Component {
 				quantity: quantity
 			});
 		}
-		
+
 		if (!doNotUpdate) {
 			updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
 			this.setState({});
@@ -148,7 +150,7 @@ class POForm extends React.Component {
 								<SecondLeftLabel name="Supplier" sortingID="supplier"/>
 							</SecondLeftLabelBox>
 							<SpacedLabel contents="All data"/>
-							<SpacedLabel contents="Jason"/>
+							<SpacedLabel contents="John"/>
 							<SpacedLabel contents="Ann"/>
 							<SpacedLabel contents="Send"/>
 							<SpacedLabel contents="Accepted"/>
