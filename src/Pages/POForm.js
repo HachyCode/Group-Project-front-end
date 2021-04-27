@@ -24,9 +24,11 @@ import {getDataOfCurrentUser, currentUser} from '../Data/UserData';
 import Config from '../Config';
 import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
 import Logo from '../Images/Logo/black_logo.png';
-import {eventBus, POFormShouldUpdate} from '../EventBus';
+import {eventBus, POFormSend, POFormShouldUpdate, POFormSave} from '../EventBus';
 import {updatePOItemListByID} from '../Data/POList';
 import {hasPermission, OkOrder} from '../Permissions';
+import axios from 'axios';
+import { numFromPOID } from '../Utillity';
 
 let annOrJason = null;
 
@@ -73,6 +75,12 @@ class POForm extends React.Component {
 		this.setState({});
 	}
 
+	genPDF = () => {
+		axios.get(Config.serverLocation + "/pdf/" + numFromPOID(this.props.location.state.poID), {headers: {
+			Authorization: sessionStorage.getItem(Config.userTokenSession)
+		}});
+	}
+
 	componentDidMount = () => {
 		const self = this;
 		currentUser.then((response) => {
@@ -85,6 +93,7 @@ class POForm extends React.Component {
 		});
 
 		eventBus.on(POFormShouldUpdate, this.update);
+		eventBus.on(POFormSave, this.genPDF);
 	}
 
 	componentWillUnmount = () => {
