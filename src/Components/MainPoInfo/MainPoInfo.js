@@ -21,16 +21,7 @@ class MainPoInfo extends React.Component {
 			saID: "",
 			poFormID: props.ID
 		};
-	}
 
-	donePressed = () => {
-		this.setState({
-			saName: (this.state.saName && this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
-			saID: (this.state.saID && this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
-		});
-	}
-
-	componentDidMount = () => {
 		const self = this;
 		currentUser.then(
 			(response) => {
@@ -41,6 +32,16 @@ class MainPoInfo extends React.Component {
 				};
 			}
 		);
+	}
+
+	donePressed = () => {
+		this.setState({
+			saName: (this.state.saName && this.state.saName.length > 0 ? this.state.saName : this.currentUser.username),
+			saID: (this.state.saID && this.state.saID.length > 0 ? this.state.saID : this.currentUser.staffID)
+		});
+	}
+
+	componentDidMount = () => {		
 		eventBus.on(POFormDone, this.donePressed);
 	}
 

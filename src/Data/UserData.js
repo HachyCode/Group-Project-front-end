@@ -12,6 +12,11 @@ export function getDataOfCurrentUser(token) {
 
 export let currentUser = getDataOfCurrentUser();
 
+export function setUser(promise) {
+	currentUser = promise;
+	return currentUser;
+}
+
 
 
 // .then(
