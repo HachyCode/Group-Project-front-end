@@ -38,6 +38,7 @@ export const LoginBody = styled.div`
 export const LoginButton = styled.button`
     padding: 1em 5em;
     margin: 1em 0 2em 0;
+	cursor: pointer;
 
     border-radius: 30px;
     border: none;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {POList} from '../../Data/POList';
-import {StyledAddPOButton, StyledAddPOButtonBox, StyledAddPOButtonIcon} from './AddPOButtonCSS';
+import {StyledAddPOButton, StyledAddPOButtonBox} from './AddPOButtonCSS';
 
 class AddPOButton extends React.Component {
 	addPOButtonPress = () => {
