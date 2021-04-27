@@ -45,12 +45,13 @@ class InputBox extends React.Component {
     onKeyPress = (event) => {
     	if (this.disabled) {
     		event.preventDefault();
+    	} else if (this.props.keyPressHandle) {
+    		this.props.keyPressHandle(event);
     	}
     }
 
     onUnfocus = () => {
     	if (this.state.text === "") {
-    		console.log("unfocus");
     		this.colour = "lightgrey";
     		this.setText(this.props.default);
     		this.hasBeenClicked = false;

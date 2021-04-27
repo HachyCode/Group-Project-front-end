@@ -1,3 +1,7 @@
+import axios from 'axios';
+import { Supplier } from '../Components/AddressBar/AddressBarCSS';
+import Config from '../Config';
+
 function getSuppliersFromDB() {
 	return [
 		{supplierID: 0, supplierName: 'Bitmore Inc', supplierAbbrev: 'BI'},
@@ -7,7 +11,28 @@ function getSuppliersFromDB() {
 	];
 }
 
-export const Suppliers = getSuppliersFromDB();
+export let Suppliers = [];
+
+export function initialiseSuppliers() {
+	return axios.get(Config.serverLocation + "/suppliers", {headers: {
+		Authorization: sessionStorage.getItem(Config.userTokenSession)
+	}}).then((response) => {
+		const data = response["data"];
+
+		if (data) {
+			Suppliers = [];
+
+			for (const responseObj of data) {
+				Suppliers.push({
+					supplierID: responseObj["supplierID"],
+					supplierName: responseObj["supplierName"],
+					supplierAbbrev: responseObj["supplierAbbrev"],
+					supplierAddress: responseObj["supplierAddress"]
+				});
+			}
+		}
+	});
+}
 
 //TODO: RENAME ME TO "getSupplierIDFromName"
 export function getSupplierFromName(name) {
@@ -22,6 +47,14 @@ export function getSupplierFromID(id) {
 	for (const supplier of Suppliers) {
 		if (supplier.supplierID === id) {
 			return supplier.supplierName;
+		}
+	}
+}
+
+export function getSupplierAddressFromName(name) {
+	for (const supplier of Suppliers) {
+		if (supplier.supplierName === name) {
+			return supplier.supplierAddress;
 		}
 	}
 }

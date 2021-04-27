@@ -14,13 +14,20 @@ class EventBus {
     	}
     }
     on(eventName, onEventFunc) {
+    	//hacky nonsense to resolve more nonsense, remove if you're not doing React
+    	if ((onEventFunc.toString()).includes("function (callback) {")) {
+    		return;
+    	}
+
     	if (!(eventName in this.events)) {
     		this.events[eventName] = [];
     	}
     	this.events[eventName].push(onEventFunc);
     }
     off(eventName, eventFunc) {
-    	this.events[eventName][this.events[eventName].indexOf(eventFunc)] = undefined;
+    	//delete is needed as otherwise it doesn't retract the array tothe right length, making emit calls
+    	//take longer over time
+    	delete this.events[eventName][this.events[eventName].indexOf(eventFunc)];
     }
 }
   

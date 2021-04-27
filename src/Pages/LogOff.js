@@ -9,6 +9,7 @@ function LogOff() {
 
 	function onLogOff() {
 		sessionStorage.removeItem(Config.userTokenSession);
+		sessionStorage.removeItem(Config.currUserPermissions);
 		eventBus.emit(RouterUpdate);
 		history.push('/');	
 	}

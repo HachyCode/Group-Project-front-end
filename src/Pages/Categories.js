@@ -23,13 +23,13 @@ function Categories(props) {
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
 					<ProductCodeFilterBox>
-						<ProductCodeFilter name="Code" sortID="productCode"/>
+						<ProductCodeFilter name="Code" sortingID="productCode"/>
 					</ProductCodeFilterBox>
 					<ItemNameFilterBox>
-						<ItemNameFilter name="Item Name" sortID="itemName"/>
+						<ItemNameFilter name="Item Name" sortingID="itemName"/>
 					</ItemNameFilterBox>
 					<AmountFilterBox>
-						<AmountFilter name="QTY stored" sortID="amount"/>
+						<AmountFilter name="QTY stored" sortingID="amount"/>
 					</AmountFilterBox>
 				</FilterBox>
 			</FilterTop>

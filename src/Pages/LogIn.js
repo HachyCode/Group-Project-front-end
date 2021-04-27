@@ -19,6 +19,9 @@ import {eventBus, WarningBoxVisibilityUpdate, RouterUpdate} from '../EventBus';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import background from '../Images/Background/Orange_3.jpg';
 import logo from '../Images/Logo/black_logo.png';
+import {initialise} from '../Data/POList';
+import {getDataOfCurrentUser} from '../Data/UserData';
+import {initialiseSuppliers} from '../Data/Suppliers';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -46,19 +49,37 @@ function LogIn() {
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
-						//Received in App.js
-						eventBus.emit(RouterUpdate);
-						//send them to the home page
-						history.push("/home");
+						initialise().then((response) => {
+							getDataOfCurrentUser().then((response) => {
+								sessionStorage.setItem(Config.currUserPermissions, response["data"]["Permissions"]);
+								initialiseSuppliers().then((response) => {
+									//Received in App.js
+									eventBus.emit(RouterUpdate);
+									//send them to the home page
+									history.push("/home");
+								});
+							});
+							
+						});
 					} else {
 						//unsuccessful login
 						eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
 						forceUpdateHook();
 					}
+				},
+				(error) => {
+					console.log(error);
 				}
 			).catch((error) => {
+				console.log(error);
 				forceUpdateHook();
 			});
+		}
+	}
+
+	function keyPressed(event) {
+		if (event.key === 'Enter') {
+			login();
 		}
 	}
 
@@ -89,6 +110,7 @@ function LogIn() {
 						id="password"
 						default={pwdDefault}
 						password={true}
+						keyPressHandle={keyPressed}
 					/>
 					<LoginButton onClick={login}>Log In</LoginButton>
 				</LoginBody>

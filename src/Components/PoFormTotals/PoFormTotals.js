@@ -33,8 +33,6 @@ function PoFormTotals(props) {
 	const vat = noVATTotal * 0.2;
 	const vatTotal = noVATTotal + vat;
 
-	console.log("update totals: " + noVATTotal + ", " + vat + ", " + vatTotal);
-
 	return (
 		<div className={props.className}>
 			<TotalBoxs>

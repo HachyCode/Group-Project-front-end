@@ -20,16 +20,21 @@ import {
 	SecondLeftLabelBox,
 } from '../Components/PageCSS/POsCSS';
 import {withRouter} from 'react-router';
-import {getDataOfCurrentUser} from '../Data/UserData';
+import {getDataOfCurrentUser, currentUser} from '../Data/UserData';
 import Config from '../Config';
 import {TopBoxImage} from '../Components/PageCSS/HomeCSS';
 import Logo from '../Images/Logo/black_logo.png';
-import {eventBus, POFormShouldUpdate} from '../EventBus';
+import {eventBus, POFormSend, POFormShouldUpdate, POFormSave} from '../EventBus';
+import {updatePOItemListByID} from '../Data/POList';
+import {hasPermission, OkOrder} from '../Permissions';
+import axios from 'axios';
+import { numFromPOID } from '../Utillity';
 
-const currentUser = getDataOfCurrentUser();
-const annOrJason = currentUser.username === Config.annID || 
-	currentUser.username === Config.jasonID || 
-	Config.developerAccountIDs.includes(currentUser.username);
+let annOrJason = null;
+
+// currentUser.staffID === Config.annID || 
+// 	currentUser.staffID === Config.jasonID || 
+// 	Config.developerAccountIDs.includes(currentUser.staffID);
 
 class POForm extends React.Component {
 	constructor(props) {
@@ -50,6 +55,7 @@ class POForm extends React.Component {
 					poID: this.props.location.state.poID,
 					supplier: this.props.location.state.supplier,
 					progress: this.props.location.state.progress,
+					orderItems: this.props.location.state.orderItems
 				}
 			];
 		} else {
@@ -69,8 +75,25 @@ class POForm extends React.Component {
 		this.setState({});
 	}
 
+	genPDF = () => {
+		axios.get(Config.serverLocation + "/pdf/" + numFromPOID(this.props.location.state.poID), {headers: {
+			Authorization: sessionStorage.getItem(Config.userTokenSession)
+		}});
+	}
+
 	componentDidMount = () => {
+		const self = this;
+		currentUser.then((response) => {
+			const permissions = response["data"]["Permissions"];
+			annOrJason = hasPermission(permissions, OkOrder);
+			// staffID === Config.annID || 
+			// 	staffID === Config.jasonID ||
+			// 	Config.developerAccountIDs.includes(staffID);
+			self.setState({});
+		});
+
 		eventBus.on(POFormShouldUpdate, this.update);
+		eventBus.on(POFormSave, this.genPDF);
 	}
 
 	componentWillUnmount = () => {
@@ -99,9 +122,9 @@ class POForm extends React.Component {
 				price: price,
 				quantity: quantity
 			});
-
-			console.log(JSON.stringify(this.selectedItems));
 		}
+
+		updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
 
 		this.setState({});
 	}
@@ -145,7 +168,7 @@ class POForm extends React.Component {
 					updateItemSelection={this.updateItemSelection}
 				/>
 				<Totals selectedItems={this.selectedItems}/>
-				<Authorisation/>
+				{annOrJason ? <Authorisation poItem={this.POListingData[0]}/> : null}
 			</div>
 		);
 	}

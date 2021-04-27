@@ -2,6 +2,8 @@ import React from 'react';
 import {StyledPOListing} from './POListingAreaCSS';
 import {eventBus, SortingUpdate, StatusBarShouldUpdate} from '../../EventBus';
 import {ascending, descending, unsorted} from '../SortingMagicButton/SortingMagicButton';
+import Config from '../../Config';
+import { hasAnyPermissions, hasPermission, OkOrder, SeeActivePOs } from '../../Permissions';
 
 class POListingArea extends React.Component {
 	constructor(props) {
@@ -11,6 +13,7 @@ class POListingArea extends React.Component {
 
 		this.state = {
 			poListingData: this.props.poListingData,
+			searchFilter: null,
 		};
 	}
 
@@ -29,10 +32,25 @@ class POListingArea extends React.Component {
 		for (let i = 0; i < this.state.poListingData.length; i++) {
 			const poListingData = this.state.poListingData[i];
 			const index = this.state.poListingData.indexOf(poListingData);
+			const poID = poListingData.poID;
+			const supplier = poListingData.supplier;
+			const permissions = parseInt(sessionStorage.getItem(Config.currUserPermissions));
+
+			if (poListingData.progress >= 1 && !hasAnyPermissions(permissions, OkOrder, SeeActivePOs)) {
+				continue;
+			}
+
+			if (this.props.searchFilter && 
+				!poID.toLowerCase().includes(this.props.searchFilter.toLowerCase()) &&
+				(supplier ? !supplier.toLowerCase().includes(this.props.searchFilter.toLowerCase()) : true)) {
+				continue;
+			}
+
 			poListings.push(<StyledPOListing 
-				poID={poListingData.poID} 
-				supplier={poListingData.supplier} 
+				poID={poID} 
+				supplier={supplier} 
 				progress={poListingData.progress}
+				orderItems={poListingData.orderItems}
 				barID={index}
 				key={index}
 			/>);
