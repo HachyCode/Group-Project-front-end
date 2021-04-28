@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
 	StyledSearchBar, 
 	FilterBox,
@@ -16,10 +16,12 @@ import CategoriesListArea from '../Components/CategoriesListArea/CategoriesListA
 import {CategoriesList} from '../Data/CategoriesList';
 
 function Categories(props) {
+	const [filter, setFilter] = useState("");
+
 	return (
 		<MainBody className={props.className}>
 			<FilterTop>
-				<StyledSearchBar/>
+				<StyledSearchBar clicked={(contents) => {setFilter(contents);}}/>
 				<FilterBox>
 					<SpacedLabel contents="Image"/>
 					<ProductCodeFilterBox>
@@ -38,6 +40,7 @@ function Categories(props) {
 				selectableItems={props.selectableItems}
 				categoryID={!!props.categoryID ? props.categoryID : -1}
 				supplierFilter={props.supplierFilter}
+				searchFilter={filter}
 			/>
 		</MainBody>
 	);
