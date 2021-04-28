@@ -139,7 +139,9 @@ export function buildPOListFromResponse(response) {
 				progress: order["orderState"],
 				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : [],
 				saName: hardcodedSANamesAndIDs[order["orderId"]]["saName"],
-				saID: hardcodedSANamesAndIDs[order["orderId"]]["saID"]
+				saID: hardcodedSANamesAndIDs[order["orderId"]]["saID"],
+				johnAuthDate: order["JohnsonAuthDate"],
+				annAuthDate: order["AnnAuthDate"]
 			});
 		}
 

@@ -58,6 +58,8 @@ class POForm extends React.Component {
 					orderItems: this.props.location.state.orderItems,
 					saName: this.props.location.state.saName,
 					saID: this.props.location.state.saID,
+					johnAuthDate: this.props.location.state.johnAuthDate,
+					annAuthDate: this.props.location.state.annAuthDate
 				}
 			];
 		} else {

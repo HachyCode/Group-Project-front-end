@@ -47,7 +47,9 @@ class POListing extends React.Component {
 				progress: this.props.progress,
 				orderItems: this.props.orderItems,
 				saName: this.props.saName,
-				saID: this.props.saID
+				saID: this.props.saID,
+				johnAuthDate: this.props.johnAuthDate,
+				annAuthDate: this.props.annAuthDate
 			} //TEMP: replace with a POForm ID later
 		});
 	}

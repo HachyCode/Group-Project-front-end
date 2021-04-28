@@ -22,6 +22,7 @@ import logo from '../Images/Logo/black_logo.png';
 import {initialise} from '../Data/POList';
 import {getDataOfCurrentUser, setUser} from '../Data/UserData';
 import {initialiseSuppliers} from '../Data/Suppliers';
+import {initialiseCategories} from '../Data/CategoriesList';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -59,6 +60,7 @@ function LogIn() {
 									//send them to the home page
 									history.push("/home");
 								});
+								initialiseCategories(token);
 							});
 							
 						});

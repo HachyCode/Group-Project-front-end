@@ -12,7 +12,11 @@ import {
 } from './PoOrdersCSS';
 import POFormItemSelection from '../POFormItemSelection/POFormItemSelection';
 import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
-import {getCategoryByItemID, getPriceBySupplierForCategory} from '../../Data/CategoriesList';
+import {
+	getCategoryByItemID, 
+	getPriceBySupplierForCategory, 
+	getNumCategoryIDByProductCode
+} from '../../Data/CategoriesList';
 import {numPriceFromFormattedPrice} from '../../Utillity';
 import {getSupplierAbbrevFromName} from '../../Data/Suppliers';
 import {getQuantityOfItem} from '../../Data/POList';
@@ -28,7 +32,17 @@ function PoOrders(props) {
 			if (props.poItem.orderItems && props.poItem.orderItems[i]) {
 				const poItem = props.poItem;
 				const orderItem = poItem.orderItems[i];
-				const itemCategory = getCategoryByItemID(orderItem.itemID);
+				let itemID = orderItem.itemID;
+				console.log("ITEMID: " + orderItem.itemID);
+
+				//https://stackoverflow.com/a/61550284
+				//accessed 28/04/2021
+				//here be more regex wizards
+				if (typeof orderItem.itemID === "string" && /[a-zA-Z]/g.test(orderItem.itemID)) {
+					itemID = getNumCategoryIDByProductCode(orderItem.itemID);
+				}
+
+				const itemCategory = getCategoryByItemID(itemID);
 				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
 				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
 				console.log("PRICE: " + price + ", " + itemCategory.productCode + ", " + supplierNameAbbrev);
