@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategoriesDiv, OrderAddBtn} from './PoOrderAddItemButtonCSS';
+import {CategoriesDiv, OrderAddBtn, AddItemBox} from './PoOrderAddItemButtonCSS';
 import {eventBus, CategoryClick} from '../../EventBus';
 
 /*
@@ -43,7 +43,7 @@ class PoOrderAddItemButton extends React.Component {
 
 	render = () => {
 		return (
-			<div>
+			<AddItemBox>
 				<OrderAddBtn onClick={this.addItemPress}>{this.state.text}</OrderAddBtn>
 				<CategoriesDiv 
 					selectableItems
@@ -51,7 +51,7 @@ class PoOrderAddItemButton extends React.Component {
 					categoryID={this.state.id}
 					supplierFilter={this.props.supplierFilter}
 				/>
-			</div>
+			</AddItemBox>
 		);
 	}
 }
