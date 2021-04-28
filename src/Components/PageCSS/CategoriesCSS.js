@@ -21,7 +21,7 @@ export const StyledSearchBar = styled(SearchBar)`
 
 export const FilterTop = styled.div`
 	position: sticky;
-	top: 50px;
+	top: 3.2em;
 
 	background: white;
 `;
