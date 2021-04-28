@@ -8,7 +8,15 @@ import {
 } from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
 import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
-import {eventBus, POFormDone, POFormSend, POFormShouldUpdate, StatusBarShouldUpdate} from '../../EventBus';
+import {
+	eventBus, 
+	POFormAnnApproved, 
+	POFormJohnApproved, 
+	POFormDone, 
+	POFormSend, 
+	POFormShouldUpdate, 
+	StatusBarShouldUpdate
+} from '../../EventBus';
 import {updateByPOID} from '../../Data/POList';
 
 class AddressBar extends React.Component {
@@ -47,9 +55,19 @@ class AddressBar extends React.Component {
 		this.setProgress(4);
 	}
 
+	annApproved = (data) => {
+		this.setProgress(3);
+	}
+
+	johnApproved = (data) => {
+		this.setProgress(2);
+	}
+
 	componentDidMount = () => {
 		eventBus.on(POFormDone, this.donePressed);
 		eventBus.on(POFormSend, this.sendPressed);
+		eventBus.on(POFormAnnApproved, this.annApproved);
+		eventBus.on(POFormJohnApproved, this.johnApproved);
 	}
 
 	componentWillUnmount = () => {

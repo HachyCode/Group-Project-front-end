@@ -48,3 +48,5 @@ export const POFormDone = "POFormDone";
 export const POFormSend = "POFormSend";
 export const POFormShouldUpdate = "POFormShouldUpdate";
 export const POFormItemSelectionUpdate = "POFormItemSelectionUpdate"; 
+export const POFormAnnApproved = "POFormAnnApproved";
+export const POFormJohnApproved = "POFormJohnApproved";
