@@ -8,7 +8,6 @@ import {
 import {eventBus, POFormAnnApproved, POFormJohnApproved} from '../../EventBus';
 
 function Authorisation(props) {
-	console.log("JOHN: " + props.poItem.johnAuthDate);
 	return (
 		<div>
 			<AuthorisationBox>
