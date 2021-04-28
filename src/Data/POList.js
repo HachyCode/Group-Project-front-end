@@ -237,7 +237,6 @@ function updateDBByID(poID) {
 	//take data from POList
 	const poObj = getByPOID(poID);
 
-
 	const orderItems = [];
 
 	for (const order of poObj.orderItems) {
@@ -252,25 +251,11 @@ function updateDBByID(poID) {
 		"orderSupplier": poObj.supplier,
 		"orderState": poObj.progress.toString(),
 		"orderItems": orderItems,
-		// [
-		// 	{
-		// 		"orderItemId": "PWR50",
-		// 		"orderItemQuantity": "25"
-		// 	},
-		// 	{
-		// 		"orderItemId": "LEX95",
-		// 		"orderItemQuantity": "20"
-		// 	}
-		// ],
 		"MinimumStockAmount": 30,
 		"JohnsonAuthDate": poObj.johnAuthDate,
 		"AnnAuthDate": poObj.annAuthDate
 
 	};
-
-	console.log(JSON.stringify(requestObj));
-
-	//return;
 
 	return axios.post(Config.serverLocation + "/orders/update", requestObj, {
 		headers: {
