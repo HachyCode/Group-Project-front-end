@@ -25,7 +25,6 @@ function PoOrders(props) {
 
 	function generatePreExistingItems() {
 		const result = [];
-		console.log(JSON.stringify(props.poItem));
 		for (let i = 0; i < 5; i++) {
 			//orderItems
 
@@ -33,7 +32,6 @@ function PoOrders(props) {
 				const poItem = props.poItem;
 				const orderItem = poItem.orderItems[i];
 				let itemID = orderItem.itemID;
-				console.log("ITEMID: " + orderItem.itemID);
 
 				//https://stackoverflow.com/a/61550284
 				//accessed 28/04/2021
@@ -45,7 +43,6 @@ function PoOrders(props) {
 				const itemCategory = getCategoryByItemID(itemID);
 				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
 				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
-				console.log("PRICE: " + price + ", " + itemCategory.productCode + ", " + supplierNameAbbrev);
 
 				if (!price) {
 					result.push(<b></b>);

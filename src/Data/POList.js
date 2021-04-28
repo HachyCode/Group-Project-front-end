@@ -230,18 +230,47 @@ export function updatePOItemListByID(poID, itemID, quantity) {
 		});
 	}
 
-	//updateDBByID(poID);
+	updateDBByID(poID);
 }
 
 function updateDBByID(poID) {
 	//take data from POList
 	const poObj = getByPOID(poID);
+
+
+	const orderItems = [];
+
+	for (const order of poObj.orderItems) {
+		orderItems.push({
+			"orderItemId": order["itemID"],
+			"orderItemQuantity": order["quantity"].toString(),
+		});
+	}
+
 	const requestObj = {
 		"orderId": numFromPOID(poID),
+		"orderSupplier": poObj.supplier,
+		"orderState": poObj.progress.toString(),
+		"orderItems": orderItems,
+		// [
+		// 	{
+		// 		"orderItemId": "PWR50",
+		// 		"orderItemQuantity": "25"
+		// 	},
+		// 	{
+		// 		"orderItemId": "LEX95",
+		// 		"orderItemQuantity": "20"
+		// 	}
+		// ],
+		"MinimumStockAmount": 30,
+		"JohnsonAuthDate": poObj.johnAuthDate,
+		"AnnAuthDate": poObj.annAuthDate
 
 	};
 
-	return;
+	console.log(JSON.stringify(requestObj));
+
+	//return;
 
 	return axios.post(Config.serverLocation + "/orders/update", requestObj, {
 		headers: {

@@ -73,10 +73,11 @@ class AddressBar extends React.Component {
 	componentWillUnmount = () => {
 		eventBus.off(POFormDone, this.donePressed);
 		eventBus.off(POFormSend, this.sendPressed);
+		eventBus.off(POFormAnnApproved, this.annApproved);
+		eventBus.off(POFormJohnApproved, this.johnApproved);
 	}
 
 	handleChange = (e) => {
-		console.log("Supplier Selected!!");
 		this.setState({ supplier: e.target.value });
 		this.props.updateFilter(e.target.value);
 	}

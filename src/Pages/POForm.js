@@ -133,7 +133,10 @@ class POForm extends React.Component {
 		}
 
 		if (!doNotUpdate) {
-			updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
+			if (quantity && quantity > 0) {
+				updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
+			}
+			
 			this.setState({});
 		}
 	}

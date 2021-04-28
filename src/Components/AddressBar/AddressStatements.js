@@ -15,8 +15,6 @@ class AddressStatements extends React.Component {
 			return result;
 		}
 
-		console.log("SUPPLIER: " + this.props.supplier);
-		console.log("supplierObj: " + !!getSupplierObjFromName(this.props.supplier));
 		const address = getSupplierObjFromName(this.props.supplier).supplierAddress;
 
 		if (address) {
