@@ -3,7 +3,8 @@ import { animateScroll as scroll } from 'react-scroll';
 import {
 	Nav,
 	NavLink,
-	NavMenu
+	NavMenu,
+	NavLogOff
 } from './NavbarCSS';
 
 const Navbar = ({ toggle }) => {
@@ -43,9 +44,9 @@ const Navbar = ({ toggle }) => {
                     POs
 					</NavLink>
 
-					<NavLink to='/logOff' activeStyle onClick={toggleHome}>
+					<NavLogOff to='/logOff' activeStyle onClick={toggleHome}>
                     Log-Out
-					</NavLink>
+					</NavLogOff>
 				</NavMenu>
 			</Nav>
 		</>
