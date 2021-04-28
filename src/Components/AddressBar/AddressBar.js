@@ -28,7 +28,7 @@ class AddressBar extends React.Component {
 			this.props.poItem.supplier = this.state.supplier;
 			
 			//0 is falsy so this should work for that as well
-			if (!this.props.poItem.progress) {
+			if (this.props.poItem.progress < progress) {
 				this.props.poItem.progress = progress;
 			}
 
