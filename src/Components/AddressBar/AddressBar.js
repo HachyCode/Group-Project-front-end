@@ -8,7 +8,15 @@ import {
 } from './AddressBarCSS';
 import AddressStatements from './AddressStatements';
 import {Suppliers, getSupplierFromName} from '../../Data/Suppliers';
-import {eventBus, POFormDone, POFormSend, POFormShouldUpdate, StatusBarShouldUpdate} from '../../EventBus';
+import {
+	eventBus, 
+	POFormAnnApproved, 
+	POFormJohnApproved, 
+	POFormDone, 
+	POFormSend, 
+	POFormShouldUpdate, 
+	StatusBarShouldUpdate
+} from '../../EventBus';
 import {updateByPOID} from '../../Data/POList';
 
 class AddressBar extends React.Component {
@@ -28,7 +36,7 @@ class AddressBar extends React.Component {
 			this.props.poItem.supplier = this.state.supplier;
 			
 			//0 is falsy so this should work for that as well
-			if (!this.props.poItem.progress) {
+			if (this.props.poItem.progress < progress) {
 				this.props.poItem.progress = progress;
 			}
 
@@ -47,18 +55,29 @@ class AddressBar extends React.Component {
 		this.setProgress(4);
 	}
 
+	annApproved = (data) => {
+		this.setProgress(3);
+	}
+
+	johnApproved = (data) => {
+		this.setProgress(2);
+	}
+
 	componentDidMount = () => {
 		eventBus.on(POFormDone, this.donePressed);
 		eventBus.on(POFormSend, this.sendPressed);
+		eventBus.on(POFormAnnApproved, this.annApproved);
+		eventBus.on(POFormJohnApproved, this.johnApproved);
 	}
 
 	componentWillUnmount = () => {
 		eventBus.off(POFormDone, this.donePressed);
 		eventBus.off(POFormSend, this.sendPressed);
+		eventBus.off(POFormAnnApproved, this.annApproved);
+		eventBus.off(POFormJohnApproved, this.johnApproved);
 	}
 
 	handleChange = (e) => {
-		console.log("Supplier Selected!!");
 		this.setState({ supplier: e.target.value });
 		this.props.updateFilter(e.target.value);
 	}
@@ -90,7 +109,9 @@ class AddressBar extends React.Component {
 								))}
 							</Select>
 						</Supplier>
-						<AddressStatements supplier={this.state.supplier === -1 ? -1 : getSupplierFromName(this.state.supplier)}/>
+						<AddressStatements 
+							supplier={this.state.supplier/* === -1 ? -1 : getSupplierFromName(this.state.supplier)*/}
+						/>
 					</AddressBox>
 
 				</AddressDiv>

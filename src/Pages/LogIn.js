@@ -20,8 +20,9 @@ import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import background from '../Images/Background/Orange_3.jpg';
 import logo from '../Images/Logo/black_logo.png';
 import {initialise} from '../Data/POList';
-import {getDataOfCurrentUser} from '../Data/UserData';
+import {getDataOfCurrentUser, setUser} from '../Data/UserData';
 import {initialiseSuppliers} from '../Data/Suppliers';
+import {initialiseCategories} from '../Data/CategoriesList';
 
 function LogIn() {
 	eventBus.emit(WarningBoxVisibilityUpdate, {visible: true});
@@ -46,18 +47,20 @@ function LogIn() {
 			}).then(
 				(response) => {
 					if (response["data"]["token"]) {
+						const token = response["data"]["token"];
 						//successful login
 						//set SESSION variable to token response
 						sessionStorage.setItem(Config.userTokenSession, response["data"]["token"]);
-						initialise().then((response) => {
-							getDataOfCurrentUser().then((response) => {
+						initialise(token).then((response) => {
+							setUser(getDataOfCurrentUser(token)).then((response) => {
 								sessionStorage.setItem(Config.currUserPermissions, response["data"]["Permissions"]);
-								initialiseSuppliers().then((response) => {
+								initialiseSuppliers(token).then((response) => {
 									//Received in App.js
 									eventBus.emit(RouterUpdate);
 									//send them to the home page
 									history.push("/home");
 								});
+								initialiseCategories(token);
 							});
 							
 						});

@@ -264,6 +264,22 @@ function getCategories() {
 			]
 		},
 
+		{
+			image: PowerBank,
+			productCode: "PWR50",
+			itemName: "1.8m USB-C  Cable",
+			amount: 255,
+			itemID: 12,
+			categoriesData: [
+				{
+					supplierName: "CT",
+					cost: "£9.95",
+					deliveryTime: 5,
+				}
+			]
+		}
+
+
 	];
 
 	//REMOVEME when the data for products is done on backend
@@ -272,28 +288,42 @@ function getCategories() {
 	return getCategoriesAsync();
 }
 
-function getCategoriesAsync() {
+function getCategoriesAsync(token) {
 	return axios.get(Config.serverLocation +  "/products", {
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': sessionStorage.getItem(Config.userTokenSession)
+			'Authorization': token ? token : sessionStorage.getItem(Config.userTokenSession)
 		}
 	});
 }
 
+export function genCategoriesData(categoriesData) {
+	const result = [];
+
+	for (const data of categoriesData) {
+		result.push({
+			supplierName: data["supplierName"],
+			cost: data["supplierCost"],
+			deliveryTime: data["supplierDeliveryTime"],
+		});
+	}
+
+	return result;
+}
+
 export function getResultsWithPromise(promise) {
-	promise.then(
+	return promise.then(
 		(response) => {
 			const result = [];
 			let image = 0;
 			for (const item of response["data"]) {
 				result.push({
-					image: images[image],
+					image: images[image] ? images[image] : error,
 					productCode: item["productCode"],
 					itemName: item["productName"],
 					amount: item["productQuantity"] ? item["productQuantity"] : 0,
 					itemID: image + 1,
-					categoriesData: []
+					categoriesData: genCategoriesData(item["supplierData"])
 				});
 
 				image++;
@@ -306,15 +336,32 @@ export function getResultsWithPromise(promise) {
 
 export let CategoriesList = getCategories();
 
-export function initialiseCategories() {
-	return getResultsWithPromise(getCategories()).then(
+export function initialiseCategories(token) {
+	const promise = getCategoriesAsync(token);
+	getResultsWithPromise(promise).then(
 		(result) => {
 			CategoriesList = result;
 		}
 	);
+
+	return promise;
 }
 
 export function getPriceBySupplierForCategory(categoryID, supplierID) {
+	for (const item of CategoriesList) {
+		if (item.productCode === categoryID) {
+			for (const catData of item.categoriesData) {
+				if (catData.supplierName === supplierID) {
+					return catData.cost;
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
+export function getQuantityBySupplierForCategory(categoryID, supplierID) {
 	for (const item of CategoriesList) {
 		if (item.productCode === categoryID) {
 			for (const catData of item.categoriesData) {
@@ -338,4 +385,12 @@ export function getCategoryByItemID(categoryItemID) {
 	}
 
 	return false;
+}
+
+export function getNumCategoryIDByProductCode(productCode) {
+	for (const item of CategoriesList) {
+		if (item.productCode === productCode) {
+			return item.itemID;
+		}
+	}
 }

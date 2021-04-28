@@ -51,6 +51,10 @@ class POListingArea extends React.Component {
 				supplier={supplier} 
 				progress={poListingData.progress}
 				orderItems={poListingData.orderItems}
+				saName={poListingData.saName}
+				saID={poListingData.saID}
+				johnAuthDate={poListingData.johnAuthDate}
+				annAuthDate={poListingData.annAuthDate}
 				barID={index}
 				key={index}
 			/>);

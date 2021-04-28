@@ -13,9 +13,9 @@ function getSuppliersFromDB() {
 
 export let Suppliers = [];
 
-export function initialiseSuppliers() {
+export function initialiseSuppliers(token) {
 	return axios.get(Config.serverLocation + "/suppliers", {headers: {
-		Authorization: sessionStorage.getItem(Config.userTokenSession)
+		Authorization: token ? token : sessionStorage.getItem(Config.userTokenSession)
 	}}).then((response) => {
 		const data = response["data"];
 
@@ -43,12 +43,28 @@ export function getSupplierFromName(name) {
 	}
 }
 
+export function getSupplierObjFromName(name) {
+	for (const supplier of Suppliers) {
+		if (supplier.supplierName === name) {
+			return supplier;
+		}
+	}
+}
+
 export function getSupplierFromID(id) {
 	for (const supplier of Suppliers) {
 		if (supplier.supplierID === id) {
 			return supplier.supplierName;
 		}
 	}
+}
+
+export function getSupplierObjByID(id) {
+	for (const supplier of Suppliers) {
+		if (supplier.supplierID === id) {
+			return supplier;
+		}
+	}	
 }
 
 export function getSupplierAddressFromName(name) {

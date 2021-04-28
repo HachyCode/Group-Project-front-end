@@ -55,7 +55,11 @@ class POForm extends React.Component {
 					poID: this.props.location.state.poID,
 					supplier: this.props.location.state.supplier,
 					progress: this.props.location.state.progress,
-					orderItems: this.props.location.state.orderItems
+					orderItems: this.props.location.state.orderItems,
+					saName: this.props.location.state.saName,
+					saID: this.props.location.state.saID,
+					johnAuthDate: this.props.location.state.johnAuthDate,
+					annAuthDate: this.props.location.state.annAuthDate
 				}
 			];
 		} else {
@@ -106,7 +110,11 @@ class POForm extends React.Component {
 		});
 	}
 
-	updateItemSelection = (itemID, price, quantity) => {
+	addInitialItemSelection = (itemID, price, quantity, doNotUpdate=false) => {
+
+	}
+
+	updateItemSelection = (itemID, price, quantity, doNotUpdate=false) => {
 		let found = false;
 		for (const item of this.selectedItems) {
 			if (item.itemID === itemID) {
@@ -124,9 +132,13 @@ class POForm extends React.Component {
 			});
 		}
 
-		updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
-
-		this.setState({});
+		if (!doNotUpdate) {
+			if (quantity && quantity > 0) {
+				updatePOItemListByID(this.POListingData[0].poID, itemID, quantity);
+			}
+			
+			this.setState({});
+		}
 	}
 
 	render = ()  => {
@@ -143,7 +155,7 @@ class POForm extends React.Component {
 								<SecondLeftLabel name="Supplier" sortingID="supplier"/>
 							</SecondLeftLabelBox>
 							<SpacedLabel contents="All data"/>
-							<SpacedLabel contents="Jason"/>
+							<SpacedLabel contents="John"/>
 							<SpacedLabel contents="Ann"/>
 							<SpacedLabel contents="Send"/>
 							<SpacedLabel contents="Accepted"/>

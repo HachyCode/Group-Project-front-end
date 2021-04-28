@@ -83,6 +83,11 @@ class CategoriesListArea extends React.Component {
 		let result = [];
 
 		for (let i = 0; i < this.state.categoriesData.length; i++) {
+			if (this.props.searchFilter && 
+				!this.state.categoriesData[i].productCode.toLowerCase().includes(this.props.searchFilter.toLowerCase()) &&
+				!this.state.categoriesData[i].itemName.toLowerCase().includes(this.props.searchFilter.toLowerCase())) {
+				continue;
+			}
 			result.push(<StyledCategoriesAccordion 
 				image={this.state.categoriesData[i].image}
 				productCode={this.state.categoriesData[i].productCode}

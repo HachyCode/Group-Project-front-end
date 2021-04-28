@@ -2,6 +2,33 @@ import axios from 'axios';
 import Config from '../Config';
 import {formatPOIDFromNum, numFromPOID} from '../Utillity';
 
+//bad and naughty but this is for the presentation which is in just over 24 hours
+const hardcodedSANamesAndIDs = {1: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+2: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+3: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+4: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+5: {
+	saName: "SarahDunkley@G4U.com",
+	saID: "DUN021",
+},
+6: {
+	saName: "AdrianHidcote@G4U.com",
+	saID: "HID001",
+},
+};
+
 function getItemsInOrder(data) {
 	let result = [];
 
@@ -89,10 +116,10 @@ function getDataFromDB() {
 	return result;
 }
 
-export async function getDataFromDBAsync() {
+export async function getDataFromDBAsync(token) {
 	return await axios.get(Config.serverLocation + "/orders", {
 		headers: {
-			Authorization: sessionStorage.getItem(Config.userTokenSession)
+			Authorization: token ? token : sessionStorage.getItem(Config.userTokenSession)
 		}
 	});
 }
@@ -110,7 +137,11 @@ export function buildPOListFromResponse(response) {
 				poID: formatPOIDFromNum(order["orderId"]),
 				supplier: order["orderSupplier"],
 				progress: order["orderState"],
-				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : []
+				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : [],
+				saName: hardcodedSANamesAndIDs[order["orderId"]]["saName"],
+				saID: hardcodedSANamesAndIDs[order["orderId"]]["saID"],
+				johnAuthDate: order["JohnsonAuthDate"],
+				annAuthDate: order["AnnAuthDate"]
 			});
 		}
 
@@ -120,7 +151,8 @@ export function buildPOListFromResponse(response) {
 	}
 }
 
-export function initialise() {
+export function initialise(token) {
+	promise = getDataFromDBAsync(token);
 	return updatePOList(promise);
 }
 
@@ -159,6 +191,22 @@ function getByPOID(poID) {
 	}
 }
 
+export function getQuantityOfItem(poID, itemID) {
+	const po = getByPOID(poID);
+
+	if (!po.orderItems) {
+		po.orderItems = [];
+	}
+
+	for (const orderItem of po.orderItems) {
+		if (orderItem.itemID === itemID) {
+			return orderItem.quantity;
+		}
+	}
+
+	return false;
+}
+
 export function updatePOItemListByID(poID, itemID, quantity) {
 	const po = getByPOID(poID);
 	let found = false;
@@ -182,18 +230,32 @@ export function updatePOItemListByID(poID, itemID, quantity) {
 		});
 	}
 
-	//updateDBByID(poID);
+	updateDBByID(poID);
 }
 
 function updateDBByID(poID) {
 	//take data from POList
 	const poObj = getByPOID(poID);
+
+	const orderItems = [];
+
+	for (const order of poObj.orderItems) {
+		orderItems.push({
+			"orderItemId": order["itemID"],
+			"orderItemQuantity": order["quantity"].toString(),
+		});
+	}
+
 	const requestObj = {
 		"orderId": numFromPOID(poID),
+		"orderSupplier": poObj.supplier,
+		"orderState": poObj.progress.toString(),
+		"orderItems": orderItems,
+		"MinimumStockAmount": 30,
+		"JohnsonAuthDate": poObj.johnAuthDate,
+		"AnnAuthDate": poObj.annAuthDate
 
 	};
-
-	return;
 
 	return axios.post(Config.serverLocation + "/orders/update", requestObj, {
 		headers: {

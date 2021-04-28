@@ -12,31 +12,72 @@ import {
 } from './PoOrdersCSS';
 import POFormItemSelection from '../POFormItemSelection/POFormItemSelection';
 import SelectedPOFormItem from '../SelectedPOFormItem/SelectedPOFormItem';
-import {getCategoryByItemID, getPriceBySupplierForCategory} from '../../Data/CategoriesList';
+import {
+	getCategoryByItemID, 
+	getPriceBySupplierForCategory, 
+	getNumCategoryIDByProductCode
+} from '../../Data/CategoriesList';
+import {numPriceFromFormattedPrice} from '../../Utillity';
+import {getSupplierAbbrevFromName} from '../../Data/Suppliers';
+import {getQuantityOfItem} from '../../Data/POList';
 
 function PoOrders(props) {
 
 	function generatePreExistingItems() {
 		const result = [];
-		console.log(JSON.stringify(props.poItem));
 		for (let i = 0; i < 5; i++) {
 			//orderItems
 
-			const poItem = props.poItem;
-			const orderItem = poItem.orderItems[i];
-			const itemCategory = getCategoryByItemID(poItem.poID);
-			const price = getPriceBySupplierForCategory(poItem.supplier);
-			console.log(price);
+			if (props.poItem.orderItems && props.poItem.orderItems[i]) {
+				const poItem = props.poItem;
+				const orderItem = poItem.orderItems[i];
+				let itemID = orderItem.itemID;
 
-			if (orderItem && orderItem["itemID"]) {
-				result.push(<SelectedPOFormItem
-					orderID={poItem.poID}
-					itemID={itemCategory.productCode}
-					itemName={itemCategory.itemName}
-					unitPrice={price}
-					updateItemSelection={props.updateItemSelection}
-					itemNumID={itemCategory.itemID}
-				/>);
+				//https://stackoverflow.com/a/61550284
+				//accessed 28/04/2021
+				//here be more regex wizards
+				if (typeof orderItem.itemID === "string" && /[a-zA-Z]/g.test(orderItem.itemID)) {
+					itemID = getNumCategoryIDByProductCode(orderItem.itemID);
+				}
+
+				const itemCategory = getCategoryByItemID(itemID);
+				const supplierNameAbbrev = getSupplierAbbrevFromName(poItem.supplier);
+				const price = getPriceBySupplierForCategory(itemCategory.productCode, supplierNameAbbrev);
+
+				if (!price) {
+					result.push(<b></b>);
+					result.push(<POFormItemSelection 
+						updateItemSelection={props.updateItemSelection} 
+						supplierFilter={props.supplierFilter} 
+						poID={props.poItem.poID} 
+						text={"'" + itemCategory.itemName + "' is no longer supplied by '" + poItem.supplier + "'."}
+					/>);
+					continue;
+				}
+
+				const priceUnformatted = numPriceFromFormattedPrice(price);
+
+				if (orderItem && orderItem["itemID"]) {
+					result.push(<SelectedPOFormItem
+						orderID={poItem.poID}
+						itemID={itemCategory.productCode}
+						itemName={itemCategory.itemName}
+						unitPrice={priceUnformatted}
+						updateItemSelection={props.updateItemSelection}
+						itemNumID={itemCategory.itemID}
+						quantity={orderItem.quantity}
+					/>);
+
+					props.updateItemSelection(itemCategory.itemID, priceUnformatted, 
+						orderItem.quantity, true);
+				} else {
+					result.push(<POFormItemSelection 
+						updateItemSelection={props.updateItemSelection} 
+						supplierFilter={props.supplierFilter} 
+						poID={props.poItem.poID} 
+						text="Add Item"
+					/>);
+				}
 			} else {
 				result.push(<POFormItemSelection 
 					updateItemSelection={props.updateItemSelection} 
