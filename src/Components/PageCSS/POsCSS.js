@@ -7,7 +7,7 @@ import styled from 'styled-components';
 export const MainBody = styled.div`
     display: flex;
     flex-direction: column;
-	justify-content: center;
+	justify-content: top;
 	align-items: center;
 
 	@media screen and (max-width: 900px){
