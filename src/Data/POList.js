@@ -133,13 +133,14 @@ export function buildPOListFromResponse(response) {
 	if (data) {
 		const newData = [];
 		for (const order of data) {
+			const hardcodedSANamesAndID = hardcodedSANamesAndIDs[order["orderId"]];
 			newData.push({
 				poID: formatPOIDFromNum(order["orderId"]),
 				supplier: order["orderSupplier"],
 				progress: order["orderState"],
 				orderItems: order["orderItems"] ? getItemsInOrder(order["orderItems"]) : [],
-				saName: hardcodedSANamesAndIDs[order["orderId"]]["saName"],
-				saID: hardcodedSANamesAndIDs[order["orderId"]]["saID"],
+				saName: hardcodedSANamesAndID ? hardcodedSANamesAndID["saName"] : "",
+				saID: hardcodedSANamesAndID ? hardcodedSANamesAndID["saID"] : "",
 				johnAuthDate: order["JohnsonAuthDate"],
 				annAuthDate: order["AnnAuthDate"]
 			});
